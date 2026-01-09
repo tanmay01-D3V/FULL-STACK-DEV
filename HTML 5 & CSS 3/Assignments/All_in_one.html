@@ -1,16 +1,119 @@
 <html>
 <head>
     <title>Html Practical page</title>
+    <style>
+        h1{
+            text-align: center;
+            text-shadow: 20px;
+            font-size: larger;
+        }
+        h1:hover{
+            color: red;
+        }
+        h2{
+            color:blanchedalmond;
+            letter-spacing: 4px;
+            opacity: initial;
+        }
+        .ivm{
+            border-radius: 15px;
+            background-color: rgb(107, 232, 168);
+            padding: 14px 16px;
+            line-height: 1.9px;
+        }
+        .nev{
+            border-radius: 14px;
+            border: 3px solid #f97316;
+            background: #fff7ed;
+            padding: 14px 16px;
+            color: #7c2d12;
+            font-weight: 600;
+            transform: rotate(-1.5deg);
+            box-shadow: 0 10px 20px rgba(248, 113, 22, 0.25);
+        }
+        hr{
+            width: 500px;
+            height: 4px;
+            border-radius: 20px;
+            background-color: burlywood;
+        }
+        pre {
+            background: #ff6200;
+            color: #22c55e;
+            text-decoration: #22c55e;
+            padding: 18px 20px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            line-height: 1.6;
+            box-shadow: 0 16px 40px rgba(13, 0, 252, 0.7);
+        }
+        ul.butan li{
+            list-style: none;
+            padding: 14px 18px;
+            margin-top: 1.6rem;
+            background: #fef3c7;
+            border-radius: 16px;
+            gap: 50px;
+        }
+        ol.nepal{
+            list-style-type: upper-roman;
+            padding: 14px 28px;
+            font-weight: bold;
+            border-radius: 10px;
+            background: #decc07;
+            color: #92400e;
+            font-weight: 500;
+        }
+        a.dev {
+            text-decoration: none;
+            color: #6b7280;
+            font-weight: 500;
+            text-decoration-color: transparent;
+        }
+        a.dev:hover{
+            text-decoration: underline;
+        }
+        .pev {
+            border-radius: 18px;
+            border: 1px ;
+            color: rgb(243, 65, 16);
+        }
+        .gev{
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 1px;
+            font-size: 23px;
+            font-weight: lighter;
+        }
+        .devi {
+            padding: 10px 22px;
+            border-radius: 999px;
+            background: #22c55e;
+            color: #052e16;
+            font-weight: 600;
+            letter-spacing: 0.04px;
+            cursor: pointer;
+            box-shadow: 0 8px 18px rgba(22, 163, 74, 0.4);
+        }
+
+        .devi:hover {
+            transform: scale(1.5) translateY(-1px);
+        }
+        footer {
+            font-size: 0.75px;
+            color: #9ca3af;
+            text-align: center;
+        }
+
+    </style>
 </head>
 <body>
     <h1 id="cow">That's what i want</h1>
-    <h2 style="color: aquamarine;"> You know who i am?</h2>
-    <p><b><strong><i><em> HTML which is hypertext markup language </em></i></strong></b></p>
+    <h2> You know who i am?</h2>
+    <p class="ivm"><b><strong><i><em> HTML which is hypertext markup language </em></i></strong></b></p>
     <br>
-    <h3>shaktiman hi gangadhar hai</h3>
-    <hr style="color:blueviolet">
-    <h3>gangadhar hi shaktiman hai</h3>
-    <h4><pre style="color: rgb(195, 0, 255);">Jana Gana Mana
+    <p class="nev">shaktiman hi gangadhar hai</p>
+    <hr>
+    <p class="nev">gangadhar hi shaktiman hai</p>
+    <h3><pre style="color: rgb(195, 0, 255);">Jana Gana Mana
 Adhinayaka Jay He
 Bharata Bhagya Vidhata
 Panjab Sindhu Gujarat Maratha
@@ -29,19 +132,19 @@ Jay Jay Jay Jay He</pre></h4>
         <li>Vijay</li>
         <li>Sherkar</li>
      </ul>
-     <ol id="nepal">
+     <ol class="nepal">
         <li>naam</li>
         <li>mera</li>
-        <li>mastana</li>
+        <li>diwana</li>
      </ol>
-     <a href="https://www.justice.gov/epstein" class="dev">click here its important</a>
-     <div>
+     <a href="https://github.com/tanmay01-D3V" class="dev">click here its important</a>
+     <div class="pev">
         <p>Jai Hind</p>
-        <span>
+        <span class="gev">
             <p>Jai Maharashtra</p>
         </span>
      </div>
-     <button class="devi" id="ganga" style="background-color: rgb(255, 230, 0);">Submit</button>
+     <button class="devi" id="ganga" style="background-color: rgb(255, 230, 0)" onclick="window.location.href='https://www.google.com/'">Submit</button>
      <footer style="font-size: 10px;">@sherkartanmay@gmail.com</footer>
 </body>
 </html>
