@@ -1,3 +1,6 @@
+<img width="1470" height="956" alt="Screenshot 2026-01-09 at 4 43 24 PM" src="https://github.com/user-attachments/assets/e7bb32d1-9c53-4941-b2c0-87345042a95f" />
+
+
 # All_in_one.html — Internal CSS application and more
 
 This README accompanies `All_in_one.html`.
