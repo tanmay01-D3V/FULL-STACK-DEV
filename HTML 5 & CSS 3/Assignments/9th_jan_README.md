@@ -1,3 +1,5 @@
+<img width="1470" height="955" alt="Screenshot 2026-01-09 at 5 00 58 PM" src="https://github.com/user-attachments/assets/ccc0605d-a607-44a7-b650-48cb13294010" />
+
 # 9th_jan.html — Internal CSS application and more
 
 This README accompanies `9th_jan.html`.
