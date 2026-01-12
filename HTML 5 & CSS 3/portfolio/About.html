@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Tanmay Vijay Sherkar</title>
+    <style>
+
+        body {
+            background: #b9d6d6;
+            margin: 0;
+            font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+            color: #060d1d;
+        }
+
+        header {
+            color: #5475c1;
+            background: rgb(221, 230, 202);
+            padding: 18px 12px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 1.6rem
+        }
+
+        header p {
+            margin: 16px 0 0;
+            color: #5475c1
+        }
+
+        .nav-wrap {
+            display: flex;
+            justify-content: center;
+            padding: 8px 10px;
+            background: #f1ec92;
+        }
+
+        .nav {
+            color: #104055;
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap
+        }
+
+        .nav a {
+            display: inline-block;
+            padding: 7px 12px;
+            border-radius: 999px;
+            background: transparent;
+            color: #5475c1;
+            text-decoration: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all .16s ease;
+            border: 1px solid transparent;
+        }
+
+        .nav a:hover {
+            color: #51c344;
+            transform: translateY(-1px)
+        }
+
+        .nav a.active {
+            background: #51c344;
+            color: #fff;
+            box-shadow: 0 6px 18px rgba(21, 101, 192, 0.12);
+            transform: none;
+        }
+
+        #About {
+            padding: 20px;
+            max-width: 100%;
+            max-height: 100%;
+            margin: 20px auto;
+        }
+
+        #container {
+            background: #f4ecbc;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 6px 18px rgba(16, 24, 40, 0.04);
+        }
+
+        #row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .about-col-1 {
+            flex-basis: 35%;
+        }
+
+        .about-col-1 img {
+            width: 100%;
+            border-radius: 20px;
+            display: block;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-col-2 {
+            flex-basis: 10%;
+        }
+
+        .about-col-2 h1 {
+            color: #1f101f;
+        }
+
+        .about-col-2 p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .tab-titles {
+            display: flex;
+            gap: 12px;
+            margin: 20px 0px 40px;
+        }
+
+        .tab-title-item {
+            flex: 1;
+            padding: 12px;
+            border-radius: 999px;
+            background: transparent;
+            text-decoration: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all .16s ease;
+            border: 1px solid rgb(225, 25, 15);
+            position: relative;
+        }
+
+        .tab-title-item::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            background: #3bbf2c;
+            bottom: -8px;
+            left: 0;
+            transition: all .16s ease;
+        }
+
+        .tab-title-item:hover::after {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1 style="color:rgb(31, 16, 31)">Tanmay Vijay Sherkar</h1>
+        <p>Portfolio — Student Project</p>
+    </header>
+
+    <div class="nav-wrap">
+        <nav class="nav" aria-label="Primary">
+            <a href="Portfolio.html">Home</a>
+            <a href="About.html" class="active">About</a>
+            <a href="services.html">Services</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </div>
+
+    <div id="About">
+        <div id="container">
+            <div id="row">
+                <div class="about-col-1">
+                    <img src="Assets/1757937765619.jpg" alt="Tanmay Vijay Sherkar">
+                </div>
+                <div class="about-col-2">
+                    <h1>About Me</h1>
+                    <p>
+                    <pre
+                        style="font-size: 20px; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">
+I am Tanmay Vijay Sherkar,Currently pursuing my engineering education, I am developing a solid foundation in multiple
+programming languages, DSA in Python, computer science fundamentals, and AI-enabled systems.
+I actively work on improving my logical thinking, algorithmic efficiency, and coding practices through consistent
+problem-solving and hands-on learning.
+                
+I believe in a practical and disciplined approach to engineering that combines theoretical understanding with real-world
+application. I am keen to learn, adapt, and grow in environments that foster innovation, collaboration, and continuous
+improvement.
+                        
+I am open to internships, projects, and learning opportunities where I can contribute my technical skills, strengthen my
+expertise in AI and software development, and grow as a future-ready engineer.
+                    </pre>
+                    </p>
+                    <div class="tab-titles">
+                        <a href="https://www.linkedin.com/in/tanmay-sherkar-185986266/details/education/"
+                            class="tab-title-item active" target="_blank" style="color: inherit;">Education</a>
+                        <div class="tab-title-item">Experience</div>
+                        <a href="https://www.linkedin.com/in/tanmay-sherkar-185986266/details/skills/"
+                            class="tab-title-item" target="_blank" style="color: inherit;">Skills</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
