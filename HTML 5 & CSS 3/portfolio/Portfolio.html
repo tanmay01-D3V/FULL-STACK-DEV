@@ -1,0 +1,316 @@
+<html>
+
+<head>
+    <title>Student Portfolio</title>
+
+    <style>
+        :root {
+            --page-bg: #b9d6d6;
+            --card-bg: #f4ecbc;
+            --nav-bg: #f1ec92;
+            --nav-text: #fff;
+        }
+
+        body {
+            background: var(--page-bg);
+        }
+
+        main .card {
+            background: var(--card-bg);
+        }
+
+        .nav-wrap {
+            background: var(--nav-bg);
+            color: var(--nav-text)
+        }
+
+        body {
+            margin: 0;
+            font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+            background: var(--bg);
+            color: #060d1d;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        header {
+            color: #5475c1;
+            background: rgb(221, 230, 202);
+            padding: 18px 12px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 1.6rem
+        }
+
+        header p {
+            margin: 16px 0 0;
+            color: var(--muted)
+        }
+
+        .nav-wrap {
+            display: flex;
+            justify-content: center;
+            padding: 8px 10px
+        }
+
+        .nav-input {
+            display: none
+        }
+
+        .nav {
+            color: #104055;
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap
+        }
+
+        .nav a {
+            display: inline-block;
+            padding: 7px 12px;
+            border-radius: 999px;
+            background: transparent;
+            color: var(--muted);
+            text-decoration: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all .16s ease;
+            border: 1px solid transparent;
+        }
+
+        .nav a:hover {
+            color: var(--accent);
+            transform: translateY(-1px)
+        }
+
+        .nav a.active {
+            background: var(--accent);
+            color: var(--accent-contrast);
+            box-shadow: 0 6px 18px rgba(21, 101, 192, 0.12);
+            transform: none;
+        }
+
+        .container {
+            max-width: 90%;
+            max-height: 200%;
+            margin: 12px auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 14px;
+            padding: 0 12px;
+            align-items: start;
+        }
+
+        .card {
+            background: var(--card);
+            padding: 14px 16px;
+            border-radius: 20px;
+            box-shadow: 0 6px 18px rgba(16, 24, 40, 0.04);
+            margin: 0;
+            min-height: 0;
+        }
+
+        h2 {
+            margin-top: 0;
+            font-size: 2rem;
+        }
+
+        hr {
+            border: 0;
+            border-top: 1px solid #f0f2f5;
+            margin: 14px 0
+        }
+
+        ul {
+            padding-bottom: 1.25;
+            font-size: 20px;
+            padding-left: 1.2rem
+        }
+
+        ul li::marker {
+            color: var(--accent);
+        }
+
+        h2 {
+            position: relative
+        }
+
+        hr {
+            border: 2px solid #ccc;
+            margin: 20px 0;
+        }
+
+        h2::before {
+            content: "";
+            position: absolute;
+            left: -6px;
+            top: 6px;
+            width: 4px;
+            height: 0.85em;
+            background: var(--accent-2);
+            border-radius: 2px;
+            opacity: 0.95;
+        }
+
+        .sidebar .note {
+            color: var(--muted);
+            font-size: 0.95rem
+        }
+
+        .sidebar {
+            border-radius: 20px;
+            border-left: 4px solid rgba(16, 185, 129, 0.12);
+            width:650px;
+            height: 97%;
+            padding-left: 14px;
+            padding-right: 12px;
+            align-self: start;
+        }
+
+        footer {
+            max-width: 1100px;
+            margin: 30px auto 40px;
+            padding: 12px 16px;
+            color: var(--muted);
+            text-align: center
+        }
+
+        a.inline-link {
+            color: var(--accent);
+            text-decoration: none;
+            border-bottom: 1px dashed rgba(21, 101, 192, 0.15)
+        }
+
+        a.inline-link:active,
+        a.inline-link:focus {
+            outline: none;
+            border-bottom-style: solid
+        }
+
+        label:focus-visible {
+            outline: 3px solid rgba(21, 101, 192, 0.12);
+            outline-offset: 3px
+        }
+
+        .home-img .img-box{
+            width: 20vw;
+            height: 20vw;
+            background-color: #fff;
+            border-radius: 50%;
+            margin: 0 auto;
+            box-shadow: 100px 108px 108px rgba(21, 101, 192, 0.12);
+        }
+        .home-img .img-box .img-item{
+            position: relative;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 8px solid #51c344;
+            background-color: #c34444;
+            box-shadow: 100px 108px 108px rgba(21, 101, 192, 0.12);
+        }
+        .home-img .img-box .img-item img{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1 style="color:rgb(31, 16, 31)">Tanmay Vijay Sherkar</h1>
+        <p>Portfolio — Student Project</p>
+    </header>
+
+    <div class="nav-wrap">
+        <nav class="nav" aria-label="Primary">
+            <a href="Portfolio.html" class="active">Home</a>
+            <a href="About.html">About</a>
+            <a href="services.html">Services</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </div>
+    
+
+    <main class="container" style="border-radius: 20px;">
+        <section class="card" aria-labelledby="about-heading">
+            <h2 id="about-heading">About Me</h2>
+            <p style="font-size: 20px">
+                I am Tanmay Vijay Sherkar, a motivated engineering student with a strong interest in Artificial
+                Intelligence, Data Structures &amp; Algorithms (DSA) in Python, and technology-driven problem solving. I
+                build projects that solve real problems and enjoy learning new tools.
+            </p>
+
+            <hr>
+            <h2>Education</h2>
+            <ul>
+                <li>Bachelor of Technology in Computer Science and Engineering - ITM SKILLS UNIVERSITY (2025 - 2029)
+                </li>
+                <li>High School - Matoshree Prabhodini college of Science (2023 - 2024)</li>
+            </ul>
+            <hr>
+            <h2>Projects</h2>
+            <ul>
+                <li>Diary Management System using Python and SQLite</li>
+                <li>Data Analysis and Visualization using Pandas and Matplotlib</li>
+                <li>Localead — landing page for GBP optimization service</li>
+                <li>Khet-Mitra — AI-powered multilingual toolkit for farmers</li>
+            </ul>
+
+            <hr>
+            <h2>Skills</h2>
+            <ul>
+                <li>Programming: Python, C, C++</li>
+                <li>Web: HTML, CSS (no JS used here), basic JavaScript</li>
+                <li>Data: Pandas, NumPy, Matplotlib</li>
+                <li>Database: SQLite</li>
+                <li>AI / ML: foundational concepts</li>
+            </ul>
+
+            <hr>
+            <h2>Certifications</h2>
+            <ul>
+                <li>AI Tools workshop — be10x</li>
+                <li>HTML &amp; CSS bootcamp — LetsUpgrade</li>
+                <li>Machine Learning with Python — FreeCodeCamp</li>
+            </ul>
+        </section>
+
+        <!-- Sidebar -->
+        <aside class="card sidebar" aria-label="Sidebar">
+            <div class="home-img">
+        <div class="img-box">
+            <div class="img-item">
+                <img src="Assets/Profile.jpeg" alt="Profile">
+            </div>
+        </div>
+    </div>
+    <br><br><br>
+            <h3 style="text-align: center; font-size: 32px;">Quick Links</h3>
+            <p class="note" style="font-size: large;">Use these links to navigate to my social media.</p>
+            <ul>
+                <li><a class="inline-link" href="#">Download CV</a></li>
+                <li><a class="inline-link" href="https://www.linkedin.com/in/tanmay-sherkar-185986266/">LinkedIn</a>
+                </li>
+                <li><a class="inline-link" href="https://github.com/tanmay01-D3V">GitHub</a></li>
+            </ul>
+            
+        </aside>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 Tanmay Vijay Sherkar</p>
+    </footer>
+
+</body>
+
+</html>
