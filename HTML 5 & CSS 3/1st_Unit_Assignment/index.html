@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Page</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <h1 style="color:rgb(31, 16, 31)">Welcome to our Event Webpage</h1>
+        <form class="search-box" onsubmit="search(event)">
+            <input type="text" id="query" placeholder="Search here..." required>
+            <button type="submit">Search</button>
+        </form>
+    </header>
+
+    <div class="nav-wrap">
+        <nav class="nav" aria-label="Primary">
+            <a href="Portfolio.html" class="active">Home</a>
+            <a href="About.html">About</a>
+            <a href="Events.html">Events</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </div>
+    <main class="container" style="border-radius: 20px;">
+        <section class="card1" aria-labelledby="about-heading">
+            <h2 id="about-heading" style="font-size: 40px;">About Us</h2>
+            <p style="font-size: 30px;font-family:'Times New Roman', Times, serif;">Welcome to a space where like-minded
+                people come together to learn, connect, and grow.
+                This event is designed for individuals who are curious, motivated, and eager to share ideas,
+                experiences, and insights.</p>
+        </section>
+        <section class="card2" aria-labelledby="upcoming-heading">
+            <h2 id="upcoming-heading" style="font-size: 30px;">Upcoming Events</h2>
+            <p style="font-size: 20px;font-family:'Times New Roman', Times, serif;">Stay tuned for our exciting upcoming
+                events!</p>
+        </section>
+        <section class="card3" aria-labelledby="past-heading">
+            <h2 id="past-heading" style="font-size: 70px;">
+                <pre>MUMBAI MUG JANUARY
+MEETUP</pre>
+            </h2>
+            <p style="font-size: 20px;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Hosted by <span
+                    style="color:rgb(0, 34, 255)">tanmay01-D3V</span></p>
+            <br>
+            <h1 style="text-decoration: underline;">Details</h1>
+            <p>
+            <pre style="font-size: 25px;line-height: 45px;"><span style="font-weight: bold;">User Group (MUG) Mumbai</span> is back with another exciting in-person meetup!
+
+Join us on <span style="font-weight: bolder;">17th January 2026 at 10:30 AM IST </span>for a day filled with learning, networking,
+and hands-on knowledge sharing, hosted at the <span style="font-weight: bolder;">vibrant Vidyalankar School of
+Information Technology, Wadala.</span>
+
+This month’s meetup will dive into the power of<span style="font-weight: bold;"> AI + MongoDB</span>, explore the latest use
+cases, and give you a chance to connect with fellow developers, engineers, and tech
+enthusiasts in the Mumbai community.</pre>
+            </p>
+            <h1 style="font-size: 30px;">📍Event Details</h1>
+            <ul>
+                <li style="font-size: 25px;line-height: 40px;">📅 Date: 17th January 2026</li>
+                <li style="font-size: 25px;line-height: 40px;">⏰ Time: 10:30 AM - 5:00 PM IST</li>
+                <li style="font-size: 25px;line-height: 40px;">🏢 Venue: Vidyalankar School of Information Technology,
+                    Wadala, Mumbai</li>
+                <li style="font-size: 25px;line-height: 40px;">🎟️ Registration: Free (Limited Seats)</li>
+                <li style="font-size: 25px;line-height: 40px;">🍽️ Lunch and refreshments will be provided.</li>
+            </ul>
+        </section>
+        <div class="spacer">
+            <aside class="card sidebar" aria-label="Sidebar">
+                <div class="home-img">
+                    <img src="highres_532201863.webp.avif" alt="Event">
+                </div>
+            </aside>
+        </div>
+    </main>
+
+
+
+
+
+
+    <script>
+        function search(event) {
+            event.preventDefault();
+            const query = document.getElementById("query").value;
+            alert("You searched for: " + query);
+        }
+    </script>
+
+</body>
+
+</html>
