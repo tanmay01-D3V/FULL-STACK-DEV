@@ -113,6 +113,22 @@
             color: #51c344;
             border-bottom-style: solid;
         }
+        footer {
+            max-width: 1100px;
+            margin: 30px auto 40px;
+            padding: 12px 16px;
+            color: var(--muted);
+            text-align: center
+        }
+        .label {
+            font-weight: bold;
+        }
+        input[type="text"], input[type="email"], textarea {
+            width: 95%;
+            padding: 10px;
+            margin-top: 6px;
+            border: 1px solid #ccc;
+            border-radius: 4px;}
     </style>
 </head>
 
@@ -134,16 +150,29 @@
 
     <div id="Contact">
         <div class="container">
+            <div class="Message">
+                <form type="text">
+                    <label for="name">Name:</label><br>
+                    <input type="text" id="name" name="name" required><br><br>
+                    <label for="email">Email:</label><br>
+                    <input type="email" id="email" name="email" required><br><br>
+                    <label for="message">Message:</label><br>
+                    <textarea id="message" name="message" rows="4" required></textarea><br><br>
+                    <input type="submit" value="Send Message">
+                </form>
             <h1>Get In Touch</h1>
             <p>Have a project in mind or want to collaborate? Connect via my socials below.</p>
-
+            </div>
             <ul class="contact-links">
                 <li><a href="https://www.linkedin.com/in/tanmay-sherkar-185986266/" target="_blank">LinkedIn</a></li>
                 <li><a href="https://github.com/tanmay01-D3V" target="_blank">GitHub</a></li>
-                <li><a href="mailto:example@email.com">Email</a></li>
+                <li><a href="mailto:tanmaysherkar@gmail.com">Email</a></li>
             </ul>
         </div>
     </div>
+    <footer>
+        <p>© 2026 Tanmay Vijay Sherkar</p>
+    </footer>
 
 </body>
 

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Flexbox Alignment</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <h1>Flexbox Alignment</h1>
+
+    <!-- Task 1 -->
+    <section>
+        <h2>Task 1: Center Items Vertically (align-items: center)</h2>
+        <p style="margin-bottom:1rem; color:#1459b9;">Goal: All boxes should appear centered from top to bottom.</p>
+        <div class="container task-1-container">
+            <div class="box">1</div>
+            <div class="box">2</div>
+            <div class="box">3</div>
+            <div class="box">4</div>
+            <div class="box">5</div>
+        </div>
+    </section>
+
+    <!-- Task 2 -->
+    <section>
+        <h2>Task 2: Align Items to the Bottom (align-items: flex-end)</h2>
+        <p style="margin-bottom:1rem; color:#1459b9;">Goal: Boxes should touch the bottom edge.</p>
+        <div class="container task-2-container">
+            <div class="box">1</div>
+            <div class="box">2</div>
+            <div class="box">3</div>
+            <div class="box">4</div>
+            <div class="box">5</div>
+        </div>
+    </section>
+
+    <!-- Task 3 -->
+    <section>
+        <h2>Task 3: Stretch Items Automatically (align-items: stretch)</h2>
+        <p style="margin-bottom:1rem; color:#1459b9;">Goal: All items should stretch to fill the container height.</p>
+        <div class="container task-3-container">
+            <div class="box">1</div>
+            <div class="box">2</div>
+            <div class="box">3</div>
+            <div class="box">4</div>
+            <div class="box">5</div>
+        </div>
+    </section>
+
+    <!-- Task 4 -->
+    <section>
+        <h2>Task 4: Multi-Row Layout (align-content: space-between)</h2>
+        <p style="margin-bottom:1rem; color:#1459b9;">Goal: Rows should be evenly spaced vertically.</p>
+        <div class="container task-4-container">
+            <div class="box">1</div>
+            <div class="box">2</div>
+            <div class="box">3</div>
+            <div class="box">4</div>
+            <div class="box">5</div>
+            <div class="box">6</div>
+            <div class="box">7</div>
+            <div class="box">8</div>
+            <div class="box">9</div>
+            <div class="box">10</div>
+            <div class="box">11</div>
+            <div class="box">12</div>
+        </div>
+    </section>
+
+    <!-- Task 5 -->
+    <section>
+        <h2>Task 5: Center Multiple Rows (align-content: center)</h2>
+        <p style="margin-bottom:1rem; color:#1459b9;">Goal: All rows should be grouped and centered vertically in the
+            middle of the container.</p>
+        <div class="container task-5-container">
+            <div class="box">1</div>
+            <div class="box">2</div>
+            <div class="box">3</div>
+            <div class="box">4</div>
+            <div class="box">5</div>
+            <div class="box">6</div>
+            <div class="box">7</div>
+            <div class="box">8</div>
+            <div class="box">9</div>
+            <div class="box">10</div>
+            <div class="box">11</div>
+            <div class="box">12</div>
+        </div>
+    </section>
+
+    <!-- Task 6 -->
+    <section>
+        <h2>Task 6: align-items vs align-content</h2>
+        <p style="margin-bottom:1rem; color:#1459b9;">Observe difference: align-items affects items within a line,
+            align-content packs the lines themselves.</p>
+        <div class="comparison-wrapper">
+            <div>
+                <h3 style="margin-bottom:0.5rem; text-align:center;">align-items: center</h3>
+                <div class="container task-6-items-container">
+                    <div class="box">1</div>
+                    <div class="box">2</div>
+                    <div class="box">3</div>
+                    <div class="box">4</div>
+                    <div class="box">5</div>
+                    <div class="box">6</div>
+                    <div class="box">7</div>
+                    <div class="box">8</div>
+                    <div class="box">9</div>
+                </div>
+            </div>
+            <div>
+                <h3 style="margin-bottom:0.5rem; text-align:center;">align-content: center</h3>
+                <div class="container task-6-content-container">
+                    <div class="box">1</div>
+                    <div class="box">2</div>
+                    <div class="box">3</div>
+                    <div class="box">4</div>
+                    <div class="box">5</div>
+                    <div class="box">6</div>
+                    <div class="box">7</div>
+                    <div class="box">8</div>
+                    <div class="box">9</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Task 7 -->
+    <section>
+        <h2>Task 7: Override Alignment (align-self: flex-start)</h2>
+        <p style="margin-bottom:1rem; color:#1459b9;">Goal: Only box 3 (top) should move to the top.</p>
+        <div class="container task-7-container">
+            <div class="box">1</div>
+            <div class="box">2</div>
+            <div class="box box-special">3</div>
+            <div class="box">4</div>
+            <div class="box">5</div>
+        </div>
+    </section>
+
+    <!-- Task 8 -->
+    <section>
+        <h2>Task 8: Individual Item at Bottom (align-self: flex-end)</h2>
+        <p style="margin-bottom:1rem; color:#1459b9;">Goal: Last card should align at the bottom.</p>
+        <div class="container task-8-container">
+            <div class="card">Card 1</div>
+            <div class="card">Card 2</div>
+            <div class="card">Card 3</div>
+            <div class="card box-bg-bottom">Card 4</div>
+        </div>
+    </section>
+
+    <!-- Task 9 -->
+    <section>
+        <h2>Task 9: Mixed align-self Values</h2>
+        <p style="margin-bottom:1rem; color:#1459b9;">Goal: Chaotic alignment! Start, Center, End, Stretch, Default.</p>
+        <div class="container task-9-container">
+            <div class="box t9-box-1">Start</div>
+            <div class="box t9-box-2">Center</div>
+            <div class="box t9-box-3">End</div>
+            <div class="box t9-box-4">Stretch</div>
+            <div class="box t9-box-5">Def</div>
+        </div>
+    </section>
+
+</body>
+
+</html>
