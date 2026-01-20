@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        let itemPrice = 20;
+        let quantity = 3;
+        let userbalance = 100;
+        let isPremiumMember = true;
+        let discountCodeValid = false;
+        let totalPrice = itemPrice * quantity;
+        let eligibleForDiscount = isPremiumMember || discountCodeValid;
+        let discount = eligibleForDiscount ? 0.1 * totalPrice : 0;
+        let finalPrice = totalPrice - discount;
+        let purchaseSuccessful = userbalance >= finalPrice;
+        
+        console.log("Final Price: $" + finalPrice);
+        console.log("Total Price: $" + totalPrice);
+        console.log("Discount: $" + discount);
+        console.log("User Balance: $" + userbalance);
+        console.log("purchaseSuccessful: " + purchaseSuccessful);
+
+        if (purchaseSuccessful) {
+            userbalance -= finalPrice;
+            console.log("Purchase successful! Remaining balance: $" + userbalance);
+        } else {
+            console.log("Insufficient balance for the purchase.");
+        }
+    </script>
+</body>
+
+</html>
