@@ -1,15 +1,24 @@
 .container {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-columns: 200px 200px 200px;
+    margin: 20px;
+    gap: 15px;
+
+}
+
+.flexible {
     grid-template-columns: 1fr 1fr 1fr;
     gap: 10px;
 }
 
-.box{
+.fixed {
+    grid-template-columns: 300px 300px 300px;
+    gap: 10px;
+}
+
+.box {
     background-color: #4CAF50;
-    border:2px solid black;
-    color:#f0f0f0;
+    border: 2px solid black;
+    color: #f0f0f0;
     padding: 20px;
     text-align: center;
     font-size: 25px;
