@@ -1,0 +1,13 @@
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 100px auto;
+}
+.box{
+    background-color: #4CAF50;
+    border:2px solid black;
+    color:#f0f0f0;
+    padding: 20px;
+    text-align: center;
+    font-size: 25px;
+}
