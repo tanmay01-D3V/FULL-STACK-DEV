@@ -1,13 +1,8 @@
 
 body {
+    margin:0;
     background-color: whitesmoke;
-    display: grid;
-    grid-template-columns: 1fr 3fr;
-    grid-template-areas:
-        "headline headline"
-        "nav-wrap nav-wrap"
-        "Box1 grid-container"
-        "footer footer";
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 header{
@@ -15,8 +10,6 @@ header{
     background-color: rgb(19, 183, 19);
     text-align: center;
     padding: 2rem 2rem;
-    margin: 0%;
-    grid-area: headline;
 }
 
 .headline{
@@ -25,10 +18,10 @@ header{
 }
 
 .nav-wrap {
+    text-align: center;
     background-color:rgba(19, 183, 19, 0.736);
-    margin-top:1px;
+    padding: 10px;
     color: #fff;
-    grid-area: nav-wrap;
 }
 
 .nav-wrap {
@@ -42,35 +35,72 @@ header{
 
 .nav {
     color: #104055;
-    
-    
-    
 }
 
 .nav a {
-    
     padding: 7px 12px;
     border-radius: 999px;
     background: transparent;
     color: whitesmoke;
     text-decoration: none;
-    font-weight: 600;
+    font-weight: bolder;
     cursor: pointer;
     transition: all .16s ease;
     border: 1px solid transparent;
 }
 
 .container{
-   
+    display: grid;
+    gap:20px;
+    grid-template-columns: 2fr 7fr;
+    align-items: start;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-
 }
 .Box1{
     padding:10px;
+    margin:10px;
     border-radius: 20px;
     background-color: rgba(19, 183, 19, 0.606);
-    grid-area: Box1;
 }
 .grid-container{
-    grid-area: grid-container;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 15px;
+}
+.Box2 .grid-container {
+    margin:10px;
+    border-radius: 20px;
+    height:97%;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr); 
+    gap: 15px;
+}
+
+.grid-item {
+    background-color: white;
+    border-radius: 12px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+.grid-item img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 12px;
+    transition: transform 0.3s ease;
+}
+
+.grid-item img:hover {
+    transform: scale(1.05);
+}
+footer{
+    display:grid;
+    padding:20px;
+    margin-top: 20px;
+    background-color: rgb(19, 183, 19);
+    text-align: center;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color:#fff;
 }
