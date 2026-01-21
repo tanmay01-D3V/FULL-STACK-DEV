@@ -1,26 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nagori caffe</title>
+    <title>Nagori Caffe Menu</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
 </head>
+
 <body>
-    <header>
-        <nav class="nav-wrapper">
-        <div class="logo">
-            Nagori Caffe
-        </div>
-        <ul>
-            <li><a href="#Home.html">Home</a></li>
-            <li><a href="#Menu.html">Menu</a></li>
-            <li><a href="#About.html">About</a></li>
-            <li><a href="#Contact.html">Contact</a></li>
-        </ul>
-    </nav>
-    </header>
-    
-    
+    <div class="container">
+        <header>
+            <h1>NAGORI CAFFE MENU</h1>
+            <p>Select your beverage</p>
+        </header>
+
+        <form id="menu-form">
+            <div class="menu-grid">
+                <label class="menu-item">
+                    <input type="checkbox" name="beverage" value="tea" data-name="Classic Tea" data-price="15">
+                    <img src="Assets/Tea.jpg" alt="Classic Tea">
+                    <div class="item-details">
+                        <span class="name">Classic Tea</span>
+                        <span class="price">15₹</span>
+                    </div>
+                </label>
+
+                <label class="menu-item">
+                    <input type="checkbox" name="beverage" value="icetea" data-name="Ice Tea" data-price="35">
+                    <img src="Assets/Ice tea.jpg" alt="Ice Tea">
+                    <div class="item-details">
+                        <span class="name">Ice Tea</span>
+                        <span class="price">35₹</span>
+                    </div>
+                </label>
+
+                <label class="menu-item">
+                    <input type="checkbox" name="beverage" value="greentea" data-name="Green Tea" data-price="25">
+                    <img src="Assets/green tea.jpg" alt="Green Tea">
+                    <div class="item-details">
+                        <span class="name">Green Tea</span>
+                        <span class="price">25₹</span>
+                    </div>
+                </label>
+
+                <label class="menu-item">
+                    <input type="checkbox" name="beverage" value="latte" data-name="Latte" data-price="50">
+                    <img src="Assets/latte-coffee_1122-2728.jpg.avif" alt="Latte">
+                    <div class="item-details">
+                        <span class="name">Latte</span>
+                        <span class="price">50₹</span>
+                    </div>
+                </label>
+
+                <label class="menu-item">
+                    <input type="checkbox" name="beverage" value="espresso" data-name="Espresso" data-price="99">
+                    <img src="Assets/asspresso.jpg" alt="Espresso">
+                    <div class="item-details">
+                        <span class="name">Espresso</span>
+                        <span class="price">99₹</span>
+                    </div>
+                </label>
+            </div>
+
+            <div class="actions">
+                <button type="button" id="buy-btn">Get Price</button>
+            </div>
+        </form>
+    </div>
+    <script src="script.js"></script>
 </body>
+
 </html>

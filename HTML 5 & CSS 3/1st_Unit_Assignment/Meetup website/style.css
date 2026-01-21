@@ -61,21 +61,25 @@ header {
     transform: none;
 }
 
+.search{
+    margin-left: 41.5%;
+    width:22rem;
+}
+
 .search-box {
-    border: 2px solid #333;
     border-radius: 25px;
+    border-radius: 50px;
 }
 
 .search-box input {
-    border: none;
-    outline: none;
+    border-radius: 25px;
     padding: 10px 15px;
     width: 250px;
     font-size: 16px;
 }
 
 .search-box button {
-    border: none;
+    border-radius: 25px;
     background: #333;
     color: white;
     padding: 10px 20px;
@@ -131,7 +135,6 @@ header {
 }
 
 .sidebar .note {
-    color: var(--muted);
     font-size: 0.95rem
 }
 
@@ -158,4 +161,11 @@ header {
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+footer{
+    color:#b9968b;
+    background-color: transparent;
+    text-align: center;
+    padding: 23px 21px;
 }
