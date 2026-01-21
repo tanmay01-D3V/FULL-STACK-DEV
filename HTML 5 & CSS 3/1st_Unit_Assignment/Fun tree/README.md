@@ -1,3 +1,5 @@
+<img width="1470" height="956" alt="Screenshot 2026-01-21 at 6 55 15 PM" src="https://github.com/user-attachments/assets/b33d6da1-036d-4a3a-87de-dd690a2cf7b4" />
+
 # Fun Nature Gallery
 
 This project is a responsive image gallery showcasing beautiful nature photos. It is designed as a learning exercise for CSS Grid layout techniques.
