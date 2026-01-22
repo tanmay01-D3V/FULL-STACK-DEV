@@ -1,4 +1,5 @@
-<img width="2940" height="1670" alt="screencapture-127-0-0-1-5501-1st-Unit-Assignment-Tech-Skills-Learning-Gallery-index-html-2026-01-23-00_24_33" src="https://github.com/user-attachments/assets/c7c98d6d-dbba-454f-8011-a5955c3d5983" />
+<img width="2940" height="1670" alt="screencapture-127-0-0-1-5501-1st-Unit-Assignment-Tech-Skills-Learning-Gallery-index-html-2026-01-23-00_38_50" src="https://github.com/user-attachments/assets/7187a522-a95d-455a-a7ac-d5d1e1159cf5" />
+
 
 
 # Tech Skills Learning Gallery
