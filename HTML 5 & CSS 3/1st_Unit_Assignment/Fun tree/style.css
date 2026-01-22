@@ -96,6 +96,7 @@ header{
     transform: scale(1.05);
 }
 footer{
+    margin-top: auto;
     display:grid;
     padding:20px;
     margin-top: 20px;
