@@ -1,8 +1,7 @@
 const buyBtn = document.getElementById('buy-btn');
 
 buyBtn.addEventListener('click', () => {
-    // Get all checked checkboxes
-    const selectedOptions = document.querySelectorAll('input[name="beverage"]:checked');
+    const selectedOptions = document.querySelectorAll('input[name="item"]:checked');
 
     if (selectedOptions.length > 0) {
         let itemsList = '';
@@ -16,7 +15,6 @@ buyBtn.addEventListener('click', () => {
             totalPrice += price;
         });
 
-        // Alert with summary
         alert(`You selected:\n${itemsList}\nTotal Price: ₹${totalPrice}`);
     } else {
         alert('Please select at least one item!');

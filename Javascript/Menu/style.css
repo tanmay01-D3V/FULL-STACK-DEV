@@ -64,7 +64,6 @@ header p {
     background: #f8f9fa;
     padding: 10px;
     box-sizing: border-box;
-    filter: grayscale(80%);
 }
 
 .item-details {
@@ -87,13 +86,11 @@ header p {
 
 .menu-item input[type="checkbox"]:checked+img {
     border-color: #007bff;
-    filter: grayscale(0%);
     box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.1);
     transform: translateY(-2px);
 }
 
 .menu-item:hover img {
-    filter: grayscale(40%);
     border-color: #ddd;
 }
 
@@ -114,7 +111,6 @@ header p {
     border-radius: 6px;
     cursor: pointer;
     font-weight: 600;
-    transition: background 0.2s;
 }
 
 #buy-btn:hover {
