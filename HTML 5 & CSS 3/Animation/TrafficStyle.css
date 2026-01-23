@@ -1,0 +1,12 @@
+.light {
+  filter: drop-shadow(0 0 15px red);
+  animation: glow 2s infinite;
+}
+.light1{
+    filter: drop-shadow(0 0 15px yellow);
+  animation: glow 2s infinite;
+}
+.light2{
+    filter: drop-shadow(0 0 15px rgb(3, 255, 3));
+  animation: glow 2s infinite;
+}
