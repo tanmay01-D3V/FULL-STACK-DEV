@@ -1,0 +1,24 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body,
+html {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0;
+}
+
+.door {
+  filter: drop-shadow(0 0 1px black);
+  animation: glow 2s infinite;
+}
+.window{
+    filter: drop-shadow(0 0 1px black);
+  animation: glow 2s infinite;
+}
