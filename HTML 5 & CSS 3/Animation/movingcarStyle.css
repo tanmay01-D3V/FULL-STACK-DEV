@@ -1,0 +1,10 @@
+.body {
+  fill: blue;
+  filter: drop-shadow(3px 3px 5px gray);
+}
+
+.wheel {
+  fill: black;
+  animation: spin 1s linear infinite;
+  transform-origin: center;
+}
