@@ -1,0 +1,26 @@
+.red {
+  animation: redLight 6s infinite;
+}
+
+.yellow {
+  animation: yellowLight 6s infinite;
+}
+
+.green {
+  animation: greenLight 6s infinite;
+}
+
+@keyframes redLight {
+  0% { fill: red; filter: drop-shadow(0 0 10px red); }
+  33% { fill: #444; filter: none; }
+}
+
+@keyframes yellowLight {
+  33% { fill: yellow; filter: drop-shadow(0 0 10px yellow); }
+  66% { fill: #444; filter: none; }
+}
+
+@keyframes greenLight {
+  66% { fill: green; filter: drop-shadow(0 0 10px green); }
+  100% { fill: #444; filter: none; }
+}
