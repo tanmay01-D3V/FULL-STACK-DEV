@@ -1,0 +1,46 @@
+
+.head {
+  fill: orange;
+}
+
+.body {
+  fill: black;
+}
+
+.limb {
+  stroke: black;
+  stroke-width: 3;
+}
+
+/* Head vertical movement */
+.head-move {
+  animation: headUpDown 1s infinite alternate;
+}
+
+@keyframes headUpDown {
+  to {
+    transform: translateY(10px);
+  }
+}
+
+/* Hands vertical movement (shape unchanged) */
+.hand-move {
+  animation: handsUpDown 1s infinite alternate;
+}
+
+@keyframes handsUpDown {
+  to {
+    transform: translateY(-10px);
+  }
+}
+
+/* Legs vertical movement (shape unchanged) */
+.leg-move {
+  animation: legsUpDown 1s infinite alternate;
+}
+
+@keyframes legsUpDown {
+  to {
+    transform: translateY(10px);
+  }
+}
