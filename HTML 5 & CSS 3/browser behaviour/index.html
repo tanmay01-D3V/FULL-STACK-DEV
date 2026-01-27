@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+
+    <title>Browser Behavior Discovery</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h1>Browser Behavior Lab</h1>
+
+    <section>
+        <h2>Viewport Experiment</h2>
+        <p>
+            Remove the viewport meta tag and view on mobile.
+            Then add it back and observe text size and layout.
+        </p>
+    </section>
+
+    <section id="formSection">
+        <h2>localStorage Experiment</h2>
+
+        <input type="text" id="nameInput" placeholder="Enter your name">
+        <button onclick="saveData()">Save</button>
+
+        <p id="storedName"></p>
+    </section>
+
+    <section>
+        <h2>Offline Tracking</h2>
+        <p id="visitInfo"></p>
+    </section>
+
+    <section>
+        <h2>Final Observations</h2>
+        <ul>
+            <li>Viewport changed scaling and readability</li>
+            <li>Layout changed at specific pixel widths</li>
+            <li>Data stored: name, visit count, last visit time</li>
+            <li>Website worked without internet</li>
+        </ul>
+    </section>
+
+<script>
+    function saveData() {
+        const name = document.getElementById("nameInput").value;
+        localStorage.setItem("username", name);
+        displayName();
+    }
+
+    function displayName() {
+        const stored = localStorage.getItem("username");
+        if (stored) {
+            document.getElementById("storedName").innerText =
+                "Stored Name: " + stored;
+        }
+    }
+
+    displayName();
+
+    let visits = localStorage.getItem("visits");
+    visits = visits ? Number(visits) + 1 : 1;
+    localStorage.setItem("visits", visits);
+
+    const lastVisit = new Date().toLocaleString();
+    localStorage.setItem("lastVisit", lastVisit);
+
+    document.getElementById("visitInfo").innerText =
+        `Visits: ${visits} | Last Visit: ${lastVisit}`;
+</script>
+
+</body>
+</html>
