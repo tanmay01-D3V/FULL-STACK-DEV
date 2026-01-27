@@ -1,0 +1,23 @@
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    background: lightgray;
+}
+@media (max-width: 600px) {
+    body {
+        background: lightcoral;
+        font-size: 14px;
+    }
+}
+@media (min-width: 601px) and (max-width: 900px) {
+    body {
+        background: lightgoldenrodyellow;
+        font-size: 16px;
+    }
+}
+@media (min-width: 901px) {
+    body {
+        background: lightblue;
+        font-size: 18px;
+    }
+}
