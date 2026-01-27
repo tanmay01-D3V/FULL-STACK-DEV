@@ -9,7 +9,7 @@
 //         console.log("Students info", val);
 //     }
 
-/*let students=["Tanmay","Rohan","Aman","Saad","Daksh"];
+let students=["Tanmay","Rohan","Aman","Saad","Daksh"];
 let marks=[80,58,88,67,90];
 
 let total=0;
@@ -19,6 +19,6 @@ for(let i=0;i<marks.length;i++){
 
 console.log(`Length of student arary is ${students.length}`);
 console.log(`average marks of students is ${total/marks.length}`);
-console.log(`Total marks of students is ${total}`);*/
+console.log(`Total marks of students is ${total}`);
 
 
