@@ -1,0 +1,135 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background-color: #fff;
+    color: #333;
+}
+
+.simple-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10%;
+    height: 12vh;
+    border-bottom: 1px solid #e6e6e6;
+}
+
+.logo {
+    height: 45px;
+    width: auto;
+}
+
+.auth-link {
+    text-decoration: none;
+    color: #333;
+    font-weight: 700;
+    font-size: 19px;
+}
+
+.auth-link:hover {
+    text-decoration: underline;
+}
+
+.center-content {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 100px;
+    padding-bottom: 60px;
+}
+
+.step-container {
+    height: 80vh;
+    width: 50vh;
+    text-align: left;
+}
+
+.device-icons img {
+    align-items: left;
+    justify-content: left;
+    height: 9dvh;
+    margin-bottom: 20px;
+}
+
+.step-indicator {
+    font-size: 23px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.step-title {
+    font-size: 38px;
+    font-weight: 700;
+    margin: 0 0 10px 0;
+    color: #333;
+}
+
+.step-desc {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 24px;
+    line-height: 1.3;
+}
+
+.next-btn {
+    width: 100%;
+    padding: 16px;
+    background-color: #e50914;
+    color: white;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-weight: 400;
+}
+
+.next-btn:hover {
+    background-color: #f6121d;
+}
+
+.simple-footer {
+    background-color: #f3f3f3;
+    padding: 30px 5%;
+    border-top: 1px solid #e6e6e6;
+    color: #737373;
+    font-size: 13px;
+}
+
+.footer-top {
+    margin-bottom: 30px;
+}
+
+.footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 800px;
+    margin-bottom: 20px;
+}
+
+.footer-links a {
+    color: #737373;
+    text-decoration: none;
+    width: 25%;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
+
+.lang-select {
+    padding: 12px 26px;
+    border: 1px solid #ccc;
+    background-color: white;
+    color: #333;
+    font-size: 13px;
+    border-radius: 2px;
+}
+
+@media (max-width: 740px) {
+    .footer-links a {
+        width: 50%;
+    }
+}

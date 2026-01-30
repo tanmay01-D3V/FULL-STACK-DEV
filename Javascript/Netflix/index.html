@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Netflix India - Watch TV Shows Online, Watch Movies Online</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <div class="hero-section">
+        <nav class="navbar">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/7/7a/Logonetflix.png" class="logo">
+            <div class="nav-right">
+                <select>
+                    <option>English</option>
+                    <option>Hindi</option>
+                </select>
+                <button class="signout">Sign In</button>
+            </div>
+        </nav>
+
+
+        <div class="hero-content">
+            <h1>Unlimited movies, shows, and more</h1>
+            <p class="price-text">Starts at ₹149. Cancel at any time.</p>
+            <p>Ready to watch? Enter your email to create or restart your membership.</p>
+            <div class="email-signup">
+                <input type="email" class="email-input" placeholder="Email address">
+                <button class="get-started-btn get-started-trigger">Get Started ›</button>
+            </div>
+        </div>
+    </div>
+
+    <section class="trending-section">
+        <h2>Trending Now</h2>
+        <div class="trending-row">
+            <!-- Card 1 -->
+            <div class="trending-card1">
+                <img src="https://occ-0-8974-2164.1.nflxso.net/dnm/api/v6/mAcAr9TxZIVbINe88xb3Teg5_OA/AAAABTk_B0l_BvDJ7CQuWOAax9ZKSAe65vFGUMjAee8pcvuYXDFDvcnFaF8nOEuwxBg-TFKzHTqhdD3D7zlMsXSpA_BQTHf-ouBVNdwJIJvNQzUGje4WVrnptKL5Ywqu9hV7pg3A.webp?r=f34"
+                    alt="Movie 1" class="movie-thumbnail" onclick="openModal('modal1')">
+                <div id="modal1" class="modal">
+                    <div class="modal-content">
+                        <span class="close" onclick="closeModal('modal1')">&times;</span>
+                        <img
+                            src="https://occ-0-8974-2164.1.nflxso.net/dnm/api/v6/mAcAr9TxZIVbINe88xb3Teg5_OA/AAAABTk_B0l_BvDJ7CQuWOAax9ZKSAe65vFGUMjAee8pcvuYXDFDvcnFaF8nOEuwxBg-TFKzHTqhdD3D7zlMsXSpA_BQTHf-ouBVNdwJIJvNQzUGje4WVrnptKL5Ywqu9hV7pg3A.webp?r=f34">
+                        <h2>Taskari</h2>
+                        <p>A dedicated customs officer and his team take on a notorious smuggler leading a powerful syndicate, but unexpected obstacles threaten their mission.</p>
+                        <button class="Getstarted get-started-trigger">Get Started ></button>
+                    </div>
+                </div>
+                <span class="trending-number">1</span>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="trending-card2">
+                <span class="trending-number">2</span>
+                <img src="https://occ-0-8974-2164.1.nflxso.net/dnm/api/v6/mAcAr9TxZIVbINe88xb3Teg5_OA/AAAABXMlNt8lRlEH5nkoYUHkzaYFsKJJvQq-3wQ4-DyYWQmKlxu9qrynyD5cNZEHPowiQL9IPEPbTSBM9B-id8nR8QPVfL1P_CQjPOqe5ZsDbekwH5AVJbhS3v4gSBXhZb4qdcE6.webp?r=e8a"
+                    alt="Movie 2" class="movie-thumbnail" onclick="openModal('modal2')">
+                <div id="modal2" class="modal">
+                    <div class="modal-content">
+                        <span class="close" onclick="closeModal('modal2')">&times;</span>
+                        <img
+                            src="https://occ-0-8974-2164.1.nflxso.net/dnm/api/v6/mAcAr9TxZIVbINe88xb3Teg5_OA/AAAABXMlNt8lRlEH5nkoYUHkzaYFsKJJvQq-3wQ4-DyYWQmKlxu9qrynyD5cNZEHPowiQL9IPEPbTSBM9B-id8nR8QPVfL1P_CQjPOqe5ZsDbekwH5AVJbhS3v4gSBXhZb4qdcE6.webp?r=e8a">
+                        <h2>Stranger Things</h2>
+                        <p>When a young boy vanishes, a small town uncovers a mystery involving secret experiments,
+                            terrifying supernatural forces and one strange little girl.</p>
+                        <button class="Getstarted get-started-trigger">Get Started ></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="trending-card3">
+                <span class="trending-number">3</span>
+                <img src="https://occ-0-8974-2164.1.nflxso.net/dnm/api/v6/mAcAr9TxZIVbINe88xb3Teg5_OA/AAAABVbXUoTNkiWeGLsVtY9HIcuwl1a3-qGoR3UlqNqTqNaSBIYjd0DYeSO0mJcKaiMaH4AYtFRuqnHeuwcxSB3sofkfoh_zn_c9A80.webp?r=0e8" alt="Movie 3" class="movie-thumbnail"
+                    onclick="openModal('modal3')">
+                <div id="modal3" class="modal">
+                    <div class="modal-content">
+                        <span class="close" onclick="closeModal('modal3')">&times;</span>
+                        <img src="https://occ-0-8974-2164.1.nflxso.net/dnm/api/v6/mAcAr9TxZIVbINe88xb3Teg5_OA/AAAABVbXUoTNkiWeGLsVtY9HIcuwl1a3-qGoR3UlqNqTqNaSBIYjd0DYeSO0mJcKaiMaH4AYtFRuqnHeuwcxSB3sofkfoh_zn_c9A80.webp?r=0e8">
+                        <h2>Tere Ishq Mein</h2>
+                        <p>A hot-headed fighter pilot and a psychologist confront their turbulent romantic past when they meet years later — with new lives and unresolved feelings.</p>
+                        <button class="Getstarted get-started-trigger">Get Started ></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="trending-card4">
+                <span class="trending-number">4</span>
+                <img src="https://occ-0-8974-2164.1.nflxso.net/dnm/api/v6/mAcAr9TxZIVbINe88xb3Teg5_OA/AAAABV8y885z_biaHFzOnK0KRFhkNoyKYARfacGgsrezJNn5kYOvAfIDh4J02r4QkAELJzVWJnBu7aF45OyrVslCvEb0pK7vvMUb-tlPMEB8-rMJnpjGfCCaQoxzIWjciJoT851p.webp?r=dff" alt="Movie 4" class="movie-thumbnail"
+                    onclick="openModal('modal4')">
+                <div id="modal4" class="modal">
+                    <div class="modal-content">
+                        <span class="close" onclick="closeModal('modal4')">&times;</span>
+                        <img src="https://occ-0-8974-2164.1.nflxso.net/dnm/api/v6/mAcAr9TxZIVbINe88xb3Teg5_OA/AAAABV8y885z_biaHFzOnK0KRFhkNoyKYARfacGgsrezJNn5kYOvAfIDh4J02r4QkAELJzVWJnBu7aF45OyrVslCvEb0pK7vvMUb-tlPMEB8-rMJnpjGfCCaQoxzIWjciJoT851p.webp?r=dff">
+                        <h2>The Great Indian Kapil Show</h2>
+                        <p>Comedian Kapil Sharma hosts this laugh-out-loud variety talk show with celebrity guests, hilarious antics and his signature supporting cast.</p>
+                        <button class="Getstarted get-started-trigger">Get Started ></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 5 -->
+            <div class="trending-card5">
+                <span class="trending-number">5</span>
+                <img src="https://occ-0-8974-2164.1.nflxso.net/dnm/api/v6/mAcAr9TxZIVbINe88xb3Teg5_OA/AAAABTJf3e14TtZ2Z3216UaphDq5nf1SaFyC-0R59wDCSyGdNROqYPTHg8g8SU0kbcn61BMumEkghBN8r11S6_bhQvNJ4oQD4oECM-M.webp?r=e5d" alt="Movie 5" class="movie-thumbnail"
+                    onclick="openModal('modal5')">
+                <div id="modal5" class="modal">
+                    <div class="modal-content">
+                        <span class="close" onclick="closeModal('modal5')">&times;</span>
+                        <img src="https://occ-0-8974-2164.1.nflxso.net/dnm/api/v6/mAcAr9TxZIVbINe88xb3Teg5_OA/AAAABTJf3e14TtZ2Z3216UaphDq5nf1SaFyC-0R59wDCSyGdNROqYPTHg8g8SU0kbcn61BMumEkghBN8r11S6_bhQvNJ4oQD4oECM-M.webp?r=e5d">
+                        <h2>Jolly LLB</h2>
+                        <p>Two advocates with wildly different legal tactics seek justice for a farmer's widow after her late husband lost his land to a major developer.</p>
+                        <button class="Getstarted get-started-trigger">Get Started ></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="reasons-section">
+        <h2>More reasons to join</h2>
+        <div class="reasons-grid">
+            <div class="reason-card">
+                <h3>Enjoy on your TV</h3>
+                <p>Watch on smart TVs, PlayStation, Xbox, Chromecast, Apple TV, Blu-ray players and more.</p>
+            </div>
+            <div class="reason-card">
+                <h3>Download your shows to watch offline</h3>
+                <p>Save your favourites easily and always have something to watch.</p>
+            </div>
+            <div class="reason-card">
+                <h3>Watch everywhere</h3>
+                <p>Stream unlimited movies and TV shows on your phone, tablet, laptop, and TV.</p>
+            </div>
+            <div class="reason-card">
+                <h3>Create profiles for kids</h3>
+                <p>Send kids on adventures with their favourite characters in a space made just for them — free with
+                    your membership.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq-section">
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-item">
+            <div class="faq-question">
+                <span>What is Netflix?</span>
+                <span>+</span>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">
+                <span>How much does Netflix cost?</span>
+                <span>+</span>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">
+                <span>Where can I watch?</span>
+                <span>+</span>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">
+                <span>How do I cancel?</span>
+                <span>+</span>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">
+                <span>What can I watch on Netflix?</span>
+                <span>+</span>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">
+                <span>Is Netflix good for kids?</span>
+                <span>+</span>
+            </div>
+        </div>
+
+        <div class="hero-content" style="padding: 40px 0;">
+            <p>Ready to watch? Enter your email to create or restart your membership.</p>
+            <div class="email-signup">
+                <input type="email" class="email-input" placeholder="Email address">
+                <button class="get-started-btn get-started-trigger">Get Started ›</button>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>Questions? Call 000-800-919-1743</p>
+            <div class="footer-links">
+                <a href="#">FAQ</a>
+                <a href="#">Help Centre</a>
+                <a href="#">Account</a>
+                <a href="#">Media Centre</a>
+                <a href="#">Investor Relations</a>
+                <a href="#">Jobs</a>
+                <a href="#">Ways to Watch</a>
+                <a href="#">Terms of Use</a>
+                <a href="#">Privacy</a>
+                <a href="#">Cookie Preferences</a>
+                <a href="#">Corporate Information</a>
+                <a href="#">Contact Us</a>
+                <a href="#">Speed Test</a>
+                <a href="#">Legal Notices</a>
+                <a href="#">Only on Netflix</a>
+            </div>
+            <select class="language-select" style="margin-top: 30px;">
+                <option>English</option>
+                <option>हिन्दी</option>
+            </select>
+            <p style="margin-top: 20px; color: #aaa; font-size: 0.9rem;">Netflix India</p>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+
+</html>
