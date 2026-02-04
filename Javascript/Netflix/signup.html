@@ -6,14 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Netflix</title>
     <link rel="stylesheet" href="signup.css">
-    <!-- Using Font Awesome for icons as a placeholder, if not available, plain SVGs would be better but simple text/css circles work too -->
 </head>
 
 <body>
     <div class="signup-container">
         <header class="simple-header">
             <img src="https://upload.wikimedia.org/wikipedia/commons/7/7a/Logonetflix.png" alt="Netflix" class="logo">
-            <a href="#" class="auth-link">Sign In</a>
+            <button id="theme-toggle" class="theme" type="button">Dark Theme</button>
         </header>
 
         <div class="center-content">
@@ -25,11 +24,12 @@
                 <h1 class="step-title">Finish setting up your account</h1>
                 <p class="step-desc">Netflix is personalised for you. Create a password to watch on any device at any
                     time.</p>
-                <button class="next-btn" onclick="alert('Proceed to next step')">Next</button>
+                <button id="next-btn" class="next-btn">Next</button>
             </div>
         </div>
 
     </div>
+    <script src="signup.js"></script>
 </body>
 
 </html>
