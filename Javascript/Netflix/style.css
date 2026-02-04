@@ -183,6 +183,23 @@ select {
     padding-bottom: 10px;
 }
 
+.movie-thumbnail {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.trending-card1,
+.trending-card2,
+.trending-card3,
+.trending-card4,
+.trending-card5 {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
 .trending-card1{
     background-image: url(https://occ-0-8974-2164.1.nflxso.net/dnm/api/v6/mAcAr9TxZIVbINe88xb3Teg5_OA/AAAABTk_B0l_BvDJ7CQuWOAax9ZKSAe65vFGUMjAee8pcvuYXDFDvcnFaF8nOEuwxBg-TFKzHTqhdD3D7zlMsXSpA_BQTHf-ouBVNdwJIJvNQzUGje4WVrnptKL5Ywqu9hV7pg3A.webp?r=f34);
     position: relative;
@@ -190,6 +207,7 @@ select {
     height: 300px;
     border-radius: 8px;
     overflow: hidden;
+    
 }
 
 .trending-card2{
@@ -332,6 +350,106 @@ select {
 
 .footer-links a:hover {
     text-decoration: underline;
+}
+
+/* Sign In Modal */
+.signin-modal {
+    display: none;
+    position: fixed;
+    z-index: 200;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.75);
+    align-items: center;
+    justify-content: center;
+}
+
+.signin-modal.show {
+    display: flex;
+}
+
+.signin-modal-content {
+    position: relative;
+    background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.95));
+    padding: 50px;
+    border-radius: 8px;
+    max-width: 450px;
+    width: 90%;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+.signin-modal-content h2 {
+    margin-bottom: 30px;
+    font-size: 2rem;
+}
+
+.signin-close {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.signin-close:hover {
+    color: #fff;
+}
+
+.signin-modal-content .form-group {
+    margin-bottom: 20px;
+}
+
+.signin-modal-content input {
+    width: 100%;
+    padding: 16px;
+    background: #333;
+    border: 1px solid #444;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 16px;
+}
+
+.signin-modal-content input:focus {
+    outline: none;
+    border-color: #fff;
+}
+
+.signin-modal-content input.error-field {
+    border-color: #e50914;
+}
+
+.signin-submit {
+    width: 100%;
+    padding: 16px;
+    margin-top: 10px;
+    background: #e50914;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.signin-submit:hover {
+    background: #f40612;
+}
+
+/* External error messages */
+.external-error {
+    display: block;
+    color: #e50914;
+    font-size: 0.85rem;
+    margin-top: 6px;
+    min-height: 18px;
+}
+
+#signin-form-error {
+    margin-bottom: 15px;
 }
 
 @media (max-width: 768px) {
