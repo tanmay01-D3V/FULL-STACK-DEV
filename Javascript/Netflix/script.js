@@ -1,3 +1,9 @@
+import { fetchQuotes } from "./Api.js";
+
+fetchQuotes().then(data => {
+  console.log("Quote:", data);
+});
+
 document.addEventListener('DOMContentLoaded', () => {
   const faqItems = document.querySelectorAll('.faq-item');
   faqItems.forEach(item => {
@@ -9,7 +15,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const signinModal = document.getElementById('signin-modal');
   const signinForm = document.getElementById('signin-form');
-  const signinFormError = document.getElementById('signin-form-error');
   const emailError = document.getElementById('email-error');
   const passwordError = document.getElementById('password-error');
   const signinEmail = document.getElementById('signin-email');
@@ -65,11 +70,11 @@ document.addEventListener('DOMContentLoaded', () => {
       errors.push('email');
     }
     if (!password) {
-      passwordError.textContent = 'Your password must contain 4 to 60 characters.';
+      passwordError.textContent = 'Your password must contain at least 8 characters.';
       signinPassword.classList.add('error-field');
       errors.push('password');
     } else if (password.length < 4 || password.length > 60) {
-      passwordError.textContent = 'Your password must contain 4 to 60 characters.';
+      passwordError.textContent = 'Your password must contain at least 8 characters.';
       signinPassword.classList.add('error-field');
       errors.push('password');
     }
@@ -197,6 +202,7 @@ document.addEventListener('DOMContentLoaded', () => {
       trendingRow.appendChild(card);
     });
 
+
     const dynamicGetStartedButtons = document.querySelectorAll('.get-started-trigger');
     dynamicGetStartedButtons.forEach(button => {
       button.addEventListener('click', function () {
@@ -228,3 +234,4 @@ window.onclick = function (event) {
     document.body.style.overflow = "auto";
   }
 }
+
