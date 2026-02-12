@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    :root {
+      --font-size: 20px;
+      --red-color: red;
+      --blue-color: blue;
+    }
+    .card1,.card2{
+        padding: 50%, 50%;
+        align-items: center;
+        justify-content: center;
+        width: 150px;
+        height: 50px;
+        background-color: bisque;
+    }
+    h1.dark, p.dark {
+        align-content: center;
+        align-items: center;
+      font-size: var(--font-size);
+    }
+    .card1.dark{
+        background-color: var(--red-color);
+    }
+    .card2.dark{
+        background-color: var(--blue-color);
+    }
+
+  </style>
+</head>
+<body>
+    <div class="card1">
+        <h1>Heading</h1>
+    </div>
+    <div class="card2">
+        <p>Paragraph text</p>
+    </div> 
+    <button onclick="toggleTheme()">Change the color</button>
+
+    <script>
+        function toggleTheme(){
+            document.querySelector("h1").classList.toggle("dark");
+            document.querySelector("p").classList.toggle("dark");
+            document.querySelector(".card1").classList.toggle("dark");
+            document.querySelector(".card2").classList.toggle("dark");
+        }
+    </script>
+</body>
+</html>

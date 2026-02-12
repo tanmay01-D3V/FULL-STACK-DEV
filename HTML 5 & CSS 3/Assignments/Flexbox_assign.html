@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            background-color: #0b1220;
+            width: 100%;
+            box-sizing: border-box;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+        .header{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: linear-gradient(180deg, #1f2933, #0b1220);
+            position: sticky;
+            top: 0;
+            padding: 10px 16px;
+            z-index: 10;
+            color: #e5e7eb;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+        .brand{
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+            letter-spacing: .5px;
+        }
+        .search{
+            flex: 1;
+            max-width: 720px;
+            margin: 0 16px;
+        }
+        .search input{
+            width: 100%;
+            padding: 10px 14px;
+            border-radius: 10px;
+            border: 1px solid rgba(255,255,255,.15);
+            background: #0f172a;
+            color: #e5e7eb;
+            outline: none;
+        }
+        .admin{
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            opacity: .9;
+        }
+        .Logo{
+            background: #000;
+            color:blue;
+            font-size: larger;
+            font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-weight: 600;
+        }
+        .log{
+            color: white;
+            background: red;
+            display: flex;
+            justify-content: flex-end;
+        }
+        .navbar{
+            width: 220px;
+            height: 85vh;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding: 16px 12px;
+            background: linear-gradient(180deg, #0b1220, #020617);
+            color: #cbd5f5;
+            border-right: 1px solid rgba(255,255,255,0.06);
+        }
+        .navbar a{
+            color: #cbd5f5;
+            text-decoration: none;
+            padding: 10px 12px;
+            border-radius: 10px;
+        }
+        .navbar a:hover{
+            background: rgba(59,130,246,.15);
+        }
+        .layout{
+            display: flex;
+            gap: 16px;
+            padding: 16px;
+            background: #f8fafc;
+            min-height: calc(100vh - 56px);
+        }
+        .container{
+            flex: 1;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            align-items: stretch;
+        }
+        .stats{
+            width: 100%;
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .cards{
+            flex: 1 1 240px;
+            min-width: 240px;
+            height: 90px;
+            background: #ffffff;
+            color: #0f172a;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            box-shadow: 0 8px 20px rgba(2,6,23,.08);
+        }
+        .cards.blue{
+            gap: 20px;
+            background: #2563eb;
+            color: #fff;
+            flex: 1 1 240px;
+            min-width: 240px;
+            height: 90px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            box-shadow: 0 8px 20px rgba(2,6,23,.08);
+        }
+        .cta{
+            display: flex;
+            justify-content: center;
+            padding: 16px;
+            background: #f8fafc;
+        }
+        .footer{
+            background: #020617;
+            color: #cbd5f5;
+            text-align: center;
+            padding: 12px 16px;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            margin-top: auto;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+      <div class="brand">TANMAY01-D3V</div>
+      <div class="search">
+          <input type="text" placeholder="Search dashboard..." />
+      </div>
+      <div class="admin">👤 Admin</div>
+    </header>
+    <div class="layout">
+      <nav class="navbar">
+          <a href="#">Home</a>
+          <a href="#">Projects</a>
+          <a href="#">Tech Stack</a>
+          <a href="#">About Me</a>
+      </nav>
+      <div class="container">
+          <div class="cards">Users<br><strong>1,240</strong></div>
+          <div class="cards">Revenue<br><strong>₹2.4L</strong></div>
+          <div class="cards">Orders<br><strong>320</strong></div>
+          <div class="stats">
+              <div class="cards blue">Growth<br><strong>+18%</strong></div>
+              <div class="cards blue">Conversion<br><strong>5.4%</strong></div>
+          </div>
+      </div>
+    </div>
+
+    <footer class="footer">© copyright reserved</footer>
+</body>
+</html>

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .page1 {
+            height: 100%;
+            width: 100%;
+            background-color: black;
+        }
+
+        .page1 {
+            height: 100%;
+            width: 100%;
+            background-color: rgb(235, 13, 13);
+        }
+
+        .box {
+            overflow: hidden;
+            width: 50px;
+            height: 50px;
+            background-color: aquamarine;
+            position: relative;
+            animation: blink 1s infinite;
+        }
+
+        .dot {
+            margin: 100px;
+            background-color: blueviolet;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            position: relative;
+            animation: float 1.4s infinite alternate;
+        }
+
+        .dot1 {
+            margin: 100px;
+            background-color: rgb(43, 226, 92);
+            width: 70px;
+            height: 70px;
+            border-style: dashed;
+            animation: rotate 1s linear infinite;
+        }
+
+        .blink {
+            animation: loader 1s infinite;
+        }
+
+        .loader{
+            animation: load 1s infinite;
+        }
+
+        .bouncing-balls {
+            display: flex;
+            gap: 12px;
+            margin-top: 10px;
+        }
+
+        .balls {
+            background-color: blueviolet;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            animation: bounce 0.6s infinite alternate;
+        }
+
+        /* .balls:nth-child(2) {
+            animation-delay: 0.1s;
+        }
+
+        .balls:nth-child(3) {
+            animation-delay: 0.2s;
+        } */
+
+        .ring {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: 6px solid #eee;
+            border-top-color: #3498db;
+            animation: rotate 1s linear infinite;
+        }
+
+        .icon {
+            font-size: 40px;
+            display: inline-block;
+            animation: floatY 1.5s ease-in-out infinite alternate;
+        }
+
+        .progress {
+            width: 200px;
+            height: 10px;
+            border-radius: 5px;
+            background: #eee;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            width: 0;
+            height: 100%;
+            background: linear-gradient(90deg, #4caf50, #8bc34a);
+            animation: loading 2s linear infinite;
+        }
+
+        #page2 {
+            padding: 30px;
+            font-family: Arial, sans-serif;
+        }
+
+        .section {
+            margin-bottom: 30px;
+        }
+        @keyframes load{
+            from{color: red}
+            to{ color: blue}
+        }
+        @keyframes blink {
+            from {background: red}
+            to {background: blue}
+        }
+
+        @keyframes move {
+            from {left: 0%;}
+            to {left: 50%;}
+        }
+
+        @keyframes float {
+            from {top: 0%; }
+            to {top: 40%;}
+        }
+
+        @keyframes bounce {
+            from {transform: translateY(0);}
+            to {transform: translateY(-20px); }
+        }
+
+        @keyframes rotate {
+            from {transform: rotate(0deg);}
+            to {transform: rotate(360deg);}
+        }
+
+        @keyframes loader {
+            from {color: red}
+            to {color: blue}
+        }
+
+        @keyframes floatY {
+            from {transform: translateY(0);}
+            to {transform: translateY(-15px);}
+        }
+
+        @keyframes loading {
+            0% {width: 0;}
+            50% {width: 100%;}
+            100% {width: 0;}
+        }
+
+        
+    </style>
+</head>
+
+<body>
+    <div id="page1">
+        <div class="box"></div>
+        <div class="dot"></div>
+        <div class="dot1"></div>
+    </div>
+
+    <div id="page2">
+        <h1>Page 2: Loading Animations</h1>
+        <div id="section">
+            <h2 class="loader">Loading..</h2>
+        </div>
+
+        <div class="section">
+            <h2>Rotating Circle Loader</h2>
+            <div class="ring"></div>
+        </div>
+
+        <div class="section">
+            <h2>Three Bouncing Balls</h2>
+            <div class="bouncing-balls">
+                <div class="balls"></div>
+                <div class="balls"></div>
+                <div class="balls"></div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Floating Icon</h2>
+            <div class="icon">&#9733;</div>
+        </div>
+
+        <div class="section">
+            <h2>Sliding Progress Bar</h2>
+            <div class="progress">
+                <div class="progress-bar"></div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
