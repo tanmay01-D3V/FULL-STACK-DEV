@@ -1,0 +1,26 @@
+<html>
+<head>
+  <style>
+    body{
+        background-color: black;
+    }
+    :root {
+      --bg-color: lightgray;
+    }
+    body.dark {
+      background-color: var(--bg-color);
+    }
+  </style>
+</head>
+<body>
+    <p>Background color comes from </p>
+    <h1>Death can have me, when it earns me</h1>
+    <button onclick="toggleTheme()">Change the color</button>
+
+  <script>
+        function toggleTheme(){
+            document.body.classList.toggle("dark");
+        }
+    </script>
+</body>
+</html>

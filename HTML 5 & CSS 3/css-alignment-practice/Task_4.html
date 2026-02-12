@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        :root {
+            --card-bg: #040404;
+            --text-color: white;
+        }
+
+        .card.dark {
+            background-color: var(--card-bg);
+            color: var(--text-color);
+            padding: 15px;
+            width: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="card">This is a card</div><br>
+    <button onclick="toggleTheme()">Toggle Theme</button>
+    <script>
+        function toggleTheme() {
+            document.querySelector(".card").classList.toggle("dark");
+        }
+    </script>
+</body>
+
+</html>

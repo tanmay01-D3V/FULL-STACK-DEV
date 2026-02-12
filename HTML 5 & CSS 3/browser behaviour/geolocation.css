@@ -1,0 +1,77 @@
+body{
+    margin:0;
+    height:100vh;
+    overflow:hidden;
+    font-family: Arial, sans-serif;
+}
+
+.Main{
+    position:fixed;
+    inset:0;
+    background:
+        radial-gradient(khaki 35px, transparent 36px),
+        radial-gradient(skyblue 35px, transparent 36px),
+        radial-gradient(pink 35px, transparent 36px),
+        snow;
+    background-blend-mode:multiply;
+    background-size:110px 110px;
+    background-position:110px 0, 55px 0, 110px 0;
+    opacity:var(--op);
+    transition:
+        background-position 4s ease-in-out,
+        opacity 3s ease-in-out;
+    animation: moveCircles90deg 6s linear infinite alternate;
+}
+
+@keyframes moveCircles90deg{
+    from{
+        background-position:0 0, 55px 0, 110px 0;
+    }
+    to{
+        background-position:50px 220px, 55px 220px, 110px 220px;
+    }
+}
+
+
+.card{
+    margin: 10px 20px;
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    background:rgba(255,255,255,0.9);
+    padding:35px 50px;
+    border-radius:20px;
+    text-align:center;
+    box-shadow:0 15px 35px rgba(0,0,0,0.4);
+}
+
+button{
+    margin: 10px, 20px;
+    padding:14px 35px;
+    font-size:18px;
+    border:none;
+    border-radius:15px;
+    background:#96ff50;
+    color:white;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    background:#ff4500;
+    box-shadow:0 0 15px #ff7f50;
+    transform:scale(1.1);
+}
+
+
+#location{
+    margin-top:25px;
+    font-size:20px;
+    font-weight:bold;
+}
+
+#location span{
+    display:inline-block;
+    transition:0.4s ease-in-out;
+}

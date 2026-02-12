@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="geolocation.css">
+</head>
+
+<body>
+    <div class="Main">
+        <div class="card">
+            <button class="location-btn" onclick="getLocation()">Get Location</button>
+            <p id="location" class="location-text"></p>
+        </div>
+        <!-- <div class="card">
+            <button class="save-name-btn" onclick="saveName()">Save Name</button>
+            <input class="name-input" id="name" placeholder="Enter your name">
+            <p id="storedName" class="stored-name-text"></p>
+        </div> -->
+    </div>
+
+
+
+
+    <script>
+        function getLocation() {
+            navigator.geolocation.getCurrentPosition(showPosition);
+        }
+
+        function showPosition(position) {
+            document.getElementById("location").innerHTML = "<br>Latitude: " + position.coords.latitude + "<br>Longitude: " + position.coords.longitude;
+        }
+
+        function saveName() {
+            const name = document.getElementById("name").value;
+            localStorage.setItem("name", name);
+            document.getElementById("storedName").innerHTML = "Name: " + localStorage.getItem("name");
+        }
+    </script>
+</body>
+
+</html>
