@@ -36,13 +36,10 @@ function update() {
     } else if (snakeDirection === "RIGHT") {
         head.x += snake;
     }
-
-    // Check for wall collision
     if (head.x < 0 || head.x >= canvas.width || head.y < 0 || head.y >= canvas.height) {
         return gameOver();
     }
 
-    // Check for self collision
     for (let i = 1; i < snakePosition.length; i++) {
         if (head.x === snakePosition[i].x && head.y === snakePosition[i].y) {
             return gameOver();

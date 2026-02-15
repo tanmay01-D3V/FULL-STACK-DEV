@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voter-Registration</title>
+    <style>
+        body {
+            background-image: url('https://images.stockcake.com/public/4/a/1/4a12f55e-f188-4a79-93d1-b21fbef452f3_large/waving-indian-flag-stockcake.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        .Registration {
+            background-color: transparent;
+            margin: 5px;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .Registration div {
+            width: 50%;
+            height: 80%;
+            background-color: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .Registration div h1 {
+            text-align: center;
+        }
+
+        .Registration div form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .Registration div form label {
+            font-weight: bold;
+        }
+
+        .Registration div form input {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .Registration div form button {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .Registration div form button:hover {
+            background-color: #45a049;
+        }
+
+        .Registration div form button:active {
+            background-color: #ffffff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="Registration">
+        <div>
+            <h1>Voter Registration</h1>
+            <form id="registrationForm" action="">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" placeholder="Enter your name">
+                <label for="age">Age</label>
+                <input type="number" id="age" name="age" placeholder="Enter your age">
+                <label for="gender">Gender</label>
+                <input type="text" id="gender" name="gender" placeholder="Enter your gender">
+                <label for="address">Address</label>
+                <input type="text" id="address" name="address" placeholder="Enter your address">
+                <label for="city">City</label>
+                <input type="text" id="city" name="city" placeholder="Enter your city">
+                <label for="state">State</label>
+                <input type="text" id="state" name="state" placeholder="Enter your state">
+                <label for="pincode">Pincode</label>
+                <input type="number" id="pincode" name="pincode" placeholder="Enter your pincode">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password">
+                <button type="submit">Register</button>
+            </form>
+        </div>
+    </div>
+    <script>
+        const form = document.getElementById("registrationForm");
+        const inputs = form.querySelectorAll("input");
+
+        form.addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            for (let i = 0; i < inputs.length; i++) {
+                if (inputs[i].value.trim() === "") {
+                    alert("Please fill all details before continuing.");
+                    inputs[i].focus();
+                    return;
+                }
+            }
+
+            window.location.href = "./index.html";
+        });
+    </script>
+</body>
+
+</html>
