@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Crash Game</title>
+</head>
+<body>
+    <div class="game-wrapper">
+        <h2>Car Racing</h2>
+        <h3 id="score">Score: 0</h3>
+
+        <div class="game-container">
+            <canvas id="gameCanvas" width="300" height="500"></canvas>
+            <div id="startOverlay" class="overlay">
+                <div>
+                    <h3>Ready to Drive?</h3>
+                    <p>Use Arrow Keys to dodge traffic.</p>
+                    <button id="startBtn">Start Game</button>
+                </div>
+            </div>
+            <div id="gameOverOverlay" class="overlay hidden">
+                <div>
+                    <h3>Crash!</h3>
+                    <p id="finalScore">Score: 0</p>
+                    <button id="restartBtn">Play Again</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="./car.js"></script>
+</body>
+</html>
