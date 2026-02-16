@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hidden Power of HTML5</title>
+    <style>
+        :root {
+            --text-primary: #0f172a;
+            --text-soft: #cbd5e1;
+            --text-strong: #e2e8f0;
+            --card-border: #e2e8f0;
+            --card-bg: #22d3ee22;
+            --surface-dark: #0f172a;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "Trebuchet MS", "Segoe UI", Tahoma, sans-serif;
+            min-height: 100vh;
+            padding: 2.5rem 1rem;
+            color: var(--text-primary);
+            background:
+                radial-gradient(circle at 15% 20%, #22d3ee22, transparent 38%),
+                radial-gradient(circle at 82% 14%, #38bdf822, transparent 35%),
+                linear-gradient(140deg, #082f49, #0f172a);
+        }
+
+        .container {
+            width: min(760px, 100%);
+            margin: 0 auto;
+            padding: 1.6rem;
+            border-radius: 18px;
+            border: 1px solid var(--card-border);
+            background: var(--card-bg);
+            backdrop-filter: blur(7px);
+            box-shadow: 0 16px 34px -24px rgba(8, 47, 73, 0.95);
+        }
+
+        h1 {
+            font-size: clamp(1.7rem, 2vw + 1rem, 2.4rem);
+            margin-bottom: 1.25rem;
+            letter-spacing: 0.3px;
+        }
+
+        h2 {
+            margin: 1.4rem 0 0.85rem;
+            color: var(--text-primary);
+            font-size: 1.25rem;
+        }
+
+        details {
+            margin-bottom: 0.75rem;
+            border: 1px solid #0f172a;
+            border-radius: 12px;
+            padding: 0.8rem 0.95rem;
+            background: rgba(15, 23, 42, 0.5);
+        }
+
+        summary {
+            cursor: pointer;
+            font-weight: 700;
+            color: var(--text-strong);
+        }
+
+        details p {
+            margin-top: 0.55rem;
+            color: var(--text-strong);
+            line-height: 1.5;
+        }
+
+        time {
+            color: var(--text-primary);
+            font-weight: 700;
+        }
+
+        button {
+            border: none;
+            border-radius: 10px;
+            padding: 0.7rem 1.2rem;
+            font-weight: 700;
+            color: #e2e2e2;
+            background: linear-gradient(120deg, #0f172a, #356688);
+            cursor: pointer;
+            transition: transform 0.18s ease, filter 0.18s ease;
+        }
+
+        button:hover {
+            transform: translateY(-1px);
+            filter: brightness(1.08);
+        }
+
+        dialog {
+            margin: auto;
+            border: 1px solid #082f49;
+            border-radius: 14px;
+            padding: 1rem;
+            width: min(360px, calc(100% - 2rem));
+            background: var(--surface-dark);
+            color: var(--text-strong);
+        }
+
+        dialog::backdrop {
+            background: rgba(2, 6, 23, 0.65);
+        }
+
+        label,
+        p {
+            color: var(--text-soft);
+        }
+
+        p {
+            line-height: 1.55;
+        }
+
+        label {
+            display: inline-block;
+            margin-bottom: 0.35rem;
+            font-weight: 700;
+        }
+
+        meter {
+            width: 100%;
+            max-width: 340px;
+            height: 18px;
+            accent-color: #e2e2e2;
+        }
+
+        meter+p {
+            margin-top: 0.45rem;
+            font-weight: 700;
+        }
+
+        cite {
+            color: var(--text-primary);
+            font-style: italic;
+            font-weight: 700;
+        }
+
+        section {
+            margin-top: 1.3rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 0.4rem;
+            border: 1px solid #1e3a5f;
+            border-radius: 10px;
+            overflow: hidden;
+            background: rgba(2, 6, 23, 0.28);
+        }
+
+        caption {
+            caption-side: top;
+            text-align: left;
+            padding: 0.55rem 0.7rem;
+            font-weight: 700;
+            color: #e2e8f0;
+            background: rgba(15, 23, 42, 0.45);
+        }
+
+        colgroup col:first-child {
+            width: 62%;
+            background: rgba(14, 116, 144, 0.24);
+        }
+
+        colgroup col:last-child {
+            width: 38%;
+            background: rgba(30, 64, 175, 0.18);
+        }
+
+        th,
+        td {
+            padding: 0.62rem 0.7rem;
+            border: 1px solid rgba(148, 163, 184, 0.25);
+            color: #e2e8f0;
+            text-align: left;
+        }
+
+        th {
+            color: #f8fafc;
+            background: rgba(15, 23, 42, 0.5);
+        }
+
+        dl {
+            margin-top: 1rem;
+            padding: 0.9rem 1rem;
+            border: 1px solid #1e3a5f;
+            border-radius: 10px;
+            background: rgba(15, 23, 42, 0.34);
+        }
+
+        dt {
+            color: #f8fafc;
+            font-weight: 700;
+            margin-top: 0.55rem;
+        }
+
+        dt:first-of-type {
+            margin-top: 0;
+        }
+
+        dd {
+            color: #cbd5e1;
+            margin: 0.18rem 0 0 0;
+            padding-left: 0.15rem;
+        }
+
+        @media (max-width: 640px) {
+            body {
+                padding: 1.4rem 0.8rem;
+            }
+
+            .container {
+                padding: 1.1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main class="container">
+        <h1>Explore the Hidden Power of HTML5</h1>
+
+        <h2>Course FAQ</h2>
+        <details>
+            <summary>What is this course about?</summary>
+            <p>This course teaches advanced HTML5 elements beyond common tags.</p>
+        </details>
+
+        <details>
+            <summary>When does the course start?</summary>
+            <p>
+                The course begins on
+                <time datetime="2026-03-01">March 1, 2026</time>.
+            </p>
+        </details>
+
+        <h2>Registration Confirmation</h2>
+        <button onclick="document.getElementById('myDialog').showModal()">
+            Register Now
+        </button>
+
+        <dialog id="myDialog">
+            <p>Your registration was successful!</p>
+            <br>
+            <button onclick="document.getElementById('myDialog').close()">
+                Close
+            </button>
+        </dialog>
+
+        <h2>Citation Example</h2>
+        <p>One of my favorite books is <cite>The Alchemist</cite> by Paulo Coelho.</p>
+
+
+        <section>
+            <h2>&lt;caption&gt; &amp; &lt;colgroup&gt; — Table semantics & column grouping</h2>
+            <table>
+                <caption>Monthly summary</caption>
+                <colgroup>
+                    <col>
+                    <col>
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th>Metric</th>
+                        <th>Value</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Total Users</td>
+                        <td>12,345</td>
+                    </tr>
+                    <tr>
+                        <td>Active</td>
+                        <td>8,200</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        <br>
+        <dl>
+            <dt>HTML</dt>
+            <dd>HyperText Markup Language</dd>
+            <dt>CSS</dt>
+            <dd>Cascading Style Sheets</dd>
+        </dl>
+    </main>
+
+</body>
+
+</html>
