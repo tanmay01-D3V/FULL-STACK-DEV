@@ -213,10 +213,8 @@
                 card.innerHTML = `
                     <img class="party-image" src="${party.image}" alt="${party.name} logo">
                     <h3>${party.name}</h3>
-                    <button class="vote-btn" data-name="${party.name}">Vote</button>
-                    <div class="result">Votes: <strong>${votes[party.name]}</strong> (${percent}%)</div>
-                    <div class="bar-wrap"><div class="bar" style="width: ${percent}%"></div></div>
-                `;
+                    <button class="vote-btn" data-name="${party.name}">Vote</button>`;
+
                 candidateList.appendChild(card);
             });
         }
@@ -254,7 +252,7 @@
 
         resetBtn.addEventListener("click", () => {
             const confirmReset = confirm("Reset all votes and voter history?");
-            if (!confirmReset) return;
+            if (!confirmReset) return;  
 
             parties.forEach((party) => {
                 votes[party.name] = 0;
