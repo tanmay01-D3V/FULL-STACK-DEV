@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <a class="navbar-brand" href="#"><img
+                src="https://getbootstrap.com/docs/5.3/assets/brand/bootstrap-logo-shadow@2x.png" alt="Logo" width="30"
+                height="30"></a>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item"><a class="nav-link active" href="#carouselExampleRide">Home</a></li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Services</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#pricing">Pricing</a></li>
+                        <li><a class="dropdown-item" href="#contact">Contact Us</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a class="nav-link active" href="#pricing">Pricing</a></li>
+                <li class="nav-item"><a class="nav-link active" href="#contact">Contact Us</a></li>
+
+            </ul>
+
+            <form class="d-flex">
+                <input class="form-control me-2" type="search" placeholder="Search">
+                <button class="btn btn-outline-light">Search</button>
+            </form>
+
+            <button class="btn btn-warning ms-3" id="menuBtn" type="button">
+                Menu
+            </button>
+        </div>
+    </div>
+    <div class="off-canvas" id="sidebar">
+        <div class="off-canvas-header">
+            <h5 class="off-canvas-title">Sidebar</h5>
+            <button class="btn-close" id="closeSidebarBtn" type="button" aria-label="Close sidebar"></button>
+        </div>
+        <div class="off-canvas-body">
+            <ul class="list-group">
+                <li class="list-group-item"><a href="#carouselExampleRide">Home</a></li>
+                <li class="list-group-item"><a href="#pricing">Pricing</a></li>
+                <li class="list-group-item"><a href="#contact">Contact Us</a></li>
+            </ul>
+        </div>
+    </div>
+    <div id="carouselExampleRide" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="https://images.unsplash.com/photo-1741454570867-4a10f31fc5e3?q=80&w=3132&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                    class="d-block w-100" alt="...">
+                <h1 class="carousel-caption d-none d-md-block">First Slide</h1>
+            </div>
+            <div class="carousel-item">
+                <img src="https://images.unsplash.com/photo-1768479397383-49806c934167?q=80&w=1064&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                    class="d-block w-100" alt="...">
+                <h1 class="carousel-caption d-none d-md-block">Second Slide</h1>
+            </div>
+            <div class="carousel-item">
+                <img src="https://images.unsplash.com/photo-1771226281089-771a31ff54d2?q=80&w=2914&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                    class="d-block w-100" alt="...">
+                <h1 class="carousel-caption d-none d-md-block">Third Slide</h1>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleRide" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleRide" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+    <section class="container1" id="pricing">
+        <div class="pricing-header text-center">
+            <p class="pricing-kicker">Pricing</p>
+            <h2 class="mb-4">Choose Your Plan</h2>
+            <p class="pricing-subtitle">Simple, transparent pricing for students, creators, and teams.</p>
+        </div>
+
+        <div class="row text-center">
+            <article class="pricing-card">
+                <h4>Silver</h4>
+                <p class="price"><span>$9</span>/month</p>
+                <ul class="pricing-features">
+                    <li>3 Projects</li>
+                    <li>Email Support</li>
+                    <li>Basic Analytics</li>
+                </ul>
+                <br><br>
+                <button class="btn btn-primary" type="button">Buy Silver</button>
+            </article>
+
+            <article class="pricing-card featured">
+                <h4>Gold</h4>
+                <p class="price"><span>$24</span>/month</p>
+                <ul class="pricing-features">
+                    <li>15 Projects</li>
+                    <li>Priority Support</li>
+                    <li>Advanced Analytics</li>
+                </ul>
+                <br><br>
+                <button class="btn btn-primary" type="button">Buy Gold</button>
+            </article>
+
+            <article class="pricing-card">
+                <h4>Diamond</h4>
+                <p class="price"><span>$50</span>/month</p>
+                <ul class="pricing-features">
+                    <li>Unlimited Projects</li>
+                    <li>24/7 Premium Support</li>
+                    <li>Custom Reports</li>
+                </ul>
+                <br>
+                <button class="btn btn-primary" type="button">Buy Diamond</button>
+            </article>
+        </div>
+    </section>
+
+    <div class="container2" id="contact">
+        <form class="needs-validation" novalidate>
+            <div id="formAlert" class="custom-alert alert-info" role="alert" hidden></div>
+            <div class="mb-3">
+                <label for="contactName">Name</label>
+                <input id="contactName" type="text" class="form-control" required>
+                <div class="invalid-feedback">Required</div>
+                <label for="contactEmail">Email</label>
+                <input id="contactEmail" type="email" class="form-control" required>
+                <div class="invalid-feedback">Required</div>
+                <label for="contactMessage">Message</label>
+                <input id="contactMessage" type="text" class="form-control" required>
+                <div class="invalid-feedback">Required</div>
+            </div>
+            <button class="btn btn-primary" type="submit">Submit</button>
+        </form>
+    </div>
+    <footer class="text-center mt-4 sticky-footer">
+        <p>&copy; 2026 Bootstrap. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const menuBtn = document.getElementById("menuBtn");
+        const closeSidebarBtn = document.getElementById("closeSidebarBtn");
+        const sidebar = document.getElementById("sidebar");
+        const carousel = document.getElementById("carouselExampleRide");
+        const slides = Array.from(carousel.querySelectorAll(".carousel-item"));
+        const prevBtn = carousel.querySelector(".carousel-control-prev");
+        const nextBtn = carousel.querySelector(".carousel-control-next");
+        const contactForm = document.querySelector(".needs-validation");
+        const formAlert = document.getElementById("formAlert");
+        const contactName = document.getElementById("contactName");
+        const contactEmail = document.getElementById("contactEmail");
+        const contactMessage = document.getElementById("contactMessage");
+        const submitBtn = contactForm.querySelector("button[type='submit']");
+        let currentSlide = slides.findIndex((slide) => slide.classList.contains("active"));
+        let autoSlideTimer;
+
+        if (currentSlide < 0) currentSlide = 0;
+
+        function openSidebar() {
+            sidebar.classList.add("show");
+        }
+
+        function closeSidebar() {
+            sidebar.classList.remove("show");
+        }
+
+        menuBtn.addEventListener("click", openSidebar);
+        closeSidebarBtn.addEventListener("click", closeSidebar);
+
+        document.addEventListener("click", (event) => {
+            if (!sidebar.classList.contains("show")) return;
+            if (sidebar.contains(event.target) || menuBtn.contains(event.target)) return;
+            closeSidebar();
+        });
+
+        document.addEventListener("keydown", (event) => {
+            if (event.key === "Escape") {
+                closeSidebar();
+            }
+        });
+
+        function showSlide(index) {
+            slides[currentSlide].classList.remove("active");
+            currentSlide = (index + slides.length) % slides.length;
+            slides[currentSlide].classList.add("active");
+        }
+
+        function startAutoSlide() {
+            clearInterval(autoSlideTimer);
+            autoSlideTimer = setInterval(() => {
+                showSlide(currentSlide + 1);
+            }, 3500);
+        }
+
+        prevBtn.addEventListener("click", () => {
+            showSlide(currentSlide - 1);
+            startAutoSlide();
+        });
+
+        nextBtn.addEventListener("click", () => {
+            showSlide(currentSlide + 1);
+            startAutoSlide();
+        });
+
+        carousel.addEventListener("mouseenter", () => clearInterval(autoSlideTimer));
+        carousel.addEventListener("mouseleave", startAutoSlide);
+
+        startAutoSlide();
+
+        function showFormAlert(type, message) {
+            formAlert.className = `custom-alert alert-${type}`;
+            formAlert.textContent = message;
+            formAlert.hidden = false;
+        }
+
+        function clearInvalidState() {
+            [contactName, contactEmail, contactMessage].forEach((input) => {
+                input.classList.remove("is-invalid");
+            });
+        }
+
+        function isValidEmail(email) {
+            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        }
+
+        contactForm.addEventListener("submit", (event) => {
+            event.preventDefault();
+            clearInvalidState();
+
+            const nameValue = contactName.value.trim();
+            const emailValue = contactEmail.value.trim();
+            const messageValue = contactMessage.value.trim();
+            let hasError = false;
+
+            if (!nameValue) {
+                contactName.classList.add("is-invalid");
+                hasError = true;
+            }
+
+            if (!emailValue || !isValidEmail(emailValue)) {
+                contactEmail.classList.add("is-invalid");
+                hasError = true;
+            }
+
+            if (!messageValue) {
+                contactMessage.classList.add("is-invalid");
+                hasError = true;
+            }
+
+            if (hasError) {
+                showFormAlert("danger", "Please fill all fields with valid details.");
+                return;
+            }
+
+            if (messageValue.length < 12) {
+                showFormAlert("warning", "Message is too short. Please add a bit more detail.");
+                return;
+            }
+
+            showFormAlert("info", "Submitting your contact details...");
+            submitBtn.disabled = true;
+
+            setTimeout(() => {
+                showFormAlert("success", "Thanks. Your contact details were submitted successfully.");
+                contactForm.reset();
+                submitBtn.disabled = false;
+            }, 700);
+        });
+    </script>
+</body>
+
+</html>
