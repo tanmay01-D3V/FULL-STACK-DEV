@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app">
+        <header class="header">
+            <h1 class="title">Tic Tac Toe</h1>
+            <p class="subtitle">Two players. Next round starts automatically after a win or draw.</p>
+        </header>
+
+        <section class="panel" aria-label="Game controls">
+            <div class="controls">
+                <label class="control">
+                    <span class="control__label">First move</span>
+                    <select id="firstPlayer" class="control__input">
+                        <option value="X" selected>X</option>
+                        <option value="O">O</option>
+                    </select>
+                </label>
+            </div>
+
+            <div class="statusRow" aria-label="Game status">
+                <div id="status" class="status" role="status" aria-live="polite"></div>
+                <div class="score" aria-label="Scoreboard">
+                    <div class="score__item"><span class="score__k">X</span> <span id="scoreX" class="score__v">0</span></div>
+                    <div class="score__item"><span class="score__k">O</span> <span id="scoreO" class="score__v">0</span></div>
+                    <div class="score__item"><span class="score__k">Draw</span> <span id="scoreD" class="score__v">0</span></div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="actions" aria-label="Game actions">
+            <button id="resetScores" class="btn" type="button">Reset scores</button>
+        </section>
+
+        <section class="boardWrap" aria-label="Tic tac toe board">
+            <div id="board" class="board" role="grid" aria-label="3 by 3 board">
+                <button class="cell" type="button" data-i="0" role="gridcell" aria-label="Cell 1"></button>
+                <button class="cell" type="button" data-i="1" role="gridcell" aria-label="Cell 2"></button>
+                <button class="cell" type="button" data-i="2" role="gridcell" aria-label="Cell 3"></button>
+                <button class="cell" type="button" data-i="3" role="gridcell" aria-label="Cell 4"></button>
+                <button class="cell" type="button" data-i="4" role="gridcell" aria-label="Cell 5"></button>
+                <button class="cell" type="button" data-i="5" role="gridcell" aria-label="Cell 6"></button>
+                <button class="cell" type="button" data-i="6" role="gridcell" aria-label="Cell 7"></button>
+                <button class="cell" type="button" data-i="7" role="gridcell" aria-label="Cell 8"></button>
+                <button class="cell" type="button" data-i="8" role="gridcell" aria-label="Cell 9"></button>
+            </div>
+        </section>
+    </div>
+
+    <script src="script.js" defer></script>
+</body>
+</html>
