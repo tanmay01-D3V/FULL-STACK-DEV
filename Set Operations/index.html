@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mathematical Set Operations</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1>Mathematical Set Operations Library</h1>
+    <hr>
+    <div class="container">
+        <label class="custom-field one">
+            <input id="setA" type="text" placeholder=" " />
+            <span class="placeholder">Enter Array A</span>
+        </label>
+        <br>
+        <label class="custom-field one">
+            <input id="setB" type="text" placeholder=" " />
+            <span class="placeholder">Enter Array B</span>
+        </label>
+        <br>
+        <label for="operation">Select operation</label>
+        <select id="operation">
+            <option value="union">Union</option>
+            <option value="intersection">Intersection</option>
+            <option value="difference">Difference</option>
+        </select>
+        <br>
+
+        <button id="calculate">Execute</button>
+        <h2>Result:</h2>
+        <div id="result"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
