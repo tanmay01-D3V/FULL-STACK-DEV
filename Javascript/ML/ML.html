@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>AI Hand Gesture Game</title>
+<style>
+body{
+background:#111;
+text-align:center;
+color:white;
+}
+canvas{
+border:2px solid white;
+}
+</style>
+</head>
+<body>
+<h2>AI Hand Gesture Game</h2>
+<video id="video" width="300" height="200" autoplay></video>
+<br>
+<canvas id="game" width="400" height="300"></canvas>
+
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/handpose"></script>    
+<script>
+const video = document.getElementById("video");
+const canvas = document.getElementById("game");
+const ctx = canvas.getContext("2d");
+
+let playerX = 180;
+
+//Start Webcam
+async function setupCamera(){
+const stream = await navigator.mediaDevices.getUserMedia({video:true});
+video.srcObject = stream;
+}
+async function main(){
+
+await setupCamera();
+
+const model = await handpose.load();
+
+async function detect(){
+
+const predictions = await model.estimateHands(video);
+
+if(predictions.length>0){
+// index finger tip landmark
+const finger = predictions[0].landmarks[8];
+const x = finger[0];
+
+// Move player based on hand position
+playerX = (x / video.width) * canvas.width;
+}
+
+drawGame();
+requestAnimationFrame(detect);
+}
+
+detect();
+}
+
+//Draw Game
+function drawGame(){
+ctx.clearRect(0,0,400,300);
+
+// player box
+ctx.fillStyle="lime";
+ctx.fillRect(playerX,250,40,40);
+}
+
+main();
+</script>
+
+</body>
+</html>

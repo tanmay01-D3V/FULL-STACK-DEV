@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Gesture Racing Game</title>
+<style>
+body{
+background:#000;
+color:white;
+text-align:center;
+font-family:Arial;
+}
+canvas{
+border:2px solid cyan;
+background:#111;
+}
+video{
+display:none;
+}
+</style>
+</head>
+<body>
+
+<h2>✋ AI Gesture Car Racing</h2>
+<h3 id="score">Score: 0</h3>
+
+<video id="video" width="320" height="240" autoplay></video>
+<canvas id="game" width="300" height="500"></canvas>
+
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/handpose"></script>
+
+<script>
+const video = document.getElementById("video");
+const canvas = document.getElementById("game");
+const ctx = canvas.getContext("2d");
+
+let score = 0;
+
+// 🚗 Player
+const player = {
+x:130,
+y:400,
+w:40,
+h:80
+};
+
+// 🚙 Enemy
+let enemy = {
+x:Math.random()*260,
+y:-100,
+w:40,
+h:80,
+speed:4
+};
+
+// 🎥 Start Camera
+async function setupCamera(){
+const stream = await navigator.mediaDevices.getUserMedia({video:true});
+video.srcObject = stream;
+}
+
+// 💥 Collision
+function collide(a,b){
+return(
+a.x < b.x + b.w &&
+a.x + a.w > b.x &&
+a.y < b.y + b.h &&
+a.y + a.h > b.y
+);
+}
+
+// 🎮 Draw Game
+function draw(){
+ctx.clearRect(0,0,300,500);
+
+// Road lines
+ctx.fillStyle="white";
+for(let i=0;i<500;i+=40){
+ctx.fillRect(145,i,10,20);
+}
+
+// Player
+ctx.fillStyle="lime";
+ctx.fillRect(player.x,player.y,player.w,player.h);
+
+// Enemy
+enemy.y += enemy.speed;
+if(enemy.y>500){
+enemy.y=-100;
+enemy.x=Math.random()*260;
+score++;
+document.getElementById("score").innerText="Score: "+score;
+}
+
+ctx.fillStyle="red";
+ctx.fillRect(enemy.x,enemy.y,enemy.w,enemy.h);
+
+if(collide(player,enemy)){
+alert("Game Over 😢");
+location.reload();
+}
+}
+
+// 🤖 AI + Game Loop
+async function main(){
+
+await setupCamera();
+const model = await handpose.load();
+
+async function loop(){
+
+const predictions = await model.estimateHands(video);
+
+if(predictions.length>0){
+// index finger tip
+const fingerX = predictions[0].landmarks[8][0];
+
+// map webcam X → canvas X
+player.x = (fingerX / video.width) * canvas.width;
+}
+
+draw();
+requestAnimationFrame(loop);
+}
+
+loop();
+}
+
+main();
+</script>
+
+</body>
+</html>
