@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Prototypes & Classes</title>
+</head>
+<body>
+    <h1>Prototypes, Classes & OOP</h1>
+
+    <script>
+        // ========== Constructor Function (old way) ==========
+        function Car(make, model, year) {
+            this.make = make;
+            this.model = model;
+            this.year = year;
+        }
+
+        // Adding methods via prototype (shared across all instances)
+        Car.prototype.getInfo = function () {
+            return `${this.year} ${this.make} ${this.model}`;
+        };
+
+        let myCar = new Car("Toyota", "Camry", 2024);
+        console.log(myCar.getInfo());  // "2024 Toyota Camry"
+        console.log(myCar instanceof Car);  // true
+
+        // ========== ES6 Class Syntax ==========
+        class Animal {
+            constructor(name, species) {
+                this.name = name;
+                this.species = species;
+            }
+
+            speak() {
+                return `${this.name} makes a sound`;
+            }
+
+            // Static method — called on class, not instance
+            static classify() {
+                return "Animals are living beings";
+            }
+        }
+
+        let dog = new Animal("Buddy", "Dog");
+        console.log(dog.speak());
+        console.log(Animal.classify());
+
+        // ========== Inheritance (extends) ==========
+        class Dog extends Animal {
+            constructor(name, breed) {
+                super(name, "Dog");  // call parent constructor
+                this.breed = breed;
+            }
+
+            // Override parent method
+            speak() {
+                return `${this.name} barks!`;
+            }
+
+            // Additional method
+            fetch() {
+                return `${this.name} fetched the ball`;
+            }
+        }
+
+        let labrador = new Dog("Max", "Labrador");
+        console.log(labrador.speak());   // "Max barks!"
+        console.log(labrador.fetch());   // "Max fetched the ball"
+        console.log(labrador instanceof Animal); // true
+        console.log(labrador instanceof Dog);    // true
+
+        // ========== Getters & Setters ==========
+        class Person {
+            constructor(first, last) {
+                this.first = first;
+                this.last = last;
+            }
+
+            get fullName() {
+                return `${this.first} ${this.last}`;
+            }
+
+            set fullName(value) {
+                [this.first, this.last] = value.split(" ");
+            }
+        }
+
+        let p = new Person("Tanmay", "Sherkar");
+        console.log(p.fullName);  // "Tanmay Sherkar"
+        p.fullName = "Rohan Sharma";
+        console.log(p.first);     // "Rohan"
+    </script>
+</body>
+</html>

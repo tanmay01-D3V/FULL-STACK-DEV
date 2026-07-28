@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Array Methods</title>
+</head>
+<body>
+    <h1>Array Methods — Basic & Iteration</h1>
+
+    <script>
+        // ========== Adding/Removing Elements ==========
+        let fruits = ["Banana", "Mango", "Apple", "Pineapple"];
+
+        // Push — add to end
+        fruits.push("Grapes");
+        console.log(fruits);  // [Banana, Mango, Apple, Pineapple, Grapes]
+
+        // Pop — remove from end
+        fruits.pop();
+        console.log(fruits);  // [Banana, Mango, Apple, Pineapple]
+
+        // Shift — remove from start
+        fruits.shift();
+        console.log(fruits);  // [Mango, Apple, Pineapple]
+
+        // Unshift — add to start
+        fruits.unshift("Lemon");
+        console.log(fruits);  // [Lemon, Mango, Apple, Pineapple]
+
+        // Splice — add/remove at any position
+        let arr = [1, 2, 3, 4, 5];
+        arr.splice(2, 1);         // remove 1 element at index 2
+        console.log(arr);         // [1, 2, 4, 5]
+        arr.splice(2, 0, 3);      // insert 3 at index 2
+        console.log(arr);         // [1, 2, 3, 4, 5]
+
+        // ========== Finding Elements ==========
+        let nums = [10, 20, 30, 40, 50];
+
+        console.log(nums.indexOf(30));     // 2
+        console.log(nums.includes(20));    // true
+        console.log(nums.find(n => n > 25)); // 30
+        console.log(nums.findIndex(n => n > 25)); // 2
+
+        // ========== Iteration Methods ==========
+        let items = [1, 2, 3, 4, 5];
+
+        // forEach — execute for each element
+        items.forEach((item, index) => {
+            console.log(`[${index}] = ${item}`);
+        });
+
+        // map — transform each element
+        let doubled = items.map(n => n * 2);
+        console.log(doubled);  // [2, 4, 6, 8, 10]
+
+        // filter — keep elements that pass a test
+        let evens = items.filter(n => n % 2 === 0);
+        console.log(evens);  // [2, 4]
+
+        // reduce — accumulate to a single value
+        let sum = items.reduce((acc, n) => acc + n, 0);
+        console.log(sum);  // 15
+
+        // reduce with objects
+        let cart = [
+            { name: "Laptop", price: 1200, qty: 1 },
+            { name: "Mouse", price: 50, qty: 2 },
+        ];
+        let total = cart.reduce((acc, item) => acc + item.price * item.qty, 0);
+        console.log(total);  // 1300
+
+        // some — does at least one pass?
+        console.log(items.some(n => n > 4));  // true
+
+        // every — do all pass?
+        console.log(items.every(n => n > 0)); // true
+
+        // ========== Sorting ==========
+        let unsorted = [3, 1, 4, 1, 5, 9];
+        unsorted.sort((a, b) => a - b);       // ascending
+        console.log(unsorted);                 // [1, 1, 3, 4, 5, 9]
+        unsorted.sort((a, b) => b - a);       // descending
+        console.log(unsorted);                 // [9, 5, 4, 3, 1, 1]
+
+        // ========== Spreading & Concatenating ==========
+        let a = [1, 2, 3];
+        let b = [4, 5, 6];
+        let combined = [...a, ...b];
+        console.log(combined);  // [1, 2, 3, 4, 5, 6]
+
+        let copy = [...a];
+        console.log(copy);      // [1, 2, 3] (not a reference!)
+        copy.push(4);
+        console.log(a);         // [1, 2, 3] (original unchanged)
+
+        // ========== Array Destructuring ==========
+        let coordinates = [10, 20, 30];
+        let [x, y, z] = coordinates;
+        console.log(x, y, z);  // 10 20 30
+
+        // Skip elements
+        let [first, , third] = coordinates;
+        console.log(first, third);  // 10 30
+
+        // Default values
+        let [p = 0, q = 0, r = 0, s = 0] = [1, 2];
+        console.log(s);  // 0 (default used)
+    </script>
+</body>
+</html>

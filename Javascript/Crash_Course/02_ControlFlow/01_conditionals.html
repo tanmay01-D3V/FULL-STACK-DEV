@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Conditionals (if/else)</title>
+</head>
+<body>
+    <h1>if / else if / else</h1>
+
+    <script>
+        // ========== if / else ==========
+        let age = 18;
+
+        if (age >= 18) {
+            console.log("You can vote");
+        } else {
+            console.log("Too young to vote");
+        }
+
+        // ========== else if ==========
+        let score = 85;
+
+        if (score >= 90) {
+            console.log("Grade: A");
+        } else if (score >= 80) {
+            console.log("Grade: B");
+        } else if (score >= 70) {
+            console.log("Grade: C");
+        } else {
+            console.log("Grade: F");
+        }
+
+        // ========== Nested Conditionals ==========
+        let hasLicense = true;
+
+        if (age >= 18) {
+            if (hasLicense) {
+                console.log("You can drive");
+            } else {
+                console.log("Get a license first");
+            }
+        } else {
+            console.log("Too young to drive");
+        }
+
+        // ========== Truthy/Falsy in Conditionals ==========
+        let name = "";
+        if (name) {
+            console.log("Name is: " + name);
+        } else {
+            console.log("No name provided");
+        }
+
+        // Falsy: false, 0, "" (empty), null, undefined, NaN
+        // Truthy: everything else (including "0", [], {})
+
+        // ========== Ternary Operator (shorthand if/else) ==========
+        let temperature = 30;
+        let weather = temperature > 25 ? "Hot" : "Cool";
+        console.log(weather);  // "Hot"
+
+        // ========== Logical Operators as Conditionals ==========
+        let user = { name: "Tanmay" };
+        console.log(user.name || "Guest");  // "Tanmay"
+        let guest = {};
+        console.log(guest.name || "Guest"); // "Guest"
+    </script>
+</body>
+</html>

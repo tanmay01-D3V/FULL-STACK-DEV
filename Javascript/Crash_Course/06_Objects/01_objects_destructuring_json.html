@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Objects</title>
+</head>
+<body>
+    <h1>Objects — Literals, Methods, Destructuring & JSON</h1>
+
+    <script>
+        // ========== Object Literals ==========
+        let person = {
+            firstName: "Tanmay",
+            lastName: "Sherkar",
+            age: 22,
+            isStudent: true,
+            greet: function () {
+                return `Hi, I'm ${this.firstName}`;
+            },
+            // Shorthand method (ES6)
+            walk() {
+                return `${this.firstName} is walking`;
+            }
+        };
+
+        console.log(person.firstName);        // "Tanmay"
+        console.log(person["lastName"]);      // "Sherkar"
+        console.log(person.greet());
+
+        // ========== Computed Properties ==========
+        let key = "age";
+        console.log(person[key]);  // 22
+
+        // ========== Adding / Updating Properties ==========
+        person.city = "Mumbai";
+        person["country"] = "India";
+        person.age = 23;
+        console.log(person);
+
+        // ========== Deleting Properties ==========
+        delete person.isStudent;
+        console.log(person);
+
+        // ========== for...in loop ==========
+        for (let key in person) {
+            console.log(`${key}: ${person[key]}`);
+        }
+
+        // ========== Object.keys, Object.values, Object.entries ==========
+        console.log(Object.keys(person));     // ["firstName", "lastName", ...]
+        console.log(Object.values(person));   // ["Tanmay", "Sherkar", ...]
+        console.log(Object.entries(person));  // [["firstName","Tanmay"], ...]
+
+        // ========== Object Destructuring ==========
+        let user = { id: 1, name: "Rohan", email: "rohan@test.com" };
+        let { id, name, email } = user;
+        console.log(id, name, email);  // 1 "Rohan" "rohan@test.com"
+
+        // Renaming
+        let { name: userName, email: userEmail } = user;
+        console.log(userName, userEmail);
+
+        // Default values
+        let { role = "user" } = user;
+        console.log(role);  // "user"
+
+        // Nested destructuring
+        let employee = {
+            empId: 101,
+            details: { position: "Developer", salary: 50000 }
+        };
+        let { details: { position } } = employee;
+        console.log(position);  // "Developer"
+
+        // ========== Spread with Objects ==========
+        let base = { a: 1, b: 2 };
+        let extension = { b: 3, c: 4 };
+        let merged = { ...base, ...extension };
+        console.log(merged);  // { a: 1, b: 3, c: 4 }
+
+        // ========== JSON ==========
+        let student = {
+            name: "Tanmay",
+            marks: [80, 90, 85]
+        };
+
+        // Object -> JSON string
+        let jsonStr = JSON.stringify(student);
+        console.log(jsonStr);  // {"name":"Tanmay","marks":[80,90,85]}
+
+        // JSON string -> Object
+        let parsed = JSON.parse(jsonStr);
+        console.log(parsed);
+    </script>
+</body>
+</html>

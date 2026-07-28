@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Operators</title>
+</head>
+<body>
+    <h1>JavaScript Operators</h1>
+
+    <script>
+        // ========== Arithmetic Operators ==========
+        let a = 20, b = 3;
+        console.log(a + b);   // 23  (addition)
+        console.log(a - b);   // 17  (subtraction)
+        console.log(a * b);   // 60  (multiplication)
+        console.log(a / b);   // 6.666... (division)
+        console.log(a % b);   // 2   (modulus / remainder)
+        console.log(a ** b);  // 8000 (exponentiation, ES7)
+
+        // ========== Assignment Operators ==========
+        let x = 10;
+        x += 5;   // x = x + 5 → 15
+        x -= 3;   // x = x - 3 → 12
+        x *= 2;   // x = x * 2 → 24
+        x /= 4;   // x = x / 4 → 6
+        x %= 2;   // x = x % 2 → 0
+
+        // ========== Comparison Operators ==========
+        console.log(5 > 3);    // true
+        console.log(5 < 3);    // false
+        console.log(5 >= 5);   // true
+        console.log(5 <= 4);   // false
+        console.log(5 == "5");  // true  (loose, coerces)
+        console.log(5 === "5"); // false (strict, no coercion)
+        console.log(5 != "5");  // false
+        console.log(5 !== "5"); // true
+
+        // ========== Logical Operators ==========
+        let age = 22, hasID = true;
+
+        // AND (&&) - all must be true
+        console.log(age >= 18 && hasID);  // true
+
+        // OR (||) - at least one is true
+        console.log(age < 18 || hasID);   // true
+
+        // NOT (!)
+        console.log(!hasID);              // false
+
+        // Short-circuit evaluation
+        let user = null;
+        let name = user || "Guest";
+        console.log(name);  // "Guest"
+
+        // ========== Ternary Operator ==========
+        let score = 85;
+        let grade = score >= 60 ? "Pass" : "Fail";
+        console.log(grade);  // "Pass"
+
+        // ========== Real-world Example ==========
+        let itemPrice = 20, quantity = 3;
+        let userBalance = 100;
+        let isPremiumMember = true;
+        let discountCodeValid = false;
+
+        let totalPrice = itemPrice * quantity;
+        let eligibleForDiscount = isPremiumMember || discountCodeValid;
+        let discount = eligibleForDiscount ? 0.1 * totalPrice : 0;
+        let finalPrice = totalPrice - discount;
+        let canAfford = userBalance >= finalPrice;
+
+        console.log(`Total: $${totalPrice}`);
+        console.log(`Discount: $${discount}`);
+        console.log(`Final: $${finalPrice}`);
+        console.log(`Can afford: ${canAfford}`);
+    </script>
+</body>
+</html>

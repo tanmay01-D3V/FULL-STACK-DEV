@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Type Conversion & Coercion</title>
+</head>
+<body>
+    <h1>Type Conversion & Coercion</h1>
+
+    <script>
+        // ========== Explicit Conversion ==========
+
+        // String -> Number
+        let strNum = "10";
+        console.log(Number(strNum));           // 10
+        console.log(parseInt("10.9"));         // 10
+        console.log(parseFloat("10.9"));       // 10.9
+        console.log(Number("abc"));            // NaN
+        console.log(isNaN("abc"));             // true
+
+        // Number -> String
+        console.log(String(123));              // "123"
+        console.log((123).toString());         // "123"
+
+        // To Boolean
+        console.log(Boolean(1));               // true
+        console.log(Boolean(0));               // false
+        console.log(Boolean(""));              // false
+        console.log(Boolean("hello"));         // true
+
+        // ========== Implicit Coercion ==========
+        console.log("5" - 2);     // 3  (string coerced to number)
+        console.log("5" + 2);     // "52" (number coerced to string — concatenation)
+        console.log("5" * "2");   // 10 (both coerced to numbers)
+        console.log("hello" - 1); // NaN
+
+        // ========== == vs === ==========
+        // ==  allows coercion (loose equality)
+        // === does NOT allow coercion (strict equality) - PREFERRED
+
+        console.log(5 == "5");    // true  (coercion)
+        console.log(5 === "5");   // false (no coercion)
+        console.log(false == 0);  // true
+        console.log(false === 0); // false
+        console.log(null == undefined);  // true
+        console.log(null === undefined); // false
+
+        // ========== Truthy & Falsy ==========
+        // Falsy values: false, 0, "" (empty string), null, undefined, NaN
+        // Everything else is truthy
+
+        if ("hello") console.log("truthy");   // runs
+        if (0) console.log("falsy");          // won't run
+        if ([]) console.log("truthy");        // runs (empty array is truthy!)
+    </script>
+</body>
+</html>

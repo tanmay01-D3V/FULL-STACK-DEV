@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Switch Statement</title>
+</head>
+<body>
+    <h1>Switch Statement</h1>
+
+    <script>
+        // ========== Basic Switch ==========
+        let day = 5;
+        let dayName;
+
+        switch (day) {
+            case 1:
+                dayName = "Monday";
+                break;
+            case 2:
+                dayName = "Tuesday";
+                break;
+            case 3:
+                dayName = "Wednesday";
+                break;
+            case 4:
+                dayName = "Thursday";
+                break;
+            case 5:
+                dayName = "Friday";
+                break;
+            case 6:
+                dayName = "Saturday";
+                break;
+            case 7:
+                dayName = "Sunday";
+                break;
+            default:
+                dayName = "Invalid day";
+        }
+        console.log(dayName);  // "Friday"
+
+        // ========== Switch with Fall-Through ==========
+        // Without break, execution "falls through" to the next case
+
+        let grade = "B";
+        switch (grade) {
+            case "A":
+            case "B":
+                console.log("Good job!");
+                break;
+            case "C":
+                console.log("Fair");
+                break;
+            case "D":
+            case "F":
+                console.log("Need improvement");
+                break;
+            default:
+                console.log("Invalid grade");
+        }
+
+        // ========== Switch with Expressions ==========
+        let num = 10;
+        switch (true) {
+            case num > 0:
+                console.log("Positive");
+                break;
+            case num < 0:
+                console.log("Negative");
+                break;
+            default:
+                console.log("Zero");
+        }
+    </script>
+</body>
+</html>

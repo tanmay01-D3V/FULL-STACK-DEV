@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Advanced: Generators, FP & Event Loop</title>
+</head>
+<body>
+    <h1>Advanced Topics</h1>
+
+    <script>
+        // ========== 1. Generators ==========
+        // Functions that can pause and resume
+
+        function* numberGenerator() {
+            yield 1;
+            yield 2;
+            yield 3;
+        }
+
+        const gen = numberGenerator();
+        console.log(gen.next());  // { value: 1, done: false }
+        console.log(gen.next());  // { value: 2, done: false }
+        console.log(gen.next());  // { value: 3, done: false }
+        console.log(gen.next());  // { value: undefined, done: true }
+
+        // Practical: infinite ID generator
+        function* idGenerator() {
+            let id = 1;
+            while (true) {
+                yield id++;
+            }
+        }
+
+        const ids = idGenerator();
+        console.log(ids.next().value);  // 1
+        console.log(ids.next().value);  // 2
+        console.log(ids.next().value);  // 3
+
+        // ========== 2. Functional Programming Concepts ==========
+
+        // Pure function — same input always gives same output, no side effects
+        function addPure(a, b) {
+            return a + b;
+        }
+
+        // Impure — modifies external state
+        let totalSum = 0;
+        function addImpure(a) {
+            totalSum += a;  // side effect
+        }
+
+        // Higher-Order Function — takes/returns another function
+        function multiplyBy(factor) {
+            return (number) => number * factor;
+        }
+
+        const double = multiplyBy(2);
+        const triple = multiplyBy(3);
+        console.log(double(5));  // 10
+        console.log(triple(5));  // 15
+
+        // Composition
+        const add1 = x => x + 1;
+        const mul2 = x => x * 2;
+        const composed = x => mul2(add1(x));
+        console.log(composed(5));  // 12
+
+        // ========== 3. Event Loop (Conceptual) ==========
+        console.log("1: Sync start");
+
+        setTimeout(() => console.log("2: Macrotask (setTimeout)"), 0);
+
+        Promise.resolve().then(() => console.log("3: Microtask (Promise)"));
+
+        console.log("4: Sync end");
+
+        // Order: 1 → 4 → 3 → 2
+        // Explanation:
+        // 1. All synchronous code runs first
+        // 2. Microtasks (Promise callbacks) run before macrotasks
+        // 3. Macrotasks (setTimeout, setInterval) run next
+
+        // ========== 4. Map/Set with Objects ==========
+        let objMap = new Map();
+        objMap.set({ id: 1 }, "User 1");
+        objMap.set({ id: 2 }, "User 2");
+        console.log(objMap.size);  // 2
+
+        // ========== 5. Proxy (ES6) ==========
+        let target = { message: "Hello" };
+        let handler = {
+            get(obj, prop) {
+                console.log(`Getting ${prop}`);
+                return prop in obj ? obj[prop] : "Default";
+            },
+            set(obj, prop, value) {
+                console.log(`Setting ${prop} = ${value}`);
+                obj[prop] = value;
+                return true;
+            }
+        };
+
+        let proxy = new Proxy(target, handler);
+        console.log(proxy.message);     // Getting message → "Hello"
+        console.log(proxy.nonexistent);  // Getting nonexistent → "Default"
+        proxy.message = "World";        // Setting message = "World"
+    </script>
+</body>
+</html>

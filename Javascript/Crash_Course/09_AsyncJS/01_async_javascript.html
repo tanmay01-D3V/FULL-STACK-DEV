@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Asynchronous JavaScript</title>
+</head>
+<body>
+    <h1>Async JS — Callbacks, Promises, Async/Await & Fetch</h1>
+
+    <script>
+        // ========== The Problem: Synchronous Blocking ==========
+        console.log("Start");
+        // Simulating a long operation (would block)
+        // for (let i = 0; i < 1000000000; i++) {}
+        console.log("End");
+
+        // ========== Callbacks ==========
+        function fetchData(callback) {
+            setTimeout(() => {
+                callback("Data loaded");
+            }, 1000);
+        }
+
+        fetchData((result) => {
+            console.log(result);  // "Data loaded" (after 1s)
+        });
+        console.log("This runs before the callback");
+
+        // Callback hell (nested callbacks)
+        // getUser(id, (user) => {
+        //     getPosts(user.id, (posts) => {
+        //         getComments(posts[0].id, (comments) => {
+        //             console.log(comments);
+        //         });
+        //     });
+        // });
+
+        // ========== Promises ==========
+        function fetchDataPromise() {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    let success = true;
+                    if (success) {
+                        resolve("Data loaded (promise)");
+                    } else {
+                        reject("Error loading data");
+                    }
+                }, 1000);
+            });
+        }
+
+        fetchDataPromise()
+            .then((result) => {
+                console.log(result);
+                return "Next step";
+            })
+            .then((next) => {
+                console.log(next);
+            })
+            .catch((error) => {
+                console.log("Error:", error);
+            })
+            .finally(() => {
+                console.log("Promise completed");
+            });
+
+        // ========== Promise.all ==========
+        let p1 = Promise.resolve("First");
+        let p2 = new Promise((resolve) => setTimeout(() => resolve("Second"), 500));
+        let p3 = fetch("https://jsonplaceholder.typicode.com/todos/1").then(r => r.json());
+
+        Promise.all([p1, p2, p3])
+            .then((results) => {
+                console.log("All resolved:", results);
+            })
+            .catch((err) => console.log("One failed:", err));
+
+        // Promise.race — resolves/rejects as soon as one settles
+        // Promise.allSettled — waits for all, regardless of rejection
+
+        // ========== Async / Await ==========
+        async function loadData() {
+            try {
+                console.log("Loading...");
+                let result = await fetchDataPromise();
+                console.log(result);
+                console.log("Done loading");
+            } catch (error) {
+                console.log("Caught:", error);
+            }
+        }
+
+        loadData();
+
+        // ========== Fetch API ==========
+        // GET request with .then()
+        fetch("https://jsonplaceholder.typicode.com/users/1")
+            .then((response) => {
+                if (!response.ok) throw new Error(`HTTP ${response.status}`);
+                return response.json();
+            })
+            .then((data) => {
+                console.log("User:", data.name);
+            })
+            .catch((error) => {
+                console.log("Fetch error:", error);
+            });
+
+        // GET request with async/await
+        async function getUsers() {
+            try {
+                let response = await fetch("https://jsonplaceholder.typicode.com/users");
+                if (!response.ok) throw new Error(`HTTP ${response.status}`);
+                let data = await response.json();
+                console.log(`Fetched ${data.length} users`);
+                data.forEach(user => console.log(user.name));
+            } catch (error) {
+                console.log("Error:", error);
+            }
+        }
+        getUsers();
+
+        // POST request
+        async function createPost() {
+            let response = await fetch("https://jsonplaceholder.typicode.com/posts", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ title: "My Post", body: "Content", userId: 1 })
+            });
+            let data = await response.json();
+            console.log("Created:", data);
+        }
+        // createPost();  // uncomment to run
+    </script>
+</body>
+</html>

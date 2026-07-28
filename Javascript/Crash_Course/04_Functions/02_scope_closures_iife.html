@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Scope, Closures & IIFE</title>
+</head>
+<body>
+    <h1>Scope, Closures & IIFE</h1>
+
+    <script>
+        // ========== Scope ==========
+        // Global scope
+        let globalVar = "I'm global";
+
+        function testScope() {
+            // Function scope
+            let funcVar = "I'm function-scoped";
+
+            if (true) {
+                // Block scope (let / const)
+                let blockVar = "I'm block-scoped";
+                var funcScoped = "I'm function-scoped (var)";
+                console.log(blockVar);    // accessible here
+            }
+
+            // console.log(blockVar);     // ReferenceError!
+            console.log(funcScoped);      // "I'm function-scoped (var)" — var ignores blocks
+            console.log(globalVar);       // accessible
+        }
+
+        testScope();
+        // console.log(funcVar);          // ReferenceError!
+
+        // ========== Closure ==========
+        // A function that remembers its outer variables even after the outer function returns
+
+        function createCounter() {
+            let count = 0;  // "private" variable
+
+            return function () {
+                count++;
+                return count;
+            };
+        }
+
+        const counter = createCounter();
+        console.log(counter());  // 1
+        console.log(counter());  // 2
+        console.log(counter());  // 3
+
+        // Each call creates a new closure
+        const counter2 = createCounter();
+        console.log(counter2());  // 1 (independent counter)
+
+        // ========== Practical Closure: Greeting ==========
+        function createGreeter(greeting) {
+            return function (name) {
+                console.log(`${greeting}, ${name}!`);
+            };
+        }
+
+        const sayHi = createGreeter("Hi");
+        const sayHello = createGreeter("Hello");
+
+        sayHi("Tanmay");     // "Hi, Tanmay!"
+        sayHello("Rohan");   // "Hello, Rohan!"
+
+        // ========== IIFE (Immediately Invoked Function Expression) ==========
+        // Runs as soon as it's defined — creates a private scope
+
+        (function () {
+            let privateVar = "Only accessible here";
+            console.log("IIFE ran:", privateVar);
+        })();
+
+        // With parameters
+        (function (name) {
+            console.log(`Hello ${name} from IIFE`);
+        })("Tanmay");
+
+        // Arrow IIFE
+        (() => {
+            console.log("Arrow IIFE ran");
+        })();
+    </script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Functions</title>
+</head>
+<body>
+    <h1>Function Declarations, Expressions & Arrow Functions</h1>
+
+    <script>
+        // ========== Function Declaration ==========
+        function greet(name) {
+            return `Hello, ${name}!`;
+        }
+        console.log(greet("Tanmay"));
+
+        // Hoisted — can call before declaration
+        console.log(hoistedFunc());  // "I'm hoisted"
+        function hoistedFunc() {
+            return "I'm hoisted";
+        }
+
+        // ========== Function Expression ==========
+        const greetExpr = function (name) {
+            return `Hi, ${name}!`;
+        };
+        console.log(greetExpr("Rohan"));
+
+        // ========== Arrow Function (ES6) ==========
+        const greetArrow = (name) => `Hey, ${name}!`;
+        console.log(greetArrow("Aman"));
+
+        // Multi-line arrow
+        const add = (a, b) => {
+            let sum = a + b;
+            return sum;
+        };
+        console.log(add(5, 3));  // 8
+
+        // Single param can omit parentheses
+        const square = x => x * x;
+        console.log(square(4));  // 16
+
+        // No params need empty parens
+        const sayHello = () => console.log("Hello!");
+
+        // ========== Parameters & Default Values ==========
+        function multiply(a, b = 1) {
+            return a * b;
+        }
+        console.log(multiply(5));      // 5  (b defaults to 1)
+        console.log(multiply(5, 3));   // 15
+
+        // ========== Rest Parameters (...) ==========
+        function sumAll(...numbers) {
+            return numbers.reduce((acc, n) => acc + n, 0);
+        }
+        console.log(sumAll(1, 2, 3, 4, 5));  // 15
+
+        // ========== Arguments Object (old way) ==========
+        function oldSum() {
+            let total = 0;
+            for (let i = 0; i < arguments.length; i++) {
+                total += arguments[i];
+            }
+            return total;
+        }
+        console.log(oldSum(1, 2, 3));  // 6
+
+        // ========== Returning Values ==========
+        function isEven(num) {
+            return num % 2 === 0;
+        }
+        console.log(isEven(4));  // true
+    </script>
+</body>
+</html>

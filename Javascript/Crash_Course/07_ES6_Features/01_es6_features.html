@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ES6+ Features</title>
+</head>
+<body>
+    <h1>ES6+ Features</h1>
+
+    <script>
+        // ========== Template Literals ==========
+        let name = "Tanmay";
+        let age = 22;
+        console.log(`My name is ${name} and I'm ${age} years old`);
+        console.log(`Multi-line
+        strings
+        are easy with backticks`);
+
+        // Tagged templates (advanced)
+        function highlight(strings, ...values) {
+            return strings.reduce((result, str, i) =>
+                `${result}${str}<strong>${values[i] || ""}</strong>`, "");
+        }
+        console.log(highlight`Hello ${name}, age ${age}`);
+
+        // ========== Map ==========
+        let userMap = new Map();
+        userMap.set("name", "Tanmay");
+        userMap.set(1, "one");
+        userMap.set(true, "boolean");
+        console.log(userMap.get("name"));  // "Tanmay"
+        console.log(userMap.has(1));       // true
+        console.log(userMap.size);         // 3
+        userMap.delete(true);
+        userMap.forEach((value, key) => console.log(`${key}: ${value}`));
+
+        // ========== Set ==========
+        let uniqueNumbers = new Set([1, 2, 2, 3, 3, 4]);
+        console.log(uniqueNumbers);  // Set {1, 2, 3, 4}
+        uniqueNumbers.add(5);
+        console.log(uniqueNumbers.has(2));  // true
+        console.log(uniqueNumbers.size);    // 5
+
+        // Remove duplicates from array
+        let dupArr = [1, 2, 2, 3, 3, 4];
+        let uniqueArr = [...new Set(dupArr)];
+        console.log(uniqueArr);  // [1, 2, 3, 4]
+
+        // ========== Symbols ==========
+        let sym1 = Symbol("id");
+        let sym2 = Symbol("id");
+        console.log(sym1 === sym2);  // false (unique)
+
+        const ID = Symbol("id");
+        let userSym = { name: "Tanmay", [ID]: 12345 };
+        console.log(userSym[ID]);   // 12345
+        console.log(Object.keys(userSym));  // ["name"] (Symbols are hidden)
+
+        // ========== Optional Chaining (?.) ==========
+        let user = { profile: { name: "Tanmay" } };
+        console.log(user?.profile?.name);     // "Tanmay"
+        console.log(user?.address?.city);     // undefined (no error!)
+
+        // ========== Nullish Coalescing (??) ==========
+        let val = null;
+        console.log(val ?? "default");      // "default"
+        console.log(0 ?? "default");        // 0  (?? only checks null/undefined)
+        console.log(0 || "default");        // "default" (|| checks all falsy)
+    </script>
+</body>
+</html>
