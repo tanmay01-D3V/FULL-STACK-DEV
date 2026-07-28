@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  </head>
+
+  <body>
+    <h1>Fill the form consiously</h1>
+    <form style="gap: 20px; display: flex; flex-direction: column">
+      <div>
+        <namebox>
+          <label for="name">Name</label>
+          <input type="text" name="name" id="name" />
+        </namebox>
+      </div>
+      <div>
+        <namebox>
+          <label for="email">Email</label>
+          <input type="email" name="email" id="email" />
+        </namebox>
+      </div>
+      <div>
+        <namebox>
+          <label for="password">Password</label>
+          <input type="password" name="password" id="password" />
+        </namebox>
+      </div>
+      <div>
+        <namebox>
+          <label for="confirm-password">Confirm Password</label>
+          <input
+            type="password"
+            name="confirm-password"
+            id="confirm-password"
+          />
+        </namebox>
+      </div>
+
+      <button
+        id="submit"
+        type="submit"
+        style="
+          width: 60px;
+          height: 30px;
+          margin-left: 110px;
+          align-items: center;
+        "
+      >
+        Submit
+      </button>
+    </form>
+
+    <script>
+
+        function successmessage() {
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Your work has been saved",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+
+        function errormessage(text) {
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: text,
+            footer: '<a href="guy.html">Why do I have this issue?</a>',
+          });
+        }
+
+        function handlesubmit(event){
+            event.preventDefault();
+            console.log("function called");
+            let name = document.getElementById("name").value;
+            let email = document.getElementById("email").value;
+            let password = document.getElementById("password").value;
+            let confirmPassword = document.getElementById("confirm-password").value;
+
+          if (!name || !email || !password || !confirmPassword) {
+            errormessage("Please fill in all fields.");
+            return;
+          }
+
+          if (!/^[A-Za-z\s]+$/.test(name)) {
+            errormessage("Name should only contain letters and spaces.");
+            return;
+          }
+
+          if (password !== confirmPassword) {
+            errormessage("Passwords do not match.");
+            return;
+          }
+          
+          successmessage();
+        };
+
+        document.querySelector('form').addEventListener('submit', handlesubmit);
+    </script>
+  </body>
+</html>
