@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Variables & Data Types</title>
+</head>
+<body>
+    <h1>Variables & Data Types</h1>
+    <p>Open the console (F12) to see the output.</p>
+
+    <script>
+        // ========== var vs let vs const ==========
+        // var  - function-scoped, can be redeclared, hoisted (avoid in modern JS)
+        // let  - block-scoped, cannot be redeclared in same scope
+        // const - block-scoped, cannot be reassigned, must be initialized
+
+        var oldWay = "I'm var";     // avoid
+        let modern = "I'm let";     // use for values that change
+        const fixed = "I'm const";  // use for values that stay the same
+
+        // Hoisting with var
+        console.log(hoistedVar);  // undefined (not an error!)
+        var hoistedVar = "hoisted";
+
+        // console.log(hoistedLet); // ReferenceError! let/const are NOT hoisted
+        let hoistedLet = "not hoisted";
+
+        // ========== Primitive Data Types ==========
+        let str = "Hello";             // String
+        let num = 42;                  // Number
+        let big = 9007199254740991n;   // BigInt
+        let bool = true;               // Boolean
+        let undef;                     // undefined
+        let empty = null;              // null (object type)
+        let sym = Symbol("id");        // Symbol (ES6)
+
+        console.log(typeof str);    // "string"
+        console.log(typeof num);    // "number"
+        console.log(typeof bool);   // "boolean"
+        console.log(typeof undef);  // "undefined"
+        console.log(typeof empty);  // "object" (known JS quirk)
+        console.log(typeof sym);    // "symbol"
+        console.log(typeof big);    // "bigint"
+
+        // ========== Dynamic Typing ==========
+        let dynamic = 10;
+        console.log(dynamic);       // 10
+        dynamic = "now a string";
+        console.log(dynamic);       // "now a string"
+
+        // ========== String Concatenation vs Template Literals ==========
+        let first = "Tanmay";
+        let last = "Sherkar";
+
+        // Old way
+        console.log("Full name: " + first + " " + last);
+
+        // ES6 template literals (preferred)
+        console.log(`Full name: ${first} ${last}`);
+
+        // ========== undefined vs null ==========
+        let a;
+        console.log(a);               // undefined
+        let b = null;
+        console.log(b);               // null
+        console.log(undefined == null);   // true (loose equality)
+        console.log(undefined === null);  // false (strict equality)
+    </script>
+</body>
+</html>

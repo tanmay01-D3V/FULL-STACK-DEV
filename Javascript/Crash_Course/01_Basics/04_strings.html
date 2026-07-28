@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Strings</title>
+</head>
+<body>
+    <h1>String Methods & Properties</h1>
+
+    <script>
+        let str = "  Hello, JavaScript World!  ";
+
+        // ========== Basic Properties ==========
+        console.log(str.length);           // 28 (includes spaces)
+
+        // ========== Case Methods ==========
+        console.log(str.toUpperCase());    // "  HELLO, JAVASCRIPT WORLD!  "
+        console.log(str.toLowerCase());    // "  hello, javascript world!  "
+
+        // ========== Trimming ==========
+        console.log(str.trim());           // "Hello, JavaScript World!"
+        console.log(str.trimStart());      // "Hello, JavaScript World!  "
+        console.log(str.trimEnd());        // "  Hello, JavaScript World!"
+
+        // ========== Extracting Parts ==========
+        console.log(str.trim().slice(0, 5));     // "Hello"
+        console.log(str.trim().slice(7));        // "JavaScript World!"
+        console.log(str.trim().substring(0, 5)); // "Hello"
+        console.log(str.trim().substr(7, 10));   // "JavaScript" (deprecated, avoid)
+
+        // ========== Searching ==========
+        console.log(str.trim().indexOf("JavaScript")); // 7
+        console.log(str.trim().indexOf("Python"));     // -1
+        console.log(str.trim().lastIndexOf("o"));      // 19
+        console.log(str.trim().includes("World"));     // true
+        console.log(str.trim().startsWith("Hello"));   // true
+        console.log(str.trim().endsWith("!"));         // true
+
+        // ========== Replacing ==========
+        console.log(str.trim().replace("World", "Universe")); // "Hello, JavaScript Universe!"
+        console.log(str.trim().replaceAll("o", "0"));         // "Hell0, JavaScript W0rld!"
+
+        // ========== Splitting & Joining ==========
+        let csv = "apple,banana,grape";
+        let fruits = csv.split(",");
+        console.log(fruits);               // ["apple", "banana", "grape"]
+        console.log(fruits.join(" | "));   // "apple | banana | grape"
+
+        // ========== Other Useful Methods ==========
+        console.log("abc".repeat(3));      // "abcabcabc"
+        console.log("5".padStart(3, "0")); // "005"
+        console.log("5".padEnd(3, "0"));   // "500"
+        console.log("Hello".charAt(1));    // "e"
+        console.log("Hello".charCodeAt(1));// 101
+    </script>
+</body>
+</html>

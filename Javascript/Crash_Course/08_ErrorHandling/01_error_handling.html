@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Error Handling</title>
+</head>
+<body>
+    <h1>Error Handling — try/catch/finally & Custom Errors</h1>
+
+    <script>
+        // ========== try / catch ==========
+        try {
+            let result = 10 / 0;
+            console.log(result);  // Infinity (not an error)
+            // throw new Error("Something went wrong");
+        } catch (error) {
+            console.log("Caught:", error.message);
+        }
+
+        // ========== try / catch / finally ==========
+        // finally ALWAYS runs (even if catch re-throws)
+
+        function divide(a, b) {
+            try {
+                if (b === 0) {
+                    throw new Error("Division by zero");
+                }
+                if (typeof a !== "number" || typeof b !== "number") {
+                    throw new TypeError("Both arguments must be numbers");
+                }
+                return a / b;
+            } catch (error) {
+                console.log(`${error.name}: ${error.message}`);
+                return null;
+            } finally {
+                console.log("Division attempt completed");
+            }
+        }
+
+        console.log(divide(10, 2));   // 5
+        console.log(divide(10, 0));   // null (with error)
+        console.log(divide("abc", 2));// null (with TypeError)
+
+        // ========== Custom Error Types ==========
+        class ValidationError extends Error {
+            constructor(message) {
+                super(message);
+                this.name = "ValidationError";
+            }
+        }
+
+        function validateUser(user) {
+            if (!user.name) throw new ValidationError("Name is required");
+            if (!user.email) throw new ValidationError("Email is required");
+            if (user.age < 18) throw new ValidationError("Must be 18+");
+            return "Valid user";
+        }
+
+        try {
+            validateUser({ name: "Tanmay", age: 16 });
+        } catch (error) {
+            if (error instanceof ValidationError) {
+                console.log("Validation failed:", error.message);
+            } else {
+                console.log("Unknown error:", error);
+            }
+        }
+
+        // ========== Catching Specific Error Types ==========
+        try {
+            // JSON.parse throws SyntaxError on invalid JSON
+            JSON.parse("{invalid}");
+        } catch (error) {
+            if (error instanceof SyntaxError) {
+                console.log("Invalid JSON:", error.message);
+            } else {
+                console.log("Other error:", error);
+            }
+        }
+    </script>
+</body>
+</html>

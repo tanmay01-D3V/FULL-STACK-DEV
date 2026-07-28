@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Hide And Seek</h1>
+
+    <h2>Hide your sugar daddy</h2>
+    <img id="result" src="1764065211229.jpg" alt="image" width="270px" height="250px">
+    <div>
+        <button onclick = "hideBtn()" style="height: 30px;width: 90px; margin: 20px">Hide</button>
+        <button onclick = "showBtn()" style="height: 30px;width: 90px;">Show</button>
+    </div>
+
+    <script>
+        
+        function hideBtn() {
+            document.getElementById("result").style.display = "none";
+        }
+
+        function showBtn() {
+            document.getElementById("result").style.display = "block";
+        }
+    </script>
+</body>
+</html>

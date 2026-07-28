@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Callbacks & the 'this' Keyword</title>
+</head>
+<body>
+    <h1>Callbacks & 'this' Keyword</h1>
+
+    <script>
+        // ========== Callbacks ==========
+        // A function passed as an argument to another function
+
+        function processUserInput(name, callback) {
+            console.log(`Processing: ${name}`);
+            callback(name);
+        }
+
+        function greetUser(name) {
+            console.log(`Hello, ${name}!`);
+        }
+
+        processUserInput("Tanmay", greetUser);
+
+        // Anonymous callback
+        processUserInput("Rohan", function (name) {
+            console.log(`How are you, ${name}?`);
+        });
+
+        // Arrow callback
+        processUserInput("Aman", (name) => {
+            console.log(`Goodbye, ${name}`);
+        });
+
+        // ========== Callback with Array Methods ==========
+        let numbers = [1, 2, 3, 4, 5];
+
+        let doubled = numbers.map(function (n) {
+            return n * 2;
+        });
+        console.log(doubled);  // [2, 4, 6, 8, 10]
+
+        let evens = numbers.filter(n => n % 2 === 0);
+        console.log(evens);  // [2, 4]
+
+        // ========== The 'this' Keyword ==========
+        // 'this' depends on HOW a function is called
+
+        // 1. Regular function: 'this' = global object (window/global)
+        function showThis() {
+            console.log(this);  // window (in browser)
+        }
+        showThis();
+
+        // 2. Object method: 'this' = the object
+        const person = {
+            name: "Tanmay",
+            greet: function () {
+                console.log(`Hi, I'm ${this.name}`);
+            }
+        };
+        person.greet();  // "Hi, I'm Tanmay"
+
+        // 3. Arrow function: 'this' = surrounding context (lexical)
+        const person2 = {
+            name: "Rohan",
+            greet: () => {
+                console.log(`Hi, I'm ${this.name}`);  // 'this' is NOT person2!
+            }
+        };
+        person2.greet();  // "Hi, I'm undefined" (or window.name)
+
+        // 4. Arrow functions inherit 'this' from enclosing scope
+        const person3 = {
+            name: "Aman",
+            hobbies: ["coding", "gaming"],
+            showHobbies() {
+                this.hobbies.forEach((hobby) => {
+                    console.log(`${this.name} likes ${hobby}`);
+                });
+            }
+        };
+        person3.showHobbies();
+
+        // ========== call, apply, bind ==========
+        function introduce(greeting) {
+            console.log(`${greeting}, I'm ${this.name}`);
+        }
+
+        const user1 = { name: "Tanmay" };
+        const user2 = { name: "Rohan" };
+
+        // call — args passed individually
+        introduce.call(user1, "Hello");
+
+        // apply — args passed as array
+        introduce.apply(user2, ["Hi"]);
+
+        // bind — returns a new function with fixed 'this'
+        const boundIntro = introduce.bind(user1);
+        boundIntro("Hey");
+    </script>
+</body>
+</html>

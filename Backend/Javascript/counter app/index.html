@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Counter App</h1>
+
+    <h2>Count values :- <span id = "result">0</span></h2>
+
+    <div>
+        <button onclick = "decreaseBtn()">Decrease</button>
+        <button onclick = "resetBtn()">Reset</button>
+        <button onclick = "increaseBtn()">Increase</button>
+    </div>
+    <script>
+        
+        let count = 0;
+
+        function decreaseBtn() {
+            count--;
+            document.getElementById("result").innerHTML = count;
+        }
+
+        function resetBtn() {
+            count = 0;
+            document.getElementById("result").innerHTML = count;
+        }
+
+        function increaseBtn(){
+            count++;
+            document.getElementById("result").innerHTML = count;
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ES6 Modules</title>
+</head>
+<body>
+    <h1>ES6 Modules (import / export)</h1>
+    <p>Open console. Note: This must be served via a local server (Live Server, etc.), not opened directly.</p>
+
+    <script type="module">
+        // Named imports
+        import { API_URL, fetchUsers, formatUser } from "./utils.js";
+
+        // Default import
+        import greet from "./utils.js";
+
+        console.log(greet("Tanmay"));
+
+        fetchUsers()
+            .then(users => {
+                users.slice(0, 3).forEach(user => {
+                    console.log(formatUser(user));
+                });
+            })
+            .catch(err => console.error(err));
+
+        // Import all as namespace
+        import * as Utils from "./utils.js";
+        console.log(Utils.API_URL);
+    </script>
+</body>
+</html>

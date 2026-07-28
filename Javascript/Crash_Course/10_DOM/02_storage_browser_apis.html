@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>localStorage & Browser APIs</title>
+</head>
+<body>
+    <h1>localStorage, sessionStorage & Browser APIs</h1>
+
+    <script>
+        // ========== localStorage ==========
+        // Data persists even after browser is closed
+
+        // Set item
+        localStorage.setItem("username", "Tanmay");
+        localStorage.setItem("theme", "dark");
+        localStorage.setItem("score", "100");
+
+        // Get item
+        console.log(localStorage.getItem("username"));  // "Tanmay"
+
+        // Remove item
+        // localStorage.removeItem("score");
+
+        // Get all keys
+        console.log("Keys:", Object.keys(localStorage));
+
+        // Get count
+        console.log("Length:", localStorage.length);
+
+        // Clear all
+        // localStorage.clear();
+
+        // ========== Storing Objects (JSON) ==========
+        let user = {
+            name: "Tanmay",
+            preferences: {
+                theme: "dark",
+                fontSize: 16
+            }
+        };
+
+        localStorage.setItem("user", JSON.stringify(user));
+        let retrieved = JSON.parse(localStorage.getItem("user"));
+        console.log(retrieved.name);           // "Tanmay"
+        console.log(retrieved.preferences.theme); // "dark"
+
+        // ========== sessionStorage ==========
+        // Data persists only for the current tab session
+
+        sessionStorage.setItem("temp", "This will be cleared on tab close");
+        console.log(sessionStorage.getItem("temp"));
+
+        // ========== Practical: Theme Toggle ==========
+        function applyTheme(theme) {
+            document.body.style.backgroundColor = theme === "dark" ? "#222" : "#fff";
+            document.body.style.color = theme === "dark" ? "#fff" : "#000";
+        }
+
+        // Load saved theme
+        let savedTheme = localStorage.getItem("theme") || "light";
+        applyTheme(savedTheme);
+
+        // Toggle (run in console to test)
+        // let newTheme = savedTheme === "dark" ? "light" : "dark";
+        // localStorage.setItem("theme", newTheme);
+        // applyTheme(newTheme);
+
+        // ========== Geolocation API ==========
+        if ("geolocation" in navigator) {
+            navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    console.log("Latitude:", position.coords.latitude);
+                    console.log("Longitude:", position.coords.longitude);
+                },
+                (error) => {
+                    console.log("Geolocation error:", error.message);
+                },
+                { timeout: 5000 }
+            );
+        } else {
+            console.log("Geolocation not supported");
+        }
+
+        // ========== Window Object ==========
+        console.log("URL:", window.location.href);
+        console.log("Host:", window.location.host);
+        console.log("Path:", window.location.pathname);
+        console.log("User Agent:", navigator.userAgent);
+
+        // Timers
+        // setTimeout — run once after delay
+        let timeoutId = setTimeout(() => {
+            console.log("This runs after 2 seconds");
+        }, 2000);
+        // clearTimeout(timeoutId);  // cancel it
+
+        // setInterval — run repeatedly
+        let count = 0;
+        let intervalId = setInterval(() => {
+            count++;
+            console.log(`Tick ${count}`);
+            if (count >= 3) clearInterval(intervalId);
+        }, 1000);
+    </script>
+</body>
+</html>

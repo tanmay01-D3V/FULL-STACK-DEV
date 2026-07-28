@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Numbers & Math</title>
+</head>
+<body>
+    <h1>Numbers & Math Object</h1>
+
+    <script>
+        // ========== Number Basics ==========
+        let int = 42;
+        let float = 3.14;
+        let hex = 0xFF;       // 255
+        let binary = 0b1010;  // 10
+        let octal = 0o77;     // 63
+
+        console.log(Number.MAX_VALUE);  // 1.79e+308
+        console.log(Number.MIN_VALUE);  // 5e-324
+
+        // ========== Special Numeric Values ==========
+        console.log(0 / 0);             // NaN (Not a Number)
+        console.log(1 / 0);             // Infinity
+        console.log(-1 / 0);            // -Infinity
+        console.log(isNaN("hello"));    // true
+        console.log(isFinite(Infinity));// false
+
+        // ========== Number Methods ==========
+        let num = 123.4567;
+        console.log(num.toFixed(2));      // "123.46"
+        console.log(num.toPrecision(4));  // "123.5"
+        console.log(num.toExponential(2));// "1.23e+2"
+
+        // ========== parseInt / parseFloat ==========
+        console.log(parseInt("100px"));   // 100
+        console.log(parseFloat("3.14em"));// 3.14
+        console.log(parseInt("abc"));     // NaN
+
+        // ========== Math Object ==========
+        console.log(Math.PI);           // 3.14159...
+        console.log(Math.round(4.7));   // 5
+        console.log(Math.ceil(4.1));    // 5
+        console.log(Math.floor(4.9));   // 4
+        console.log(Math.trunc(4.9));   // 4 (removes decimal, ES6)
+        console.log(Math.abs(-5));      // 5
+        console.log(Math.pow(2, 3));    // 8
+        console.log(Math.sqrt(16));     // 4
+        console.log(Math.min(3, 1, 7)); // 1
+        console.log(Math.max(3, 1, 7)); // 7
+
+        // Random number between 1-10
+        let random = Math.floor(Math.random() * 10) + 1;
+        console.log(`Random 1-10: ${random}`);
+
+        // ========== Number Comparison Quirk ==========
+        console.log(0.1 + 0.2);              // 0.30000000000000004
+        console.log(0.1 + 0.2 === 0.3);      // false!
+        // Fix: use toFixed or small epsilon
+        let sum = (0.1 * 10 + 0.2 * 10) / 10;
+        console.log(sum);                    // 0.3
+    </script>
+</body>
+</html>

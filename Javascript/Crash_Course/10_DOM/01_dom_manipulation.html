@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM Manipulation</title>
+</head>
+<body>
+    <h1>DOM Manipulation</h1>
+
+    <p id="demo">Original text</p>
+    <ul id="list">
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+    </ul>
+    <button id="myButton">Click Me</button>
+    <div id="container"></div>
+
+    <script>
+        // ========== Selecting Elements ==========
+        console.log(document.getElementById("demo"));
+        console.log(document.querySelector("#demo"));
+        console.log(document.querySelectorAll("li"));
+        console.log(document.getElementsByTagName("li"));
+        console.log(document.getElementsByClassName("some-class"));
+
+        // ========== Manipulating Content ==========
+        let demo = document.getElementById("demo");
+        demo.innerHTML = "<strong>Changed</strong> content";
+        demo.textContent = "Just plain text (no HTML)";
+        console.log(demo.innerText);
+
+        // ========== Manipulating Attributes ==========
+        let link = document.createElement("a");
+        link.setAttribute("href", "https://example.com");
+        link.textContent = "Visit Example";
+        console.log(link.getAttribute("href"));
+        // link.removeAttribute("href");
+
+        // data-* attributes
+        link.dataset.tooltip = "Click to visit";
+        console.log(link.dataset.tooltip);
+
+        // ========== Manipulating Styles ==========
+        demo.style.color = "red";
+        demo.style.fontSize = "24px";
+        demo.style.backgroundColor = "#f0f0f0";
+
+        // classList
+        demo.classList.add("highlight");
+        demo.classList.remove("highlight");
+        demo.classList.toggle("active");
+        console.log(demo.classList.contains("active"));
+
+        // ========== Creating & Removing Elements ==========
+        let container = document.getElementById("container");
+
+        let newDiv = document.createElement("div");
+        newDiv.textContent = "I was created dynamically!";
+        newDiv.className = "box";
+        container.appendChild(newDiv);
+
+        let heading = document.createElement("h2");
+        heading.textContent = "Dynamic Heading";
+        container.insertBefore(heading, newDiv);
+
+        // Remove element
+        // container.removeChild(heading);
+        // heading.remove();
+
+        // ========== DOM Traversal ==========
+        let list = document.getElementById("list");
+        console.log(list.children);       // HTMLCollection
+        console.log(list.firstElementChild);
+        console.log(list.lastElementChild);
+        console.log(list.parentElement);
+
+        let firstItem = list.querySelector("li");
+        console.log(firstItem.nextElementSibling);
+        console.log(firstItem.previousElementSibling);
+
+        // ========== Events ==========
+        let button = document.getElementById("myButton");
+
+        button.addEventListener("click", function (event) {
+            console.log("Button clicked!", event);
+            alert("Button was clicked!");
+        });
+
+        // Event object properties
+        button.addEventListener("mouseenter", (e) => {
+            console.log("Mouse entered:", e.target, e.type);
+        });
+
+        // ========== Event Delegation ==========
+        // Instead of adding listeners to each <li>, add one to the parent
+        document.getElementById("list").addEventListener("click", (e) => {
+            if (e.target.tagName === "LI") {
+                console.log("Clicked on:", e.target.textContent);
+            }
+        });
+
+        // ========== Form Handling ==========
+        let form = document.createElement("form");
+        form.innerHTML = `
+            <input type="text" id="nameInput" placeholder="Enter name" required>
+            <input type="email" id="emailInput" placeholder="Enter email">
+            <button type="submit">Submit</button>
+        `;
+        container.appendChild(form);
+
+        form.addEventListener("submit", (e) => {
+            e.preventDefault();  // prevent page reload
+            let name = document.getElementById("nameInput").value;
+            let email = document.getElementById("emailInput").value;
+
+            if (!name.trim()) {
+                alert("Name is required");
+                return;
+            }
+
+            console.log("Form submitted:", { name, email });
+        });
+
+        // ========== Event Bubbling & Capturing ==========
+        // Bubbling (default): event goes from target → ancestors
+        // Capturing: event goes from ancestors → target
+
+        container.addEventListener("click", () => {
+            console.log("Container clicked (bubbling)");
+        });
+
+        container.addEventListener("click", () => {
+            console.log("Container clicked (capturing)");
+        }, true);  // third parameter: useCapture
+    </script>
+</body>
+</html>

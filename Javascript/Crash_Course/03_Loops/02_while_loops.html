@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>While & Do-While Loops</title>
+</head>
+<body>
+    <h1>While & Do-While Loops</h1>
+
+    <script>
+        // ========== While Loop ==========
+        // Checks condition BEFORE each iteration
+        let i = 1;
+        while (i <= 5) {
+            console.log(`While: ${i}`);
+            i++;
+        }
+
+        // ========== Do-While Loop ==========
+        // Executes at least ONCE, then checks condition
+        let j = 1;
+        do {
+            console.log(`Do-While: ${j}`);
+            j++;
+        } while (j <= 5);
+
+        // Runs at least once even if condition is false
+        let k = 10;
+        do {
+            console.log(`Runs once: ${k}`);  // still runs once
+            k++;
+        } while (k <= 5);
+
+        // ========== Practical Example: User Input Loop ==========
+        // Simulated: keep rolling until we get a 6
+        let attempts = 0;
+        let roll;
+        do {
+            roll = Math.floor(Math.random() * 6) + 1;
+            attempts++;
+            console.log(`Roll ${attempts}: ${roll}`);
+        } while (roll !== 6);
+
+        console.log(`Got a 6 in ${attempts} attempts!`);
+
+        // ========== Infinite Loop Warning ==========
+        // let x = 0;
+        // while (true) {  // DON'T RUN THIS — will crash your browser
+        //     console.log(x++);
+        // }
+    </script>
+</body>
+</html>

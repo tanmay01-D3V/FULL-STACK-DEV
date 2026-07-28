@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>For Loops</title>
+</head>
+<body>
+    <h1>For Loop</h1>
+
+    <script>
+        // ========== Basic for Loop ==========
+        let students = ["Tanmay", "Rohan", "Aman", "Saad", "Daksh"];
+        let marks = [80, 58, 88, 67, 90];
+        let total = 0;
+
+        for (let i = 0; i < marks.length; i++) {
+            total += marks[i];
+        }
+
+        console.log(`Total marks: ${total}`);
+        console.log(`Average: ${total / marks.length}`);
+
+        // ========== Nested for Loops ==========
+        for (let i = 1; i <= 3; i++) {
+            for (let j = 1; j <= 3; j++) {
+                console.log(`i=${i}, j=${j}`);
+            }
+        }
+
+        // ========== for...of (ES6) - iterate over values ==========
+        for (let student of students) {
+            console.log(student);
+        }
+
+        // ========== for...in - iterate over indices/keys ==========
+        for (let index in students) {
+            console.log(`${index}: ${students[index]}`);
+        }
+
+        // ========== forEach (Array method) ==========
+        students.forEach((name, i) => {
+            console.log(`${i + 1}. ${name}`);
+        });
+
+        // ========== break & continue ==========
+        for (let i = 1; i <= 10; i++) {
+            if (i === 3) continue;    // skip 3
+            if (i === 7) break;       // stop at 7
+            console.log(i);           // 1, 2, 4, 5, 6
+        }
+    </script>
+</body>
+</html>
