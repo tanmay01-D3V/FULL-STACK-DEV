@@ -53,6 +53,10 @@
       </button>
     </form>
 
+    <hr>
+    <button id="fetch-image" type="button">Get Random Image</button>
+    <div id="image-container" style="margin-top: 10px;"></div>
+
     <script>
 
         function successmessage() {
@@ -101,6 +105,26 @@
         };
 
         document.querySelector('form').addEventListener('submit', handlesubmit);
+
+        document.getElementById('fetch-image').addEventListener('click', function() {
+          fetch('https://api.api-ninjas.com/v1/randomimage?category=nature', {
+            headers: {
+              'X-Api-Key': '71Y40ZSWCtRq7cAaSRARCetkqeITcYRt77Dab3Gd',
+              'Accept': 'image/jpg'
+            }
+          })
+          .then(response => response.blob())
+          .then(blob => {
+            const img = document.createElement('img');
+            img.src = URL.createObjectURL(blob);
+            img.style.maxWidth = '300px';
+            document.getElementById('image-container').innerHTML = '';
+            document.getElementById('image-container').appendChild(img);
+          })
+          .catch(() => {
+            errormessage('Failed to load image.');
+          });
+        });
     </script>
   </body>
 </html>
