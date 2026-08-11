@@ -64,9 +64,6 @@ router.put("/:id", async (req, res) => {
     if (!email) {
       return res.status(400).json({ message: "Email field is required" });
     }
-    if (!password) {
-      return res.status(400).json({ message: "Password field is required" });
-    }
     if (!department) {
       return res.status(400).json({ message: "Department field is required" });
     }
@@ -76,7 +73,13 @@ router.put("/:id", async (req, res) => {
     if (!salary) {
       return res.status(400).json({ message: "Salary field is required" });
     }
-    const employee = await Employee.findByIdAndUpdate(req.params.id, req.body);
+
+    const updates = { name, email, department, role, salary };
+    if (password) {
+      updates.password = password;
+    }
+
+    const employee = await Employee.findByIdAndUpdate(req.params.id, updates);
     if (!employee) {
       return res
         .status(404)

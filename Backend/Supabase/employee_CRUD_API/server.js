@@ -1,12 +1,15 @@
 const express = require("express");
+const path = require("path");
 const dotenv = require("dotenv");
+const cors = require("cors");
 
-dotenv.config();
+dotenv.config({ path: path.join(__dirname, ".env") });
 
 const employeeRouter = require("./router/employee_router");
 const app = express();
 const port = process.env.PORT || 3000;
 
+app.use(cors());
 app.use(express.json());
 app.use("/employees", employeeRouter);
 
@@ -24,5 +27,5 @@ app.use((err, req, res, next) => {
 });
 
 app.listen(port, () => {
-  console.log(`Server running on port ${port}`);
+  console.log(`http://localhost:${port}/`);
 });
