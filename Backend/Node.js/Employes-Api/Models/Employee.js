@@ -9,11 +9,11 @@ const employeeSchema = new mongoose.Schema({
     required: true,
     unique: true,
   },
-  phone: {
+  department: {
     type: String,
     required: true,
   },
-  position: {
+  role: {
     type: String,
     required: true,
   },
