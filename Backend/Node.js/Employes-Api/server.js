@@ -1,7 +1,7 @@
 const express = require("express");
 const cors = require("cors");
-const db = require("./config/Db");
-const employeeRouter = require("./router/EMPLOYEEROUTER");
+const db = require("./config/Db.js");
+const employeeRouter = require("./router/EMPLOYEEROUTER.JS");
 const app = express();
 
 app.use(cors());
