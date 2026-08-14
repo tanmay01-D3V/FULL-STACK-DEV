@@ -67,6 +67,21 @@ const login = (req, res) => {
 };
 
 
+const logout = (req, res) => {
+  req.logout((err) => {
+    if (err) {
+      return res.status(500).json({ message: "Logout failed" });
+    }
+    req.session.destroy((sessionErr) => {
+      if (sessionErr) {
+        return res.status(500).json({ message: "Logout failed" });
+      }
+      res.clearCookie("connect.sid");
+      res.status(200).json({ message: "Logged out successfully" });
+    });
+  });
+};
+
 module.exports = {
-  register,login
+  register,login,logout
 };
