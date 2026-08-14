@@ -1,12 +1,22 @@
-const mongodb = require('mongodb');
+const { MongoClient } = require("mongodb");
 
-const mongodb = MONGO_URL 
+const MONGO_URL =
+  process.env.MONGO_URL || "mongodb://localhost:27017/employees";
 
- db.on("disconnected",()=>{
-console.log("MongoDB disconnected")
- });
+let db;
 
- db.on("error",(error)=>{
-    console.log("MongoDB connection error:",error);
- });
- module.exports=db;
+const client = new MongoClient(MONGO_URL);
+
+async function connectDB() {
+  try {
+    await client.connect();
+    db = client.db("employees");
+    console.log("MongoDB connected successfully");
+  } catch (error) {
+    console.log("MongoDB connection error:", error);
+  }
+}
+
+connectDB();
+
+module.exports = db;
