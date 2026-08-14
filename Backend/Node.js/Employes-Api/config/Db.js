@@ -1,10 +1,7 @@
-const mongoose = require('mongoose');
+const mongodb = require('mongodb');
 
-mongoose.connect ("mongodb://localhost:27017/itm_employees")
- const db = mongoose.connection;
- db.on("connected",()=>{
-    console.log("MongoDB  connected Successfully");
- });
+const mongodb = MONGO_URL 
+
  db.on("disconnected",()=>{
 console.log("MongoDB disconnected")
  });

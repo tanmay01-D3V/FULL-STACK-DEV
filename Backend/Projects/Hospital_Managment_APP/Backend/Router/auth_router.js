@@ -4,7 +4,8 @@ require("../Config/passport");
 
 const {
   register,
-  login
+  login,
+  logout
 } = require("../Controllers/authcontroller");
 
 const router = express.Router();
@@ -16,5 +17,7 @@ router.post(
   passport.authenticate("local"),
   login
 );
+
+router.post("/logout", logout);
 
 module.exports = router;
