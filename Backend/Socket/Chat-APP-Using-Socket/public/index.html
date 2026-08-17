@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Whyapps</title>
+</head>
+<body>
+    <h1>Chat App</h1>
+
+    <h2> Live Users .: <span id = 'usersCount'>0</span> </h2>
+    <div id="login-box">
+        Enter Username:- <input id ="username" type="text" placeholder="Enter Username">
+        <button onclick="joinchat()">Join Chat</button>
+    </div>
+
+    <div id = "chat-box">
+        Enter Your Message :- <input type="text" id="message">
+        <button onclick = "sendMessage()">Send Message</button>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+
+    <script>
+        const socket = io();
+
+        document.getElementById('login-box').style.display="block";
+        document.getElementById('chat-box').style.display="block";
+       
+
+        socket.on('users-count', (count) =>{
+            document.getElementById('usersCount').innerHTML = count;
+        })
+
+        function joinchat(){
+            let username = document.getElementById('username').value;
+            socket.emit('new-user-joined', username);
+        }
+
+    </script>
+</body>
+</html>
