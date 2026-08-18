@@ -3,40 +3,115 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Whyapps</title>
+    <title>Chat App</title>
+    <link rel="stylesheet" href="style.css">
+
 </head>
 <body>
-    <h1>Chat App</h1>
+    <div class="container">
+        <div class="header">
+            <h1>WHYApps</h1>
+            <span>Live Users: <strong id="usersCount">0</strong></span>
+        </div>
 
-    <h2> Live Users .: <span id = 'usersCount'>0</span> </h2>
-    <div id="login-box">
-        Enter Username:- <input id ="username" type="text" placeholder="Enter Username">
-        <button onclick="joinchat()">Join Chat</button>
-    </div>
+        <div id="login-box">
+            <h3 style="margin-bottom:15px;">Enter your name to join</h3>
+            <input id="username" type="text" placeholder="Username" onkeydown="if(event.key==='Enter') joinchat()">
+            <button onclick="joinchat()">Join</button>
+        </div>
 
-    <div id = "chat-box">
-        Enter Your Message :- <input type="text" id="message">
-        <button onclick = "sendMessage()">Send Message</button>
+        <div id="chat-box">
+            <div id="messages"></div>
+            <div id="typing"></div>
+            <div class="input-area">
+                <input type="text" id="message" placeholder="Type a message..." onkeydown="if(event.key==='Enter') sendMessage()">
+                <button onclick="sendMessage()">Send</button>
+            </div>
+        </div>
     </div>
 
     <script src="/socket.io/socket.io.js"></script>
-
     <script>
         const socket = io();
+        const loginBox = document.getElementById('login-box');
+        const chatBox = document.getElementById('chat-box');
+        const messagesDiv = document.getElementById('messages');
+        const typingDiv = document.getElementById('typing');
+        let currentUser = '';
+        let typingTimeout;
 
-        document.getElementById('login-box').style.display="block";
-        document.getElementById('chat-box').style.display="block";
-       
+        socket.on('users-count', (count) => {
+            document.getElementById('usersCount').textContent = count;
+        });
 
-        socket.on('users-count', (count) =>{
-            document.getElementById('usersCount').innerHTML = count;
-        })
+        socket.on('user-joined', (username) => {
+            appendNotification(username + ' joined the chat');
+        });
 
-        function joinchat(){
-            let username = document.getElementById('username').value;
+        socket.on('user-left', (username) => {
+            appendNotification(username + ' left the chat');
+        });
+
+        socket.on('receive-message', (data) => {
+            const div = document.createElement('div');
+            div.className = 'msg ' + (data.username === currentUser ? 'sent' : 'received');
+            div.innerHTML = (data.username !== currentUser ? '<div class="name">' + data.username + '</div>' : '') +
+                            '<div class="bubble">' + escapeHtml(data.message) + '</div>';
+            messagesDiv.appendChild(div);
+            messagesDiv.scrollTop = messagesDiv.scrollHeight;
+        });
+
+        socket.on('user-typing', (username) => {
+            if (username !== currentUser) {
+                typingDiv.textContent = username + ' is typing...';
+            }
+        });
+
+        socket.on('user-stopped-typing', (username) => {
+            if (username !== currentUser) {
+                typingDiv.textContent = '';
+            }
+        });
+
+        function joinchat() {
+            const username = document.getElementById('username').value.trim();
+            if (!username) { alert('Please enter a username'); return; }
+            currentUser = username;
             socket.emit('new-user-joined', username);
+            loginBox.style.display = 'none';
+            chatBox.style.display = 'block';
+            document.getElementById('message').focus();
         }
 
+        function sendMessage() {
+            const input = document.getElementById('message');
+            const message = input.value.trim();
+            if (!message) return;
+            socket.emit('send-message', message);
+            socket.emit('stop-typing');
+            input.value = '';
+            input.focus();
+        }
+
+        document.getElementById('message').addEventListener('input', () => {
+            socket.emit('start-typing');
+            clearTimeout(typingTimeout);
+            typingTimeout = setTimeout(() => { socket.emit('stop-typing'); }, 1000);
+        });
+
+        function appendNotification(text) {
+            const div = document.createElement('div');
+            div.className = 'notification';
+            div.textContent = text;
+            messagesDiv.appendChild(div);
+            messagesDiv.scrollTop = messagesDiv.scrollHeight;
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
     </script>
 </body>
 </html>
