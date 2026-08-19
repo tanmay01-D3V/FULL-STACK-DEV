@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User my foot</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        
+        .hidden {
+            display: none;
+        }
+
+        label {
+            display: inline-block;
+            width: 140px;
+        }
+    </style>
+</head>
+<body>
+    <h1> CRUD OPERATION</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Password</th>
+            </tr>
+        </thead>
+        <tbody id="result">
+        </tbody>
+    </table>
+
+    <div id = "add-user">
+        <br>
+        <label for="name">Enter Name :-</label> <input id="name" name="name" type="text"><br><br>
+        <label for="email">Enter Email :-</label> <input id="email" name="email" type="email"><br><br>
+        <label for="password">Enter password :-</label> <input id="password" name="password" type="password"><br><br>
+        <button onclick="addUser()" >Add Users</button>
+    </div>
+
+    <div id="edit-user" class="hidden">
+        <br>
+        <input id="edited-id" type="hidden">
+        <label for="edited-name">Enter Name :-</label> <input id="edited-name" name="name" type="text"><br><br>
+        <label for="edited-email">Enter Email :-</label> <input id="edited-email" name="email" type="email"><br><br>
+        <label for="edited-password">Enter password :-</label> <input id="edited-password" name="password" type="password"><br><br>
+        <button onclick="updateUser()">Update User</button>
+    </div>
+    
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        const socket = io();
+
+        socket.on('users', (users) => {
+            document.getElementById('result').innerHTML = "";
+            users.forEach((user) => {
+                document.getElementById('result').innerHTML += `
+                <tr>
+                    <td>${user.id}</td>
+                    <td>${user.name}</td>
+                    <td>${user.email}</td>
+                    <td>${user.password}</td>
+                    <td><button onclick='editUser(${JSON.stringify(user)})'>EDIT</button></td>
+                    <td><button onclick='deleteUser(${user.id})'>Delete</button></td>
+                </tr>`;
+            });
+        });
+
+        function addUser() {
+            let name = document.getElementById('name').value;
+            let email = document.getElementById('email').value;
+            let password = document.getElementById('password').value;
+
+            socket.emit('add-user', { name, email, password });
+
+            document.getElementById('name').value = "";
+            document.getElementById('email').value = "";
+            document.getElementById('password').value = "";
+        }
+
+        function editUser(user) {
+            document.getElementById('edited-id').value = user.id;
+            document.getElementById('edited-name').value = user.name;
+            document.getElementById('edited-email').value = user.email;
+            document.getElementById('edited-password').value = user.password;
+            document.getElementById('edit-user').classList.remove('hidden');
+        }
+
+        function updateUser() {
+            let id = parseInt(document.getElementById('edited-id').value, 10);
+            let name = document.getElementById('edited-name').value;
+            let email = document.getElementById('edited-email').value;
+            let password = document.getElementById('edited-password').value;
+
+            socket.emit('update-user', { id, name, email, password });
+
+            document.getElementById('edited-id').value = "";
+            document.getElementById('edited-name').value = "";
+            document.getElementById('edited-email').value = "";
+            document.getElementById('edited-password').value = "";
+            document.getElementById('edit-user').classList.add('hidden');
+        }
+
+        function deleteUser(id) {
+            socket.emit('delete-user', id);
+        }
+    </script>
+</body>
+</html>
