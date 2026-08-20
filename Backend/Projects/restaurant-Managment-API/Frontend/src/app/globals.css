@@ -1,0 +1,212 @@
+@import "tailwindcss";
+
+@theme {
+  --color-terracotta-50: #fdf5f0;
+  --color-terracotta-100: #fae8db;
+  --color-terracotta-200: #f5ceb5;
+  --color-terracotta-300: #edab82;
+  --color-terracotta-400: #e3824d;
+  --color-terracotta-500: #db6530;
+  --color-terracotta-600: #c94e24;
+  --color-terracotta-700: #a73b1f;
+  --color-terracotta-800: #873220;
+  --color-terracotta-900: #6e2c1e;
+  --color-terracotta-950: #3b130c;
+
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "DM Serif Display", ui-serif, Georgia, serif;
+  --font-mono: "DM Mono", ui-monospace, monospace;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  background: var(--color-stone-50, #f8f7f4);
+  color: var(--color-stone-950, #2a2824);
+  font-family: var(--font-sans);
+}
+
+/* Component Classes */
+.card {
+  border-radius: 0.75rem;
+  border: 1px solid var(--color-stone-200, #dddbd0);
+  background: white;
+  padding: 1.25rem;
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+}
+
+.stat-card {
+  border-radius: 0.75rem;
+  border: 1px solid var(--color-stone-200, #dddbd0);
+  background: white;
+  padding: 1.25rem;
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 9999px;
+  padding: 0.125rem 0.625rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 1.25rem;
+}
+
+.badge-success {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 9999px;
+  padding: 0.125rem 0.625rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 1.25rem;
+  background: #ecfdf5;
+  color: #15803d;
+}
+
+.badge-warning {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 9999px;
+  padding: 0.125rem 0.625rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 1.25rem;
+  background: #fffbeb;
+  color: #b45309;
+}
+
+.badge-danger {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 9999px;
+  padding: 0.125rem 0.625rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 1.25rem;
+  background: #fef2f2;
+  color: #dc2626;
+}
+
+.badge-info {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 9999px;
+  padding: 0.125rem 0.625rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 1.25rem;
+  background: #f0f9ff;
+  color: #0369a1;
+}
+
+.badge-muted {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 9999px;
+  padding: 0.125rem 0.625rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 1.25rem;
+  background: var(--color-stone-100, #efeee8);
+  color: var(--color-stone-600, #89806b);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 0.5rem;
+  padding: 0.625rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.25rem;
+  transition: all 250ms ease-out;
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 0.5rem;
+  padding: 0.625rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.25rem;
+  transition: all 250ms ease-out;
+  background: var(--color-terracotta-600, #c94e24);
+  color: white;
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+}
+
+.btn-primary:hover {
+  background: var(--color-terracotta-700, #a73b1f);
+}
+
+.btn-primary:active {
+  transform: scale(0.97);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 0.5rem;
+  padding: 0.625rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.25rem;
+  transition: all 250ms ease-out;
+  background: white;
+  color: var(--color-stone-700, #726a59);
+  border: 1px solid var(--color-stone-300, #c5c1b1);
+}
+
+.btn-secondary:hover {
+  background: var(--color-stone-50, #f8f7f4);
+}
+
+.btn-secondary:active {
+  transform: scale(0.97);
+}
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 0.5rem;
+  padding: 0.625rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.25rem;
+  transition: all 250ms ease-out;
+  color: var(--color-stone-600, #89806b);
+}
+
+.btn-ghost:hover {
+  background: var(--color-stone-100, #efeee8);
+}
+
+.btn-ghost:active {
+  transform: scale(0.97);
+}
+
+.text-balance {
+  text-wrap: balance;
+}
