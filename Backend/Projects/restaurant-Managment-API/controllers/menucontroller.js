@@ -5,7 +5,7 @@ const getNextSequence = async (modelName) => {
   const counter = await Counter.findOneAndUpdate(
     { modelName },
     { $inc: { seq: 1 } },
-    { new: true, upsert: true },
+    { returnDocument: 'after', upsert: true },
   );
   return counter.seq;
 };
@@ -40,7 +40,7 @@ const updateMenuItem = async (req, res) => {
     const menuItem = await MenuItem.findByIdAndUpdate(
       Number(req.params.id),
       req.body,
-      { new: true },
+      { returnDocument: 'after' },
     );
     if (!menuItem) {
       return res.status(404).json({ message: "Menu item not found" });
