@@ -2,6 +2,9 @@
 
 React + Vite frontend for the Salon Management API (Express + Supabase, JWT auth).
 
+**Live:** https://glow-and-grace-salon.vercel.app
+**API:** https://glow-and-grace-salon.onrender.com
+
 ## Stack
 
 - React 19 (Vite), JavaScript

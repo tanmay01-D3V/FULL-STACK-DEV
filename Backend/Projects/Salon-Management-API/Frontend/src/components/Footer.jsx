@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { API_URL } from "../api/client";
 
 /* ── Swap these with your real handles ─────────────────────────── */
 const SOCIALS = [
@@ -126,7 +127,7 @@ export default function Footer() {
             ))}
             <li>
               <a
-                href="http://localhost:3000/"
+                href={`${API_URL}/`}
                 target="_blank"
                 rel="noreferrer"
                 className="text-stone-500 transition hover:text-brand-700"

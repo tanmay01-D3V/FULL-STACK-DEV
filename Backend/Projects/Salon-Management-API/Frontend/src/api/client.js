@@ -23,8 +23,10 @@ export const storage = {
   },
 };
 
+export const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
+
 const client = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || "http://localhost:3000",
+  baseURL: API_URL,
   timeout: 15000,
 });
 
