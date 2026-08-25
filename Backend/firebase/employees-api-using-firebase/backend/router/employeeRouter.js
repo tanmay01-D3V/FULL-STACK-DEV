@@ -1,7 +1,9 @@
 const express = require('express');
 const Employee = require('../models/Employees');
+const authMiddleware = require('../middleware/authMiddleware');
 
 const router = express.Router();
+router.use(authMiddleware);
 
 router.get('/',async(req,res)=>{
     try{
