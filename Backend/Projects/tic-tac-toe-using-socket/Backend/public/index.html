@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tic Tac Toe — Multiplayer</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="app">
+    <!-- Connection Status -->
+    <div id="connection-status" class="status-badge disconnected">Disconnected</div>
+
+    <!-- Login Screen -->
+    <div id="login-screen" class="screen">
+      <h1>Tic Tac Toe</h1>
+      <p class="subtitle">Real-Time Multiplayer</p>
+      <form id="login-form">
+        <input
+          type="text"
+          id="username-input"
+          placeholder="Enter your username"
+          maxlength="20"
+          autocomplete="off"
+        />
+        <button type="submit">Join Game</button>
+      </form>
+      <div id="login-error" class="error-msg"></div>
+    </div>
+
+    <!-- Waiting Screen -->
+    <div id="waiting-screen" class="screen hidden">
+      <div class="spinner"></div>
+      <h2>Waiting for opponent...</h2>
+      <p id="waiting-info"></p>
+      <div id="active-players" class="player-list"></div>
+    </div>
+
+    <!-- Game Screen -->
+    <div id="game-screen" class="screen hidden">
+      <div class="game-header">
+        <div id="player-x" class="player-tag tag-x"></div>
+        <div id="turn-indicator" class="turn-indicator"></div>
+        <div id="player-o" class="player-tag tag-o"></div>
+      </div>
+      <div id="board" class="board">
+        <div class="cell" data-index="0"></div>
+        <div class="cell" data-index="1"></div>
+        <div class="cell" data-index="2"></div>
+        <div class="cell" data-index="3"></div>
+        <div class="cell" data-index="4"></div>
+        <div class="cell" data-index="5"></div>
+        <div class="cell" data-index="6"></div>
+        <div class="cell" data-index="7"></div>
+        <div class="cell" data-index="8"></div>
+      </div>
+    </div>
+
+    <!-- Winner Modal -->
+    <div id="winner-modal" class="modal hidden">
+      <div class="modal-content">
+        <div id="winner-icon" class="winner-icon"></div>
+        <h2 id="winner-text"></h2>
+        <p id="winner-detail"></p>
+        <button id="play-again-btn">Play Again</button>
+      </div>
+    </div>
+
+    <!-- Game History -->
+    <div id="history-section" class="history-section">
+      <h3>Recent Games</h3>
+      <div id="history-list" class="history-list">
+        <p class="history-empty">No games played yet</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
