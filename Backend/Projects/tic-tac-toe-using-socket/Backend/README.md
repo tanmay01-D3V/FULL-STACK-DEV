@@ -2,6 +2,11 @@
 
 A real-time multiplayer Tic Tac Toe game built with **Node.js**, **Express**, **Socket.io**, and **Supabase** (Postgres). Two players connect via browser, get assigned X or O, and play a fully server-authoritative game. Finished games are persisted to a Supabase database.
 
+## Live Demo & Report
+
+- [Play the live game](https://full-stack-dev-jrvb.onrender.com/)
+- [Read the project report on Notion](https://app.notion.com/p/Project-Report-Real-Time-Multiplayer-Tic-Tac-Toe-3c9c06370d2a818db674e28a3129f987)
+
 ## Database Choice
 
 **Supabase** — Postgres via hosted dashboard with minimal setup. Requires a free Supabase project.
@@ -47,19 +52,19 @@ Open `http://localhost:3000` in two browser tabs.
 
 ## Socket Event Reference
 
-| Event | Direction | Payload | Purpose |
-|---|---|---|---|
-| `user-login` | client → server | `{ username }` | Request to join |
-| `login-success` | server → client | `{ symbol, username }` | Login accepted |
-| `login-error` | server → client | `{ message }` | Login rejected |
-| `players-update` | server → all | `{ players[] }` | Live player list |
-| `game-start` | server → all | `{ board, currentTurn }` | Game begins (2 players joined) |
-| `make-move` | client → server | `{ index }` | Player attempts a move |
-| `move-made` | server → all | `{ index, symbol, board, nextTurn }` | Broadcast applied move |
-| `game-over` | server → all | `{ winner, winningLine, isDraw, totalMoves }` | Game concluded |
-| `reset-game` | client → server | `{}` | Request a reset |
-| `game-reset` | server → all | `{}` | Room cleared, return to login |
-| `disconnect` | client → server (built-in) | — | Cleanup on leave |
+| Event            | Direction                  | Payload                                       | Purpose                        |
+| ---------------- | -------------------------- | --------------------------------------------- | ------------------------------ |
+| `user-login`     | client → server            | `{ username }`                                | Request to join                |
+| `login-success`  | server → client            | `{ symbol, username }`                        | Login accepted                 |
+| `login-error`    | server → client            | `{ message }`                                 | Login rejected                 |
+| `players-update` | server → all               | `{ players[] }`                               | Live player list               |
+| `game-start`     | server → all               | `{ board, currentTurn }`                      | Game begins (2 players joined) |
+| `make-move`      | client → server            | `{ index }`                                   | Player attempts a move         |
+| `move-made`      | server → all               | `{ index, symbol, board, nextTurn }`          | Broadcast applied move         |
+| `game-over`      | server → all               | `{ winner, winningLine, isDraw, totalMoves }` | Game concluded                 |
+| `reset-game`     | client → server            | `{}`                                          | Request a reset                |
+| `game-reset`     | server → all               | `{}`                                          | Room cleared, return to login  |
+| `disconnect`     | client → server (built-in) | —                                             | Cleanup on leave               |
 
 ## Features
 
