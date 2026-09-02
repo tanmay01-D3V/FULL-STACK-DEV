@@ -33,4 +33,9 @@ export class UsersService {
       },
     });
   }
+
+  async create(data: Partial<User>): Promise<User> {
+    const user = this.userRepository.create(data);
+    return this.userRepository.save(user);
+  }
 }

@@ -1,0 +1,702 @@
+openapi: 3.0.0
+info:
+  title: Library Management API
+  description: |
+    Complete Library Management System built with Node.js, Express, JWT, bcrypt
+    and Firebase Firestore. Supports role-based access control for Students and
+    Librarians, book CRUD, borrowing/returning with due dates, transaction
+    history, rate limiting and request logging.
+  version: 1.0.0
+  contact:
+    name: Library Management API Team
+servers:
+  - url: http://localhost:5001/api
+    description: Local development server
+
+tags:
+  - name: Auth
+    description: Registration, login and profile management
+  - name: Books
+    description: Book catalogue CRUD, search, borrow and return
+  - name: Transactions
+    description: Borrow/return transaction history
+  - name: Users
+    description: Librarian-only user administration
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Paste the JWT returned by login/register here.
+
+  schemas:
+    User:
+      type: object
+      properties:
+        userId:
+          type: string
+          description: Firestore document id of the user
+        name:
+          type: string
+        email:
+          type: string
+        role:
+          type: string
+          enum: [student, librarian]
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+    Book:
+      type: object
+      properties:
+        bookId:
+          type: string
+        title:
+          type: string
+        author:
+          type: string
+        isbn:
+          type: string
+        category:
+          type: string
+        status:
+          type: string
+          enum: [available, borrowed]
+        quantity:
+          type: integer
+        createdAt:
+          type: string
+          format: date-time
+    Transaction:
+      type: object
+      properties:
+        transactionId:
+          type: string
+        userId:
+          type: string
+        bookId:
+          type: string
+        type:
+          type: string
+          enum: [borrow, return]
+        borrowDate:
+          type: string
+          format: date-time
+        returnDate:
+          type: string
+          format: date-time
+          nullable: true
+        dueDate:
+          type: string
+          format: date-time
+        status:
+          type: string
+          enum: [active, returned, overdue]
+    ErrorResponse:
+      type: object
+      properties:
+        message:
+          type: string
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              field:
+                type: string
+              message:
+                type: string
+
+#################################################
+# AUTH
+#################################################
+paths:
+  /auth/register:
+    post:
+      tags: [Auth]
+      summary: Register a new user (Student or Librarian)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [name, email, password]
+              properties:
+                name:
+                  type: string
+                  example: John Doe
+                email:
+                  type: string
+                  example: john@example.com
+                password:
+                  type: string
+                  format: password
+                  example: secret123
+                role:
+                  type: string
+                  enum: [student, librarian]
+                  default: student
+                  example: student
+      responses:
+        '201':
+          description: User created, JWT returned
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  token:
+                    type: string
+                  user:
+                    $ref: '#/components/schemas/User'
+        '400':
+          description: Validation failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '409':
+          description: Email already registered
+
+  /auth/login:
+    post:
+      tags: [Auth]
+      summary: Login and receive a JWT token
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [email, password]
+              properties:
+                email:
+                  type: string
+                  example: john@example.com
+                password:
+                  type: string
+                  format: password
+                  example: secret123
+      responses:
+        '200':
+          description: Login successful, JWT returned
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  token:
+                    type: string
+                  user:
+                    $ref: '#/components/schemas/User'
+        '401':
+          description: Invalid email or password
+
+  /auth/profile:
+    get:
+      tags: [Auth]
+      summary: Get the logged-in user's profile
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Profile details
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  user:
+                    $ref: '#/components/schemas/User'
+        '401':
+          description: Missing or invalid token
+    put:
+      tags: [Auth]
+      summary: Update the logged-in user's profile (name/email/password)
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: John Updated
+                email:
+                  type: string
+                  example: john.new@example.com
+                password:
+                  type: string
+                  format: password
+                  example: newsecret123
+      responses:
+        '200':
+          description: Profile updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  user:
+                    $ref: '#/components/schemas/User'
+        '400':
+          description: Validation failed or nothing to update
+        '401':
+          description: Unauthorized
+
+#################################################
+# BOOKS
+#################################################
+  /books:
+    get:
+      tags: [Books]
+      summary: List all books with optional filters
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: title
+          in: query
+          schema: { type: string }
+          description: Exact title filter
+        - name: author
+          in: query
+          schema: { type: string }
+          description: Exact author filter
+        - name: category
+          in: query
+          schema: { type: string }
+          description: Category filter
+        - name: status
+          in: query
+          schema:
+            type: string
+            enum: [available, borrowed]
+          description: Availability filter
+      responses:
+        '200':
+          description: List of books
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  count:
+                    type: integer
+                  books:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Book'
+        '401':
+          description: Unauthorized
+    post:
+      tags: [Books]
+      summary: Add a new book (Librarian only)
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [title, author, isbn, category]
+              properties:
+                title:
+                  type: string
+                  example: The Pragmatic Programmer
+                author:
+                  type: string
+                  example: Andrew Hunt
+                isbn:
+                  type: string
+                  example: '9780201616224'
+                category:
+                  type: string
+                  example: Programming
+                quantity:
+                  type: integer
+                  default: 1
+                  example: 3
+      responses:
+        '201':
+          description: Book created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  book:
+                    $ref: '#/components/schemas/Book'
+        '400':
+          description: Validation failed
+        '403':
+          description: Requires librarian role
+
+  /books/search:
+    get:
+      tags: [Books]
+      summary: Search books by title or author
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: q
+          in: query
+          required: true
+          schema: { type: string }
+          example: pragma
+          description: Search keyword
+      responses:
+        '200':
+          description: Matching books
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  count:
+                    type: integer
+                  books:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Book'
+        '400':
+          description: Missing query parameter
+
+  /books/{id}:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema: { type: string }
+        description: Book id (Firestore document id)
+    get:
+      tags: [Books]
+      summary: Get a single book by id
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Book details
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  book:
+                    $ref: '#/components/schemas/Book'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Book not found
+    put:
+      tags: [Books]
+      summary: Update a book (Librarian only)
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                author:
+                  type: string
+                isbn:
+                  type: string
+                category:
+                  type: string
+                quantity:
+                  type: integer
+                  example: 2
+      responses:
+        '200':
+          description: Book updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  book:
+                    $ref: '#/components/schemas/Book'
+        '403':
+          description: Requires librarian role
+        '404':
+          description: Book not found
+    delete:
+      tags: [Books]
+      summary: Delete a book (Librarian only)
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Book deleted
+        '403':
+          description: Requires librarian role
+        '404':
+          description: Book not found
+
+  /books/{id}/borrow:
+    post:
+      tags: [Books]
+      summary: Borrow a book (Student only)
+      description: Creates an active transaction and decrements stock. Due date defaults to 14 days.
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: string }
+          description: Book id
+      responses:
+        '201':
+          description: Book borrowed
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  dueDate:
+                    type: string
+                    format: date-time
+                  transaction:
+                    $ref: '#/components/schemas/Transaction'
+        '400':
+          description: Book not available
+        '403':
+          description: Requires student role
+        '404':
+          description: Book not found
+
+  /books/{id}/return:
+    post:
+      tags: [Books]
+      summary: Return a borrowed book (Student only)
+      description: Closes the active transaction and increments stock.
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: string }
+          description: Book id
+      responses:
+        '200':
+          description: Book returned
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  transaction:
+                    $ref: '#/components/schemas/Transaction'
+        '400':
+          description: No active borrow found
+        '403':
+          description: Requires student role
+
+#################################################
+# TRANSACTIONS
+#################################################
+  /transactions:
+    get:
+      tags: [Transactions]
+      summary: Get all transactions (Librarian only)
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: List of transactions (enriched with user & book)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  count:
+                    type: integer
+                  transactions:
+                    type: array
+                    items:
+                      allOf:
+                        - $ref: '#/components/schemas/Transaction'
+                        - type: object
+                          properties:
+                            user:
+                              type: object
+                              properties:
+                                userId: { type: string }
+                                name: { type: string }
+                                email: { type: string }
+                            book:
+                              type: object
+                              properties:
+                                bookId: { type: string }
+                                title: { type: string }
+                                author: { type: string }
+        '403':
+          description: Requires librarian role
+
+  /transactions/my:
+    get:
+      tags: [Transactions]
+      summary: Get the logged-in user's transaction history
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: User's transactions
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  count:
+                    type: integer
+                  transactions:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Transaction'
+        '401':
+          description: Unauthorized
+
+#################################################
+# USERS
+#################################################
+  /users:
+    get:
+      tags: [Users]
+      summary: List all users (Librarian only)
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: role
+          in: query
+          schema:
+            type: string
+            enum: [student, librarian]
+          description: Filter by role
+      responses:
+        '200':
+          description: List of users (password hidden)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  count:
+                    type: integer
+                  users:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/User'
+        '403':
+          description: Requires librarian role
+
+  /users/{id}:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema: { type: string }
+        description: User id (Firestore document id)
+    get:
+      tags: [Users]
+      summary: Get a single user (Librarian only)
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: User details (password hidden)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  user:
+                    $ref: '#/components/schemas/User'
+        '403':
+          description: Requires librarian role
+        '404':
+          description: User not found
+    delete:
+      tags: [Users]
+      summary: Delete a user (Librarian only)
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: User deleted
+        '403':
+          description: Requires librarian role
+        '404':
+          description: User not found
+
+  /users/{id}/role:
+    put:
+      tags: [Users]
+      summary: Update a user's role (Librarian only)
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: string }
+          description: User id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [role]
+              properties:
+                role:
+                  type: string
+                  enum: [student, librarian]
+                  example: librarian
+      responses:
+        '200':
+          description: Role updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  user:
+                    $ref: '#/components/schemas/User'
+        '400':
+          description: Invalid role
+        '403':
+          description: Requires librarian role
+        '404':
+          description: User not found

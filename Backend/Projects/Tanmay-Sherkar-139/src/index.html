@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Circulation Desk · Library</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Archivo:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="app" class="app">
+
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true">LIBRARY</span>
+        <div class="brand-text">
+          <h1>Circulation&nbsp;Desk</h1>
+          <p class="brand-sub">reading room · lending record</p>
+        </div>
+      </div>
+      <div class="userbar hidden" id="userbar">
+        <div class="userchip">
+          <span class="userchip-name" id="userchip-name">—</span>
+          <span class="userchip-role" id="userchip-role">—</span>
+        </div>
+        <button class="btn btn-quiet" id="btn-logout" type="button">Log out</button>
+      </div>
+    </header>
+
+    <nav class="tabs hidden" id="tabs">
+      <button class="tab-item is-active" data-view="catalog" type="button">Catalog</button>
+      <button class="tab-item" data-view="loans" type="button">My Loans</button>
+      <button class="tab-item hidden" data-view="admin" id="tab-admin" type="button">Borrowers &amp; Ledger</button>
+    </nav>
+
+    <main class="content">
+
+      <section class="view" id="view-catalog">
+        <div class="toolrow">
+          <label class="search">
+            <span class="sr-only">Search the catalog</span>
+            <input type="search" id="search-input" placeholder="Search by title or author…" autocomplete="off" />
+          </label>
+          <div class="chips" id="status-chips">
+            <button class="chip is-active" data-status="" type="button">All</button>
+            <button class="chip" data-status="available" type="button">In circulation</button>
+            <button class="chip" data-status="borrowed" type="button">Checked out</button>
+          </div>
+        </div>
+        <div class="ledger-hint" id="catalog-hint">No books selected — the stacks are quiet.</div>
+        <div class="cards" id="catalog-cards"></div>
+      </section>
+
+      <section class="view hidden" id="view-loans">
+        <h2 class="section-eyebrow">Lending record — <span id="loans-owner">you</span></h2>
+        <div class="table-wrap">
+          <table class="ledger" id="loans-table">
+            <thead>
+              <tr>
+                <th>Card no.</th>
+                <th>Book</th>
+                <th>Type</th>
+                <th>Borrowed</th>
+                <th>Due</th>
+                <th>Status</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="view hidden" id="view-admin">
+        <h2 class="section-eyebrow">Accessions — add to the stacks</h2>
+        <form class="accessions" id="book-form">
+          <label class="field">
+            <span>Title</span>
+            <input name="title" required />
+          </label>
+          <label class="field">
+            <span>Author</span>
+            <input name="author" required />
+          </label>
+          <label class="field">
+            <span>ISBN</span>
+            <input name="isbn" required minlength="10" maxlength="13" />
+          </label>
+          <label class="field">
+            <span>Category</span>
+            <input name="category" required />
+          </label>
+          <label class="field">
+            <span>Copies</span>
+            <input name="quantity" type="number" min="1" value="1" required />
+          </label>
+          <button class="btn btn-ink" type="submit">Add book</button>
+        </form>
+
+        <h2 class="section-eyebrow">Circulation ledger</h2>
+        <div class="table-wrap">
+          <table class="ledger" id="alltx-table">
+            <thead>
+              <tr>
+                <th>Card no.</th>
+                <th>Borrower</th>
+                <th>Book</th>
+                <th>Borrowed</th>
+                <th>Due</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+
+        <h2 class="section-eyebrow">Borrowers</h2>
+        <div class="table-wrap">
+          <table class="ledger" id="users-table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Joined</th>
+                <th>Role</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+
+    </main>
+
+    <div class="toasts" id="toasts" aria-live="polite"></div>
+  </div>
+
+  <div class="gate" id="gate">
+    <div class="gate-card">
+      <p class="gate-mark">LIBRARY</p>
+      <h2 class="gate-title">Reader card</h2>
+      <p class="gate-sub">Sign in to check the stacks.</p>
+
+      <div class="gate-tabs">
+        <button class="gate-tab is-active" data-mode="login" type="button">Sign in</button>
+        <button class="gate-tab" data-mode="register" type="button">New reader</button>
+      </div>
+
+      <form class="gate-form" id="auth-form">
+        <label class="field">
+          <span>Name</span>
+          <input name="name" class="hidden" autocomplete="name" />
+        </label>
+        <label class="field">
+          <span>Email</span>
+          <input name="email" type="email" required autocomplete="email" />
+        </label>
+        <label class="field">
+          <span>Password</span>
+          <input name="password" type="password" required autocomplete="current-password" minlength="6" />
+        </label>
+        <label class="field hidden" id="role-field">
+          <span>Reader type</span>
+          <select name="role">
+            <option value="student">Student</option>
+            <option value="librarian">Librarian</option>
+          </select>
+        </label>
+        <button class="btn btn-ink" type="submit" id="auth-submit">Sign in</button>
+      </form>
+      <p class="gate-error" id="gate-error"></p>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
