@@ -7,9 +7,6 @@ A complete Library Management System — Express REST API backed by **Cloud Fire
 | App | URL |
 | --- | --- |
 | 🌐 Frontend (Circulation Desk) | https://full-stack-dev-8zwj.vercel.app |
-| ⚙️ Backend API (Render) | https://full-stack-dev-1.onrender.com |
-| 📚 API Docs (Swagger) | https://full-stack-dev-1.onrender.com/api-docs |
-| 💓 Health check | https://full-stack-dev-1.onrender.com/health |
 
 ## ✨ Features
 
