@@ -2,6 +2,9 @@
 
 A production-style **Pharmacy Management & Medicine Ordering REST API** built with **Node.js, Express, MongoDB Atlas, Mongoose, JWT** and **bcryptjs**, implementing strict **Role-Based Access Control (RBAC)** across three user tiers: `Admin`, `Pharmacist`, and `Customer`.
 
+### Live Link 
+https://full-stack-dev-4.onrender.com
+
 ---
 
 ## ✨ Key Features
