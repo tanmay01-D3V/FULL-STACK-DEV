@@ -15,8 +15,13 @@ import {
 } from "lucide-react";
 import "./styles.css";
 
+const configuredApiUrl = (
+  import.meta.env.VITE_API_URL || "http://localhost:5004"
+).replace(/\/+$/, "");
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || "http://localhost:5004/api",
+  baseURL: configuredApiUrl.endsWith("/api")
+    ? configuredApiUrl
+    : `${configuredApiUrl}/api`,
 });
 const formatDate = (value) =>
   new Intl.DateTimeFormat("en", {
