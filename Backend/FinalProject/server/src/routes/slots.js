@@ -83,11 +83,9 @@ router.post(
         ...overlap(req.body.startTime, req.body.endTime),
       });
       if (conflict)
-        return res
-          .status(409)
-          .json({
-            message: "This time overlaps another slot in your schedule",
-          });
+        return res.status(409).json({
+          message: "This time overlaps another slot in your schedule",
+        });
       const slot = await InterviewSlot.create({
         ...req.body,
         recruiter: req.user._id,
@@ -126,7 +124,7 @@ router.post("/:id/book", roles("candidate"), async (req, res, next) => {
         error.status = 409;
         throw error;
       }
-      [booked] = await InterviewSlot.findOneAndUpdate(
+      booked = await InterviewSlot.findOneAndUpdate(
         { _id: slot._id, status: "AVAILABLE" },
         { candidate: req.user._id, status: "BOOKED" },
         { new: true, session },
@@ -163,11 +161,9 @@ router.patch(
         ...overlap(req.body.startTime, req.body.endTime),
       });
       if (conflict)
-        return res
-          .status(409)
-          .json({
-            message: "This time overlaps another slot in your schedule",
-          });
+        return res.status(409).json({
+          message: "This time overlaps another slot in your schedule",
+        });
       Object.assign(slot, req.body);
       await slot.save();
       res.json({ slot });
